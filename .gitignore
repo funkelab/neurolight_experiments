@@ -1,0 +1,6 @@
+__pycache__
+snapshots
+.idea
+*.hdf
+*.meta
+*.json
