@@ -4,3 +4,5 @@ snapshots
 *.hdf
 *.meta
 *.json
+*checkpoint*
+*.sw[pmn]
