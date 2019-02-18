@@ -7,31 +7,33 @@ def create_network(input_shape, name):
     tf.reset_default_graph()
 
     # c=2, d, h, w
-    raw = tf.placeholder(tf.float32, shape=(2,) + input_shape)
+    ch1 = tf.placeholder(tf.float32, shape=input_shape)
+    ch2 = tf.placeholder(tf.float32, shape=input_shape)
+    raw = tf.concat([tf.reshape(ch1, (1,) + input_shape), tf.reshape(ch2, (1,) + input_shape)], 0)
 
     # b=1, c=2, d, h, w
     raw_batched = tf.reshape(raw, (1, 2,) + input_shape)
 
-    out = unet(raw_batched, 12, 5, [[2, 2, 2], [3, 3, 3], [3, 3, 3]])
-    output_batched = conv_pass(
-        out,
+    fg_unet = unet(raw_batched, 12, 5, [[2, 2, 2], [2, 2, 2], [2, 2, 2]])
+
+    fg_batched = conv_pass(
+        fg_unet,
         kernel_size=1,
         num_fmaps=1,
         num_repetitions=1,
         activation='sigmoid')
-    output_shape_batched = output_batched.get_shape().as_list()
 
-    # d, h, w
-    output_shape = output_shape_batched[2:]
-    output = tf.reshape(output_batched, output_shape)
+    output_shape_batched = fg_batched.get_shape().as_list()
 
-    gt = tf.placeholder(tf.float32, shape=output_shape)
+    # d, h, w, strip the batch and channel dimension
+    output_shape = tuple(output_shape_batched[2:])
+
+    fg = tf.reshape(fg_batched, output_shape)
+
+    gt_fg = tf.placeholder(tf.float32, shape=output_shape)
     loss_weights = tf.placeholder(tf.float32, shape=output_shape)
 
-    loss = tf.losses.mean_squared_error(
-        gt,
-        output,
-        loss_weights)
+    loss = tf.losses.mean_squared_error(gt_fg, fg, loss_weights)
 
     opt = tf.train.AdamOptimizer(
         learning_rate=0.5e-4,
@@ -45,14 +47,19 @@ def create_network(input_shape, name):
 
     tf.train.export_meta_graph(filename=name + '.meta')
 
+    tf.train.export_meta_graph(filename='train_net.meta')
+
     names = {
+        'ch1': ch1.name,
+        'ch2': ch2.name,
         'raw': raw.name,
-        'prediction': output.name,
-        'gt': gt.name,
+        'fg': fg.name,
         'loss_weights': loss_weights.name,
         'loss': loss.name,
         'optimizer': optimizer.name,
+        'gt_fg': gt_fg.name
     }
+
     with open(name + '_names.json', 'w') as f:
         json.dump(names, f)
 
@@ -66,4 +73,4 @@ def create_network(input_shape, name):
 
 
 if __name__ == "__main__":
-    create_network((196, 196, 196), 'train_net')
+    create_network((128, 128, 128), 'train_net')

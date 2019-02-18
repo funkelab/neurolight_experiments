@@ -257,7 +257,7 @@ def train_until(max_iteration):
                 output_filename='snapshot_{iteration}.hdf',
                 additional_request=snapshot_request,
                 every=10) +
-            gp.PrintProfilingStats(every=10)
+            gp.PrintProfilingStats(every=5)
     )
 
     with gp.build(pipeline):
