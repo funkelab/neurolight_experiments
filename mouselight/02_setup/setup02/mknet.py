@@ -14,7 +14,7 @@ def create_network(input_shape, name):
     # b=1, c=2, d, h, w
     raw_batched = tf.reshape(raw, (1, 2,) + input_shape)
 
-    fg_unet = unet(raw_batched, 12, 5, [[2, 2, 2], [2, 2, 2], [2, 2, 2]])
+    fg_unet = unet(raw_batched, 12, 5, [[1, 2, 2], [1, 2, 2], [2, 2, 2]])
 
     fg_batched = conv_pass(
         fg_unet,
@@ -73,4 +73,4 @@ def create_network(input_shape, name):
 
 
 if __name__ == "__main__":
-    create_network((128, 128, 128), 'train_net')
+    create_network((74, 256, 256), 'train_net')
