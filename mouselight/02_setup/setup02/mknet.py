@@ -7,9 +7,7 @@ def create_network(input_shape, name):
     tf.reset_default_graph()
 
     # c=2, d, h, w
-    ch1 = tf.placeholder(tf.float32, shape=input_shape)
-    ch2 = tf.placeholder(tf.float32, shape=input_shape)
-    raw = tf.concat([tf.reshape(ch1, (1,) + input_shape), tf.reshape(ch2, (1,) + input_shape)], 0)
+    raw = tf.placeholder(tf.float32, shape=(2,) + input_shape)
 
     # b=1, c=2, d, h, w
     raw_batched = tf.reshape(raw, (1, 2,) + input_shape)
@@ -30,10 +28,10 @@ def create_network(input_shape, name):
 
     fg = tf.reshape(fg_batched, output_shape)
 
-    gt_fg = tf.placeholder(tf.float32, shape=output_shape)
+    labels_fg = tf.placeholder(tf.float32, shape=output_shape)
     loss_weights = tf.placeholder(tf.float32, shape=output_shape)
 
-    loss = tf.losses.mean_squared_error(gt_fg, fg, loss_weights)
+    loss = tf.losses.mean_squared_error(labels_fg, fg, loss_weights)
 
     opt = tf.train.AdamOptimizer(
         learning_rate=0.5e-4,
@@ -50,14 +48,12 @@ def create_network(input_shape, name):
     tf.train.export_meta_graph(filename='train_net.meta')
 
     names = {
-        'ch1': ch1.name,
-        'ch2': ch2.name,
         'raw': raw.name,
         'fg': fg.name,
         'loss_weights': loss_weights.name,
         'loss': loss.name,
         'optimizer': optimizer.name,
-        'gt_fg': gt_fg.name
+        'labels_fg': labels_fg.name
     }
 
     with open(name + '_names.json', 'w') as f:
