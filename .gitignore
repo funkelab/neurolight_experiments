@@ -5,4 +5,5 @@ snapshots
 *.meta
 *.json
 *checkpoint*
+*snapshot_images*
 *.sw[pmn]

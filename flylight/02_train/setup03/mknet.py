@@ -1,8 +1,10 @@
 from gunpowder.zoo.tensorflow import unet, conv_pass
 import tensorflow as tf
 import json
+import sys
+import os
 
-def create_network(input_shape, name):
+def create_network(input_shape, name, output_folder):
 
     tf.reset_default_graph()
     
@@ -43,17 +45,17 @@ def create_network(input_shape, name):
     print("input shape: %s"%(input_shape,))
     print("output shape: %s"%(output_shape,))
 
-    tf.train.export_meta_graph(filename=name + '.meta')
+    tf.train.export_meta_graph(filename=os.path.join(output_folder, name + '.meta'))
 
     names = {
             'raw': raw.name,
-            'prediction': output.name,
+            'pred': output.name,
             'gt': gt.name,
             'loss_weights': loss_weights.name,
             'loss': loss.name,
             'optimizer': optimizer.name,
     }
-    with open(name + '_names.json', 'w') as f:
+    with open(os.path.join(output_folder, name + '_names.json'), 'w') as f:
         json.dump(names, f)
 
     config = {
@@ -61,9 +63,24 @@ def create_network(input_shape, name):
             'output_shape': output_shape,
             'out_dims': 1
     }
-    with open(name + '_config.json', 'w') as f:
+    with open(os.path.join(output_folder, name + '_config.json'), 'w') as f:
         json.dump(config, f)
 
 if __name__ == "__main__":
 
-    create_network((128, 128, 128), 'train_net')
+    root = '/groups/kainmueller/home/maisl/workspace/neurolight/experiments'
+    experiment = 'setup03_030419_00'
+
+    if len(sys.argv) > 1:
+        experiment = sys.argv[1]
+    if len(sys.argv) > 2:
+        root = sys.argv[2]
+
+    output_folder = os.path.join(root, experiment, 'train')
+    try:
+        os.makedirs(output_folder)
+    except OSError:
+        pass
+
+    #create_network((128, 128, 128), 'train_net', output_folder)
+    create_network((180, 180, 180), 'test_net', output_folder)
