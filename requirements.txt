@@ -1,0 +1,2 @@
+git+https://github.com/pattonw/gunpowder.git@synthetic-light-like
+git+https://github.com/pattonw/neurolight.git@synthetic-data
