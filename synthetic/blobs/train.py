@@ -118,18 +118,30 @@ def add_loss(graph):
 
     # h, w
     shape = tuple(fg.get_shape().as_list())
-
+    
     # 1, 1, h, w
-    maxima = tf.nn.pool(
+    local_maxima = tf.nn.pool(
         tf.reshape(fg, (1, 1) + shape),
-        [10, 10],
-        'MAX',
-        'SAME',
+        MAX_FILTER_SIZE,
+        "MAX",
+        "SAME",
         strides=[1, 1],
-        data_format='NCHW'
+        data_format="NCHW",
     )
     # h, w
-    maxima = tf.reshape(tf.equal(fg, maxima), shape, name='maxima')
+    if MAXIMA_THRESHOLD is not None:
+        maxima = tf.reshape(
+            tf.math.logical_and(
+                tf.greater_equal(fg, MAXIMA_THRESHOLD), tf.equal(fg, local_maxima)
+            ),
+            shape,
+            name="maxima",
+        )
+    else:
+        maxima = tf.reshape(tf.equal(fg, local_maxima), shape, name="maxima")
+
+    num_points = tf.count_nonzero(maxima)
+    maxima = tf.cond(num_points < 1, lambda: tf.reshape(tf.equal(fg, local_maxima), shape, name="maxima"), lambda: maxima)
 
     # 1, k, h, w
     embedding = tf.reshape(
