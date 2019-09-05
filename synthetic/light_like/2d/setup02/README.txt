@@ -1,1 +1,0 @@
-constant upsampling on only the embedding unet

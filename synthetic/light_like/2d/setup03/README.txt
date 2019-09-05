@@ -1,1 +1,0 @@
-Constant upstampling on both embedding unet and foreground unet
