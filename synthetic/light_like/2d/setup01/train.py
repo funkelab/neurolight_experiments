@@ -11,7 +11,7 @@ import math
 
 for handler in logging.root.handlers[:]:
     logging.root.removeHandler(handler)
-    
+
 # logging.basicConfig(level=logging.DEBUG, filename="log.txt")
 logging.basicConfig(level=logging.INFO)
 
@@ -23,7 +23,7 @@ OUTPUT_SHAPE = [120, 120]
 MAX_FILTER_SIZE = [3, 3]
 MAXIMA_THRESHOLD = None
 COORDINATE_SCALE = 0.01
-ALPHA=0.1
+ALPHA = 0.1
 
 # Skeleton generation hyperparams
 SKEL_GEN_RADIUS = 10
@@ -113,7 +113,13 @@ def add_loss(graph):
     )
     # h, w
     if MAXIMA_THRESHOLD is not None:
-        maxima = tf.reshape(tf.math.logical_and(tf.greater_equal(fg, MAXIMA_THRESHOLD), tf.equal(fg, maxima)), shape, name="maxima")
+        maxima = tf.reshape(
+            tf.math.logical_and(
+                tf.greater_equal(fg, MAXIMA_THRESHOLD), tf.equal(fg, maxima)
+            ),
+            shape,
+            name="maxima",
+        )
     else:
         maxima = tf.reshape(tf.equal(fg, maxima), shape, name="maxima")
 
@@ -123,7 +129,11 @@ def add_loss(graph):
     embedding = tf.transpose(embedding, perm=[1, 0, 2, 3])
 
     um_loss, emst, edges_u, edges_v, _ = ultrametric_loss_op(
-        embedding, gt_labels, mask=maxima, coordinate_scale=COORDINATE_SCALE, alpha=ALPHA
+        embedding,
+        gt_labels,
+        mask=maxima,
+        coordinate_scale=COORDINATE_SCALE,
+        alpha=ALPHA,
     )
 
     # print("um_loss: {}".format(um_loss))
@@ -136,9 +146,9 @@ def add_loss(graph):
 
     loss = um_loss + fg_loss
 
-    tf.summary.scalar('um_loss', um_loss)
-    tf.summary.scalar('fg_loss', fg_loss)
-    tf.summary.scalar('loss', loss)
+    tf.summary.scalar("um_loss", um_loss)
+    tf.summary.scalar("fg_loss", fg_loss)
+    tf.summary.scalar("loss", loss)
 
     summaries = tf.summary.merge_all()
 

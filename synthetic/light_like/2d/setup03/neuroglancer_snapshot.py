@@ -6,7 +6,7 @@ import itertools
 import h5py
 import networkx as nx
 
-ALPHA=0.5
+ALPHA = 0.5
 
 neuroglancer.set_server_bind_address("0.0.0.0")
 
@@ -56,6 +56,7 @@ def add(s, a, name, shader=None, visible=True):
         **kwargs
     )
 
+
 def build_trees(emst, edges_u, edges_v):
     trees = nx.DiGraph()
     for edge, u, v in zip(
@@ -76,6 +77,7 @@ def build_trees(emst, edges_u, edges_v):
         trees.add_edge(edge[0], edge[1], d=edge[2])
     return trees
 
+
 def add_trees(trees, node_id):
     for i, cc_nodes in enumerate(nx.weakly_connected_components(trees)):
         cc = trees.subgraph(cc_nodes)
@@ -89,7 +91,9 @@ def add_trees(trees, node_id):
                 )
             )
 
-        s.layers.append(name="mst_{}".format(i), layer=neuroglancer.AnnotationLayer(annotations=mst))
+        s.layers.append(
+            name="mst_{}".format(i), layer=neuroglancer.AnnotationLayer(annotations=mst)
+        )
 
 
 embedding.materialize()
