@@ -1,0 +1,1708 @@
+INFO:gunpowder.tensorflow.local_server:Creating local tensorflow server
+WARNING:tensorflow:From /groups/mousebrainmicro/home/pattonw/Code/Packages/gunpowder/gunpowder/tensorflow/local_server.py:38: The name tf.train.Server is deprecated. Please use tf.distribute.Server instead.
+
+INFO:gunpowder.tensorflow.local_server:Server running at b'grpc://localhost:41567'
+INFO:gunpowder.tensorflow.nodes.train:Initializing tf session, connecting to b'grpc://localhost:41567'...
+WARNING:tensorflow:From /groups/mousebrainmicro/home/pattonw/Code/Packages/gunpowder/gunpowder/tensorflow/nodes/train.py:158: The name tf.Session is deprecated. Please use tf.compat.v1.Session instead.
+
+INFO:gunpowder.tensorflow.nodes.train:Reading meta-graph...
+WARNING:tensorflow:From /groups/mousebrainmicro/home/pattonw/Code/Packages/gunpowder/gunpowder/tensorflow/nodes/train.py:241: The name tf.train.import_meta_graph is deprecated. Please use tf.compat.v1.train.import_meta_graph instead.
+
+WARNING:tensorflow:From /groups/mousebrainmicro/home/pattonw/Code/Packages/gunpowder/gunpowder/tensorflow/nodes/train.py:246: The name tf.variable_scope is deprecated. Please use tf.compat.v1.variable_scope instead.
+
+WARNING:tensorflow:From /groups/mousebrainmicro/home/pattonw/Code/Packages/gunpowder/gunpowder/tensorflow/nodes/train.py:247: The name tf.get_variable is deprecated. Please use tf.compat.v1.get_variable instead.
+
+WARNING:tensorflow:From /groups/mousebrainmicro/home/pattonw/Code/Packages/gunpowder/gunpowder/tensorflow/nodes/train.py:252: The name tf.assign is deprecated. Please use tf.compat.v1.assign instead.
+
+WARNING:tensorflow:From /groups/mousebrainmicro/home/pattonw/Code/Packages/gunpowder/gunpowder/tensorflow/nodes/train.py:259: The name tf.train.Saver is deprecated. Please use tf.compat.v1.train.Saver instead.
+
+WARNING:tensorflow:From /miniconda/lib/python3.6/site-packages/tensorflow/python/ops/array_ops.py:1354: add_dispatch_support.<locals>.wrapper (from tensorflow.python.ops.array_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.where in 2.0, which has the same broadcast rule as np.where
+WARNING:tensorflow:From /src/funlib/funlib/learn/tensorflow/losses/um_loss.py:29: py_func (from tensorflow.python.ops.script_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+tf.py_func is deprecated in TF V2. Instead, there are two
+    options available in V2.
+    - tf.py_function takes a python function which manipulates tf eager
+    tensors instead of numpy arrays. It's easy to convert a tf eager tensor to
+    an ndarray (just call tensor.numpy()) but having access to eager tensors
+    means `tf.py_function`s can use accelerators such as GPUs as well as
+    being differentiable using a gradient tape.
+    - tf.numpy_function maintains the semantics of the deprecated tf.py_func
+    (it is not differentiable, and manipulates numpy arrays). It drops the
+    stateful argument making all functions stateful.
+    
+WARNING:tensorflow:From /src/funlib/funlib/learn/tensorflow/losses/py_func_gradient.py:15: The name tf.get_default_graph is deprecated. Please use tf.compat.v1.get_default_graph instead.
+
+WARNING:tensorflow:From train.py:148: The name tf.losses.mean_squared_error is deprecated. Please use tf.compat.v1.losses.mean_squared_error instead.
+
+WARNING:tensorflow:From train.py:152: The name tf.summary.scalar is deprecated. Please use tf.compat.v1.summary.scalar instead.
+
+WARNING:tensorflow:From train.py:156: The name tf.summary.merge_all is deprecated. Please use tf.compat.v1.summary.merge_all instead.
+
+WARNING:tensorflow:From train.py:158: The name tf.train.AdamOptimizer is deprecated. Please use tf.compat.v1.train.AdamOptimizer instead.
+
+INFO:gunpowder.tensorflow.nodes.train:No checkpoint found
+WARNING:tensorflow:From /groups/mousebrainmicro/home/pattonw/Code/Packages/gunpowder/gunpowder/tensorflow/nodes/train.py:166: The name tf.summary.FileWriter is deprecated. Please use tf.compat.v1.summary.FileWriter instead.
+
+INFO:gunpowder.nodes.precache:starting new set of workers...
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.021987/0.181074
+INFO:gunpowder.nodes.generic_train:Train process: iteration=1 loss=0.255727 time=4.915097
+INFO:gunpowder.nodes.snapshot:saving to snapshots/1.hdf
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.026067/0.168629
+INFO:gunpowder.nodes.generic_train:Train process: iteration=2 loss=0.254234 time=0.058527
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.026067/0.168633
+INFO:gunpowder.nodes.generic_train:Train process: iteration=3 loss=0.254223 time=0.059040
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.026069/0.168637
+INFO:gunpowder.nodes.generic_train:Train process: iteration=4 loss=0.254210 time=0.061596
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.026072/0.168641
+INFO:gunpowder.nodes.generic_train:Train process: iteration=5 loss=0.254196 time=0.060736
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.026076/0.168645
+INFO:gunpowder.nodes.generic_train:Train process: iteration=6 loss=0.254181 time=0.061524
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.026080/0.168649
+INFO:gunpowder.nodes.generic_train:Train process: iteration=7 loss=0.254167 time=0.060479
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.026085/0.168653
+INFO:gunpowder.nodes.generic_train:Train process: iteration=8 loss=0.254152 time=0.060555
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023947/0.160783
+INFO:gunpowder.nodes.generic_train:Train process: iteration=9 loss=0.256872 time=0.060621
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.026094/0.168662
+INFO:gunpowder.nodes.generic_train:Train process: iteration=10 loss=0.254562 time=0.060892
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.026098/0.168667
+INFO:gunpowder.nodes.generic_train:Train process: iteration=11 loss=0.254548 time=0.060231
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023953/0.160788
+INFO:gunpowder.nodes.generic_train:Train process: iteration=12 loss=0.256877 time=0.057655
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023955/0.160790
+INFO:gunpowder.nodes.generic_train:Train process: iteration=13 loss=0.256870 time=0.057754
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023958/0.160793
+INFO:gunpowder.nodes.generic_train:Train process: iteration=14 loss=0.256862 time=0.060378
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023961/0.160797
+INFO:gunpowder.nodes.generic_train:Train process: iteration=15 loss=0.256853 time=0.058680
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023964/0.160801
+INFO:gunpowder.nodes.generic_train:Train process: iteration=16 loss=0.256844 time=0.059926
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023967/0.160806
+INFO:gunpowder.nodes.generic_train:Train process: iteration=17 loss=0.256835 time=0.058745
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023971/0.160811
+INFO:gunpowder.nodes.generic_train:Train process: iteration=18 loss=0.256825 time=0.059320
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.025826/0.154374
+INFO:gunpowder.nodes.generic_train:Train process: iteration=19 loss=0.248967 time=0.062821
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023978/0.160820
+INFO:gunpowder.nodes.generic_train:Train process: iteration=20 loss=0.256806 time=0.060460
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023981/0.160825
+INFO:gunpowder.nodes.generic_train:Train process: iteration=21 loss=0.256797 time=0.059382
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.025845/0.154397
+INFO:gunpowder.nodes.generic_train:Train process: iteration=22 loss=0.248945 time=0.061082
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.025850/0.154405
+INFO:gunpowder.nodes.generic_train:Train process: iteration=23 loss=0.248676 time=0.060291
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.025854/0.154411
+INFO:gunpowder.nodes.generic_train:Train process: iteration=24 loss=0.248667 time=0.059756
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.025856/0.154417
+INFO:gunpowder.nodes.generic_train:Train process: iteration=25 loss=0.248658 time=0.060202
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.025858/0.154422
+INFO:gunpowder.nodes.generic_train:Train process: iteration=26 loss=0.248648 time=0.062313
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.025859/0.154426
+INFO:gunpowder.nodes.generic_train:Train process: iteration=27 loss=0.248638 time=0.062032
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.025859/0.154430
+INFO:gunpowder.nodes.generic_train:Train process: iteration=28 loss=0.248628 time=0.059838
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023813/0.167840
+INFO:gunpowder.nodes.generic_train:Train process: iteration=29 loss=0.257595 time=0.057193
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.025859/0.154436
+INFO:gunpowder.nodes.generic_train:Train process: iteration=30 loss=0.248607 time=0.059806
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.025858/0.154438
+INFO:gunpowder.nodes.generic_train:Train process: iteration=31 loss=0.248520 time=0.059912
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023812/0.161184
+INFO:gunpowder.nodes.generic_train:Train process: iteration=32 loss=0.257579 time=0.061079
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023811/0.161184
+INFO:gunpowder.nodes.generic_train:Train process: iteration=33 loss=0.257573 time=0.060109
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023811/0.161185
+INFO:gunpowder.nodes.generic_train:Train process: iteration=34 loss=0.256952 time=0.059964
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023811/0.161185
+INFO:gunpowder.nodes.generic_train:Train process: iteration=35 loss=0.256945 time=0.060383
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023812/0.161185
+INFO:gunpowder.nodes.generic_train:Train process: iteration=36 loss=0.256936 time=0.058901
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023812/0.161186
+INFO:gunpowder.nodes.generic_train:Train process: iteration=37 loss=0.256928 time=0.062155
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023813/0.161186
+INFO:gunpowder.nodes.generic_train:Train process: iteration=38 loss=0.256918 time=0.060216
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.020223/0.168951
+INFO:gunpowder.nodes.generic_train:Train process: iteration=39 loss=0.258446 time=0.060558
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023814/0.161186
+INFO:gunpowder.nodes.generic_train:Train process: iteration=40 loss=0.256899 time=0.061473
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023815/0.161186
+INFO:gunpowder.nodes.generic_train:Train process: iteration=41 loss=0.256889 time=0.058470
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.020219/0.168942
+INFO:gunpowder.nodes.generic_train:Train process: iteration=42 loss=0.258433 time=0.059474
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.020218/0.168939
+INFO:gunpowder.nodes.generic_train:Train process: iteration=43 loss=0.258428 time=0.060860
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.020217/0.168937
+INFO:gunpowder.nodes.generic_train:Train process: iteration=44 loss=0.258424 time=0.060045
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.020216/0.168935
+INFO:gunpowder.nodes.generic_train:Train process: iteration=45 loss=0.258419 time=0.058043
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.020215/0.168933
+INFO:gunpowder.nodes.generic_train:Train process: iteration=46 loss=0.258414 time=0.058562
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.020213/0.168931
+INFO:gunpowder.nodes.generic_train:Train process: iteration=47 loss=0.258739 time=0.057767
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.020212/0.168930
+INFO:gunpowder.nodes.generic_train:Train process: iteration=48 loss=0.258734 time=0.057972
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.028766/0.179247
+INFO:gunpowder.nodes.generic_train:Train process: iteration=49 loss=0.261495 time=0.056802
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.020210/0.168929
+INFO:gunpowder.nodes.generic_train:Train process: iteration=50 loss=0.258725 time=0.060183
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.020209/0.168928
+INFO:gunpowder.nodes.generic_train:Train process: iteration=51 loss=0.258720 time=0.059166
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.028765/0.179240
+INFO:gunpowder.nodes.generic_train:Train process: iteration=52 loss=0.261482 time=0.057781
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.028764/0.179231
+INFO:gunpowder.nodes.generic_train:Train process: iteration=53 loss=0.261477 time=0.059538
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.028763/0.179218
+INFO:gunpowder.nodes.generic_train:Train process: iteration=54 loss=0.261471 time=0.060265
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.028762/0.179199
+INFO:gunpowder.nodes.generic_train:Train process: iteration=55 loss=0.261581 time=0.059057
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.028760/0.179176
+INFO:gunpowder.nodes.generic_train:Train process: iteration=56 loss=0.261575 time=0.058254
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.028759/0.179149
+INFO:gunpowder.nodes.generic_train:Train process: iteration=57 loss=0.261022 time=0.060613
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.028757/0.191233
+INFO:gunpowder.nodes.generic_train:Train process: iteration=58 loss=0.260826 time=0.058328
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.030657/0.161793
+INFO:gunpowder.nodes.generic_train:Train process: iteration=59 loss=0.257166 time=0.060452
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.028755/0.191259
+INFO:gunpowder.nodes.generic_train:Train process: iteration=60 loss=0.259708 time=0.061692
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.028754/0.191273
+INFO:gunpowder.nodes.generic_train:Train process: iteration=61 loss=0.259702 time=0.060822
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.030658/0.161805
+INFO:gunpowder.nodes.generic_train:Train process: iteration=62 loss=0.257146 time=0.059951
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.030658/0.161799
+INFO:gunpowder.nodes.generic_train:Train process: iteration=63 loss=0.257023 time=0.060354
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.030659/0.161785
+INFO:gunpowder.nodes.generic_train:Train process: iteration=64 loss=0.257014 time=0.059224
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.030660/0.161765
+INFO:gunpowder.nodes.generic_train:Train process: iteration=65 loss=0.257005 time=0.061091
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.030661/0.161740
+INFO:gunpowder.nodes.generic_train:Train process: iteration=66 loss=0.256994 time=0.060653
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.030663/0.161710
+INFO:gunpowder.nodes.generic_train:Train process: iteration=67 loss=0.257306 time=0.058671
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.030665/0.161675
+INFO:gunpowder.nodes.generic_train:Train process: iteration=68 loss=0.257294 time=0.057766
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.020622/0.171407
+INFO:gunpowder.nodes.generic_train:Train process: iteration=69 loss=0.257234 time=0.057669
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.030669/0.161602
+INFO:gunpowder.nodes.generic_train:Train process: iteration=70 loss=0.257269 time=0.058612
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.030671/0.161564
+INFO:gunpowder.nodes.generic_train:Train process: iteration=71 loss=0.257257 time=0.059649
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.020621/0.171410
+INFO:gunpowder.nodes.generic_train:Train process: iteration=72 loss=0.257215 time=0.059104
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.020620/0.171415
+INFO:gunpowder.nodes.generic_train:Train process: iteration=73 loss=0.257207 time=0.059545
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.020620/0.171423
+INFO:gunpowder.nodes.generic_train:Train process: iteration=74 loss=0.257198 time=0.058666
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.020619/0.171435
+INFO:gunpowder.nodes.generic_train:Train process: iteration=75 loss=0.257187 time=0.057791
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.020619/0.171450
+INFO:gunpowder.nodes.generic_train:Train process: iteration=76 loss=0.257176 time=0.066991
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.020619/0.171468
+INFO:gunpowder.nodes.generic_train:Train process: iteration=77 loss=0.257164 time=0.059341
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.020619/0.171487
+INFO:gunpowder.nodes.generic_train:Train process: iteration=78 loss=0.257152 time=0.058392
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023796/0.169354
+INFO:gunpowder.nodes.generic_train:Train process: iteration=79 loss=0.258295 time=0.059243
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.020619/0.171527
+INFO:gunpowder.nodes.generic_train:Train process: iteration=80 loss=0.257126 time=0.059633
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.020619/0.171550
+INFO:gunpowder.nodes.generic_train:Train process: iteration=81 loss=0.257112 time=0.059635
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023794/0.169394
+INFO:gunpowder.nodes.generic_train:Train process: iteration=82 loss=0.258816 time=0.059428
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023793/0.169408
+INFO:gunpowder.nodes.generic_train:Train process: iteration=83 loss=0.258807 time=0.060213
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023792/0.169420
+INFO:gunpowder.nodes.generic_train:Train process: iteration=84 loss=0.258797 time=0.061463
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023790/0.169432
+INFO:gunpowder.nodes.generic_train:Train process: iteration=85 loss=0.258785 time=0.061642
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023788/0.169443
+INFO:gunpowder.nodes.generic_train:Train process: iteration=86 loss=0.258772 time=0.060568
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023786/0.169453
+INFO:gunpowder.nodes.generic_train:Train process: iteration=87 loss=0.258758 time=0.061041
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023784/0.169463
+INFO:gunpowder.nodes.generic_train:Train process: iteration=88 loss=0.258743 time=0.061112
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.025090/0.253639
+INFO:gunpowder.nodes.generic_train:Train process: iteration=89 loss=0.256159 time=0.058475
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023779/0.169479
+INFO:gunpowder.nodes.generic_train:Train process: iteration=90 loss=0.258712 time=0.060272
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.025092/0.253636
+INFO:gunpowder.nodes.generic_train:Train process: iteration=91 loss=0.256149 time=0.058014
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023775/0.173470
+INFO:gunpowder.nodes.generic_train:Train process: iteration=92 loss=0.259130 time=0.058804
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.025095/0.253625
+INFO:gunpowder.nodes.generic_train:Train process: iteration=93 loss=0.256423 time=0.059496
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.025097/0.253618
+INFO:gunpowder.nodes.generic_train:Train process: iteration=94 loss=0.256418 time=0.060732
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.028364/0.207487
+INFO:gunpowder.nodes.generic_train:Train process: iteration=95 loss=0.259898 time=0.059868
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.025099/0.253604
+INFO:gunpowder.nodes.generic_train:Train process: iteration=96 loss=0.256406 time=0.061269
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.025101/0.253597
+INFO:gunpowder.nodes.generic_train:Train process: iteration=97 loss=0.256456 time=0.060202
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.025102/0.253589
+INFO:gunpowder.nodes.generic_train:Train process: iteration=98 loss=0.256451 time=0.060759
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.028343/0.207485
+INFO:gunpowder.nodes.generic_train:Train process: iteration=99 loss=0.259881 time=0.061206
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.025104/0.253572
+INFO:gunpowder.nodes.generic_train:Train process: iteration=100 loss=0.256438 time=0.059669
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.028332/0.207481
+INFO:gunpowder.nodes.generic_train:Train process: iteration=101 loss=0.259872 time=0.060450
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.025106/0.253555
+INFO:gunpowder.nodes.generic_train:Train process: iteration=102 loss=0.256426 time=0.061057
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.028321/0.207478
+INFO:gunpowder.nodes.generic_train:Train process: iteration=103 loss=0.260812 time=0.060642
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.025108/0.253539
+INFO:gunpowder.nodes.generic_train:Train process: iteration=104 loss=0.256414 time=0.058737
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.025964/0.201226
+INFO:gunpowder.nodes.generic_train:Train process: iteration=105 loss=0.252636 time=0.059485
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.028302/0.207470
+INFO:gunpowder.nodes.generic_train:Train process: iteration=106 loss=0.260796 time=0.059825
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.028296/0.207468
+INFO:gunpowder.nodes.generic_train:Train process: iteration=107 loss=0.260791 time=0.059644
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.028290/0.207466
+INFO:gunpowder.nodes.generic_train:Train process: iteration=108 loss=0.260785 time=0.059048
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.025957/0.201284
+INFO:gunpowder.nodes.generic_train:Train process: iteration=109 loss=0.252829 time=0.057936
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.028277/0.207463
+INFO:gunpowder.nodes.generic_train:Train process: iteration=110 loss=0.260774 time=0.060866
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.025955/0.201322
+INFO:gunpowder.nodes.generic_train:Train process: iteration=111 loss=0.252819 time=0.059455
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.028264/0.207460
+INFO:gunpowder.nodes.generic_train:Train process: iteration=112 loss=0.260762 time=0.058860
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.025952/0.201372
+INFO:gunpowder.nodes.generic_train:Train process: iteration=113 loss=0.252808 time=0.057789
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.028252/0.207458
+INFO:gunpowder.nodes.generic_train:Train process: iteration=114 loss=0.260750 time=0.058423
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024809/0.215053
+INFO:gunpowder.nodes.generic_train:Train process: iteration=115 loss=0.259216 time=0.060577
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.025945/0.201461
+INFO:gunpowder.nodes.generic_train:Train process: iteration=116 loss=0.252792 time=0.059392
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.025941/0.201496
+INFO:gunpowder.nodes.generic_train:Train process: iteration=117 loss=0.252786 time=0.060760
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.025937/0.201540
+INFO:gunpowder.nodes.generic_train:Train process: iteration=118 loss=0.252779 time=0.061891
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024803/0.222235
+INFO:gunpowder.nodes.generic_train:Train process: iteration=119 loss=0.261993 time=0.061877
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.025926/0.201643
+INFO:gunpowder.nodes.generic_train:Train process: iteration=120 loss=0.252766 time=0.058872
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024800/0.222235
+INFO:gunpowder.nodes.generic_train:Train process: iteration=121 loss=0.261971 time=0.058413
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.025911/0.201760
+INFO:gunpowder.nodes.generic_train:Train process: iteration=122 loss=0.252851 time=0.058510
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024798/0.222234
+INFO:gunpowder.nodes.generic_train:Train process: iteration=123 loss=0.261945 time=0.058994
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.025894/0.201891
+INFO:gunpowder.nodes.generic_train:Train process: iteration=124 loss=0.252836 time=0.057884
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.039029/0.175489
+INFO:gunpowder.nodes.generic_train:Train process: iteration=125 loss=0.242934 time=0.061247
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024794/0.222230
+INFO:gunpowder.nodes.generic_train:Train process: iteration=126 loss=0.261901 time=0.061992
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024793/0.222228
+INFO:gunpowder.nodes.generic_train:Train process: iteration=127 loss=0.261885 time=0.076680
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024791/0.222224
+INFO:gunpowder.nodes.generic_train:Train process: iteration=128 loss=0.261867 time=0.063321
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.039017/0.175487
+INFO:gunpowder.nodes.generic_train:Train process: iteration=129 loss=0.242918 time=0.059045
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024788/0.222214
+INFO:gunpowder.nodes.generic_train:Train process: iteration=130 loss=0.261829 time=0.060167
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.039013/0.175486
+INFO:gunpowder.nodes.generic_train:Train process: iteration=131 loss=0.242910 time=0.058093
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024784/0.222201
+INFO:gunpowder.nodes.generic_train:Train process: iteration=132 loss=0.261790 time=0.060413
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.039009/0.175485
+INFO:gunpowder.nodes.generic_train:Train process: iteration=133 loss=0.242901 time=0.062638
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024779/0.222185
+INFO:gunpowder.nodes.generic_train:Train process: iteration=134 loss=0.262093 time=0.062415
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.028666/0.236464
+INFO:gunpowder.nodes.generic_train:Train process: iteration=135 loss=0.247573 time=0.058634
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.039006/0.175483
+INFO:gunpowder.nodes.generic_train:Train process: iteration=136 loss=0.242888 time=0.063533
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.039005/0.175482
+INFO:gunpowder.nodes.generic_train:Train process: iteration=137 loss=0.242883 time=0.061936
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.039005/0.175482
+INFO:gunpowder.nodes.generic_train:Train process: iteration=138 loss=0.242879 time=0.061179
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.028668/0.236466
+INFO:gunpowder.nodes.generic_train:Train process: iteration=139 loss=0.247555 time=0.062727
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.039004/0.175482
+INFO:gunpowder.nodes.generic_train:Train process: iteration=140 loss=0.242869 time=0.059807
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.028670/0.236467
+INFO:gunpowder.nodes.generic_train:Train process: iteration=141 loss=0.247546 time=0.058418
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.039003/0.175481
+INFO:gunpowder.nodes.generic_train:Train process: iteration=142 loss=0.242859 time=0.063099
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.028671/0.236468
+INFO:gunpowder.nodes.generic_train:Train process: iteration=143 loss=0.247537 time=0.060584
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.031839/0.175481
+INFO:gunpowder.nodes.generic_train:Train process: iteration=144 loss=0.242849 time=0.058521
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.033017/0.244808
+INFO:gunpowder.nodes.generic_train:Train process: iteration=145 loss=0.259896 time=0.060756
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.028674/0.236469
+INFO:gunpowder.nodes.generic_train:Train process: iteration=146 loss=0.247524 time=0.060813
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.028675/0.236469
+INFO:gunpowder.nodes.generic_train:Train process: iteration=147 loss=0.247519 time=0.059940
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.028676/0.236470
+INFO:gunpowder.nodes.generic_train:Train process: iteration=148 loss=0.247515 time=0.061701
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.033028/0.244799
+INFO:gunpowder.nodes.generic_train:Train process: iteration=149 loss=0.259876 time=0.058975
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.028677/0.236470
+INFO:gunpowder.nodes.generic_train:Train process: iteration=150 loss=0.247506 time=0.060538
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.033034/0.244795
+INFO:gunpowder.nodes.generic_train:Train process: iteration=151 loss=0.259866 time=0.058733
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.028679/0.236470
+INFO:gunpowder.nodes.generic_train:Train process: iteration=152 loss=0.247497 time=0.058564
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.033039/0.244789
+INFO:gunpowder.nodes.generic_train:Train process: iteration=153 loss=0.259775 time=0.061278
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.028682/0.236470
+INFO:gunpowder.nodes.generic_train:Train process: iteration=154 loss=0.247488 time=0.065630
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.031464/0.177672
+INFO:gunpowder.nodes.generic_train:Train process: iteration=155 loss=0.251999 time=0.057060
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.033047/0.244779
+INFO:gunpowder.nodes.generic_train:Train process: iteration=156 loss=0.259758 time=0.058774
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.033049/0.244776
+INFO:gunpowder.nodes.generic_train:Train process: iteration=157 loss=0.259752 time=0.060162
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.033051/0.244772
+INFO:gunpowder.nodes.generic_train:Train process: iteration=158 loss=0.259095 time=0.072504
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.031467/0.177674
+INFO:gunpowder.nodes.generic_train:Train process: iteration=159 loss=0.251979 time=0.062020
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.033055/0.244764
+INFO:gunpowder.nodes.generic_train:Train process: iteration=160 loss=0.259327 time=0.059333
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.031468/0.202258
+INFO:gunpowder.nodes.generic_train:Train process: iteration=161 loss=0.251967 time=0.058312
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.033059/0.244756
+INFO:gunpowder.nodes.generic_train:Train process: iteration=162 loss=0.259315 time=0.060827
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.031468/0.202258
+INFO:gunpowder.nodes.generic_train:Train process: iteration=163 loss=0.251953 time=0.060854
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.033062/0.244748
+INFO:gunpowder.nodes.generic_train:Train process: iteration=164 loss=0.259303 time=0.059606
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.030209/0.192097
+INFO:gunpowder.nodes.generic_train:Train process: iteration=165 loss=0.257249 time=0.058744
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.031467/0.202256
+INFO:gunpowder.nodes.generic_train:Train process: iteration=166 loss=0.251931 time=0.062678
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.031466/0.202255
+INFO:gunpowder.nodes.generic_train:Train process: iteration=167 loss=0.251923 time=0.061464
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.031466/0.202255
+INFO:gunpowder.nodes.generic_train:Train process: iteration=168 loss=0.251915 time=0.061528
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.030209/0.192099
+INFO:gunpowder.nodes.generic_train:Train process: iteration=169 loss=0.257231 time=0.062795
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.031463/0.202253
+INFO:gunpowder.nodes.generic_train:Train process: iteration=170 loss=0.251896 time=0.058383
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.030211/0.192100
+INFO:gunpowder.nodes.generic_train:Train process: iteration=171 loss=0.257221 time=0.059994
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.031460/0.267187
+INFO:gunpowder.nodes.generic_train:Train process: iteration=172 loss=0.251877 time=0.059062
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.030212/0.192102
+INFO:gunpowder.nodes.generic_train:Train process: iteration=173 loss=0.257212 time=0.060677
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.031455/0.267187
+INFO:gunpowder.nodes.generic_train:Train process: iteration=174 loss=0.251890 time=0.060793
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.029411/0.221808
+INFO:gunpowder.nodes.generic_train:Train process: iteration=175 loss=0.248303 time=0.059560
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.030215/0.192105
+INFO:gunpowder.nodes.generic_train:Train process: iteration=176 loss=0.257197 time=0.061209
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.030216/0.192106
+INFO:gunpowder.nodes.generic_train:Train process: iteration=177 loss=0.257191 time=0.059171
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.030216/0.192108
+INFO:gunpowder.nodes.generic_train:Train process: iteration=178 loss=0.257186 time=0.058921
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.029427/0.221808
+INFO:gunpowder.nodes.generic_train:Train process: iteration=179 loss=0.248283 time=0.061117
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.030217/0.192111
+INFO:gunpowder.nodes.generic_train:Train process: iteration=180 loss=0.257175 time=0.059648
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.029429/0.221808
+INFO:gunpowder.nodes.generic_train:Train process: iteration=181 loss=0.248272 time=0.059097
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.030218/0.192115
+INFO:gunpowder.nodes.generic_train:Train process: iteration=182 loss=0.257164 time=0.060790
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.029428/0.221808
+INFO:gunpowder.nodes.generic_train:Train process: iteration=183 loss=0.248259 time=0.060951
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.030220/0.192120
+INFO:gunpowder.nodes.generic_train:Train process: iteration=184 loss=0.257152 time=0.061687
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.032592/0.173479
+INFO:gunpowder.nodes.generic_train:Train process: iteration=185 loss=0.251080 time=0.062785
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.029421/0.221808
+INFO:gunpowder.nodes.generic_train:Train process: iteration=186 loss=0.249446 time=0.058624
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.029416/0.221808
+INFO:gunpowder.nodes.generic_train:Train process: iteration=187 loss=0.249438 time=0.059061
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.029411/0.221808
+INFO:gunpowder.nodes.generic_train:Train process: iteration=188 loss=0.249429 time=0.058421
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.030067/0.173481
+INFO:gunpowder.nodes.generic_train:Train process: iteration=189 loss=0.251055 time=0.057652
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.029397/0.221809
+INFO:gunpowder.nodes.generic_train:Train process: iteration=190 loss=0.252276 time=0.059521
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.030069/0.173482
+INFO:gunpowder.nodes.generic_train:Train process: iteration=191 loss=0.251041 time=0.057765
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.029381/0.221809
+INFO:gunpowder.nodes.generic_train:Train process: iteration=192 loss=0.252259 time=0.058930
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.030071/0.173482
+INFO:gunpowder.nodes.generic_train:Train process: iteration=193 loss=0.251026 time=0.063556
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.029362/0.221810
+INFO:gunpowder.nodes.generic_train:Train process: iteration=194 loss=0.252241 time=0.066255
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.038065/0.189615
+INFO:gunpowder.nodes.generic_train:Train process: iteration=195 loss=0.253456 time=0.063799
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.030073/0.173482
+INFO:gunpowder.nodes.generic_train:Train process: iteration=196 loss=0.251003 time=0.064589
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.030074/0.173482
+INFO:gunpowder.nodes.generic_train:Train process: iteration=197 loss=0.250994 time=0.064166
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.030074/0.173482
+INFO:gunpowder.nodes.generic_train:Train process: iteration=198 loss=0.250986 time=0.064846
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.038094/0.189644
+INFO:gunpowder.nodes.generic_train:Train process: iteration=199 loss=0.253445 time=0.062438
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.030073/0.173481
+INFO:gunpowder.nodes.generic_train:Train process: iteration=200 loss=0.250968 time=0.060060
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.038107/0.189651
+INFO:gunpowder.nodes.generic_train:Train process: iteration=201 loss=0.254199 time=0.064930
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.030071/0.173479
+INFO:gunpowder.nodes.generic_train:Train process: iteration=202 loss=0.250949 time=0.063501
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.038119/0.189650
+INFO:gunpowder.nodes.generic_train:Train process: iteration=203 loss=0.254554 time=0.063004
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.030069/0.173478
+INFO:gunpowder.nodes.generic_train:Train process: iteration=204 loss=0.250931 time=0.064054
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.031323/0.218137
+INFO:gunpowder.nodes.generic_train:Train process: iteration=205 loss=0.259064 time=0.062370
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.038134/0.189639
+INFO:gunpowder.nodes.generic_train:Train process: iteration=206 loss=0.254543 time=0.063671
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.038138/0.189632
+INFO:gunpowder.nodes.generic_train:Train process: iteration=207 loss=0.254538 time=0.062233
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.038139/0.189625
+INFO:gunpowder.nodes.generic_train:Train process: iteration=208 loss=0.254534 time=0.060516
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.031327/0.218138
+INFO:gunpowder.nodes.generic_train:Train process: iteration=209 loss=0.259217 time=0.063004
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.038141/0.189605
+INFO:gunpowder.nodes.generic_train:Train process: iteration=210 loss=0.254523 time=0.061823
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.031329/0.218138
+INFO:gunpowder.nodes.generic_train:Train process: iteration=211 loss=0.259209 time=0.063294
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.038143/0.189582
+INFO:gunpowder.nodes.generic_train:Train process: iteration=212 loss=0.254512 time=0.062355
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.031331/0.235240
+INFO:gunpowder.nodes.generic_train:Train process: iteration=213 loss=0.259122 time=0.061364
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.038147/0.189556
+INFO:gunpowder.nodes.generic_train:Train process: iteration=214 loss=0.254500 time=0.063053
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.025588/0.173251
+INFO:gunpowder.nodes.generic_train:Train process: iteration=215 loss=0.251825 time=0.062704
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.031334/0.235238
+INFO:gunpowder.nodes.generic_train:Train process: iteration=216 loss=0.259106 time=0.062165
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.031335/0.235237
+INFO:gunpowder.nodes.generic_train:Train process: iteration=217 loss=0.259100 time=0.063827
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.031335/0.235236
+INFO:gunpowder.nodes.generic_train:Train process: iteration=218 loss=0.259094 time=0.060988
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.025574/0.182326
+INFO:gunpowder.nodes.generic_train:Train process: iteration=219 loss=0.251796 time=0.062429
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.031337/0.235234
+INFO:gunpowder.nodes.generic_train:Train process: iteration=220 loss=0.259326 time=0.062759
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.025566/0.182304
+INFO:gunpowder.nodes.generic_train:Train process: iteration=221 loss=0.251779 time=0.062726
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.031338/0.235232
+INFO:gunpowder.nodes.generic_train:Train process: iteration=222 loss=0.259313 time=0.061189
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.025556/0.182281
+INFO:gunpowder.nodes.generic_train:Train process: iteration=223 loss=0.251759 time=0.062066
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.031338/0.235230
+INFO:gunpowder.nodes.generic_train:Train process: iteration=224 loss=0.259300 time=0.063217
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023064/0.225128
+INFO:gunpowder.nodes.generic_train:Train process: iteration=225 loss=0.257937 time=0.063695
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.025540/0.182245
+INFO:gunpowder.nodes.generic_train:Train process: iteration=226 loss=0.251728 time=0.063023
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.025534/0.182234
+INFO:gunpowder.nodes.generic_train:Train process: iteration=227 loss=0.251716 time=0.063322
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.025528/0.182222
+INFO:gunpowder.nodes.generic_train:Train process: iteration=228 loss=0.251704 time=0.062889
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023066/0.225128
+INFO:gunpowder.nodes.generic_train:Train process: iteration=229 loss=0.257921 time=0.060101
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.025516/0.182197
+INFO:gunpowder.nodes.generic_train:Train process: iteration=230 loss=0.251677 time=0.061580
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023068/0.225128
+INFO:gunpowder.nodes.generic_train:Train process: iteration=231 loss=0.257913 time=0.058390
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.025506/0.182175
+INFO:gunpowder.nodes.generic_train:Train process: iteration=232 loss=0.251650 time=0.060523
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023070/0.225128
+INFO:gunpowder.nodes.generic_train:Train process: iteration=233 loss=0.257905 time=0.060686
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.025497/0.182154
+INFO:gunpowder.nodes.generic_train:Train process: iteration=234 loss=0.251622 time=0.058728
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.035974/0.231767
+INFO:gunpowder.nodes.generic_train:Train process: iteration=235 loss=0.253009 time=0.060182
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023073/0.225128
+INFO:gunpowder.nodes.generic_train:Train process: iteration=236 loss=0.257893 time=0.061349
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023074/0.225128
+INFO:gunpowder.nodes.generic_train:Train process: iteration=237 loss=0.257888 time=0.060360
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023074/0.225128
+INFO:gunpowder.nodes.generic_train:Train process: iteration=238 loss=0.257884 time=0.061147
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.035976/0.231762
+INFO:gunpowder.nodes.generic_train:Train process: iteration=239 loss=0.254007 time=0.059062
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023076/0.225128
+INFO:gunpowder.nodes.generic_train:Train process: iteration=240 loss=0.257876 time=0.059463
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.035979/0.231760
+INFO:gunpowder.nodes.generic_train:Train process: iteration=241 loss=0.253996 time=0.059513
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023077/0.225128
+INFO:gunpowder.nodes.generic_train:Train process: iteration=242 loss=0.257867 time=0.061318
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.035984/0.231757
+INFO:gunpowder.nodes.generic_train:Train process: iteration=243 loss=0.253985 time=0.059338
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023078/0.225128
+INFO:gunpowder.nodes.generic_train:Train process: iteration=244 loss=0.257858 time=0.062888
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.031588/0.203176
+INFO:gunpowder.nodes.generic_train:Train process: iteration=245 loss=0.249930 time=0.059991
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.035994/0.250832
+INFO:gunpowder.nodes.generic_train:Train process: iteration=246 loss=0.253968 time=0.060720
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.035998/0.250833
+INFO:gunpowder.nodes.generic_train:Train process: iteration=247 loss=0.253962 time=0.061513
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036002/0.250834
+INFO:gunpowder.nodes.generic_train:Train process: iteration=248 loss=0.253956 time=0.060446
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.031585/0.203187
+INFO:gunpowder.nodes.generic_train:Train process: iteration=249 loss=0.249912 time=0.059283
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036013/0.250835
+INFO:gunpowder.nodes.generic_train:Train process: iteration=250 loss=0.254483 time=0.057531
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.031584/0.203200
+INFO:gunpowder.nodes.generic_train:Train process: iteration=251 loss=0.249902 time=0.057289
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036025/0.250837
+INFO:gunpowder.nodes.generic_train:Train process: iteration=252 loss=0.254472 time=0.076032
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.031584/0.268520
+INFO:gunpowder.nodes.generic_train:Train process: iteration=253 loss=0.249891 time=0.063221
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036037/0.250839
+INFO:gunpowder.nodes.generic_train:Train process: iteration=254 loss=0.254658 time=0.063334
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.034587/0.240869
+INFO:gunpowder.nodes.generic_train:Train process: iteration=255 loss=0.258984 time=0.061869
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.031584/0.268536
+INFO:gunpowder.nodes.generic_train:Train process: iteration=256 loss=0.249875 time=0.060579
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.031583/0.268541
+INFO:gunpowder.nodes.generic_train:Train process: iteration=257 loss=0.249869 time=0.059390
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.031584/0.268547
+INFO:gunpowder.nodes.generic_train:Train process: iteration=258 loss=0.249864 time=0.058642
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.034565/0.246804
+INFO:gunpowder.nodes.generic_train:Train process: iteration=259 loss=0.247270 time=0.059295
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.031584/0.268559
+INFO:gunpowder.nodes.generic_train:Train process: iteration=260 loss=0.249851 time=0.063107
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.034554/0.246804
+INFO:gunpowder.nodes.generic_train:Train process: iteration=261 loss=0.247261 time=0.062339
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.031586/0.268570
+INFO:gunpowder.nodes.generic_train:Train process: iteration=262 loss=0.249839 time=0.059831
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036345/0.246805
+INFO:gunpowder.nodes.generic_train:Train process: iteration=263 loss=0.247252 time=0.058164
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.031588/0.268581
+INFO:gunpowder.nodes.generic_train:Train process: iteration=264 loss=0.249826 time=0.057823
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.034791/0.240622
+INFO:gunpowder.nodes.generic_train:Train process: iteration=265 loss=0.261232 time=0.060738
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036350/0.246806
+INFO:gunpowder.nodes.generic_train:Train process: iteration=266 loss=0.247239 time=0.064182
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036353/0.246806
+INFO:gunpowder.nodes.generic_train:Train process: iteration=267 loss=0.247235 time=0.061584
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036356/0.246807
+INFO:gunpowder.nodes.generic_train:Train process: iteration=268 loss=0.247230 time=0.059985
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.034797/0.240673
+INFO:gunpowder.nodes.generic_train:Train process: iteration=269 loss=0.261207 time=0.057455
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036364/0.246807
+INFO:gunpowder.nodes.generic_train:Train process: iteration=270 loss=0.247221 time=0.061169
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.034801/0.240694
+INFO:gunpowder.nodes.generic_train:Train process: iteration=271 loss=0.261191 time=0.058472
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036375/0.246808
+INFO:gunpowder.nodes.generic_train:Train process: iteration=272 loss=0.247213 time=0.057596
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.034805/0.240712
+INFO:gunpowder.nodes.generic_train:Train process: iteration=273 loss=0.261172 time=0.060705
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036390/0.246808
+INFO:gunpowder.nodes.generic_train:Train process: iteration=274 loss=0.247204 time=0.061564
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.038441/0.232164
+INFO:gunpowder.nodes.generic_train:Train process: iteration=275 loss=0.252879 time=0.059783
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.034813/0.240735
+INFO:gunpowder.nodes.generic_train:Train process: iteration=276 loss=0.261140 time=0.061161
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.034816/0.240741
+INFO:gunpowder.nodes.generic_train:Train process: iteration=277 loss=0.261129 time=0.059423
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.034819/0.240746
+INFO:gunpowder.nodes.generic_train:Train process: iteration=278 loss=0.261115 time=0.060618
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.038449/0.232163
+INFO:gunpowder.nodes.generic_train:Train process: iteration=279 loss=0.252860 time=0.060401
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.034826/0.240754
+INFO:gunpowder.nodes.generic_train:Train process: iteration=280 loss=0.261087 time=0.059689
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.038454/0.232163
+INFO:gunpowder.nodes.generic_train:Train process: iteration=281 loss=0.252850 time=0.058222
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.034834/0.247493
+INFO:gunpowder.nodes.generic_train:Train process: iteration=282 loss=0.261058 time=0.058083
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.038458/0.232162
+INFO:gunpowder.nodes.generic_train:Train process: iteration=283 loss=0.252840 time=0.057401
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.034841/0.247495
+INFO:gunpowder.nodes.generic_train:Train process: iteration=284 loss=0.261027 time=0.058638
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.026169/0.232687
+INFO:gunpowder.nodes.generic_train:Train process: iteration=285 loss=0.255767 time=0.061233
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.038464/0.232160
+INFO:gunpowder.nodes.generic_train:Train process: iteration=286 loss=0.252825 time=0.058470
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.038465/0.232160
+INFO:gunpowder.nodes.generic_train:Train process: iteration=287 loss=0.252819 time=0.081617
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.038466/0.232159
+INFO:gunpowder.nodes.generic_train:Train process: iteration=288 loss=0.252814 time=0.059679
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.026145/0.232691
+INFO:gunpowder.nodes.generic_train:Train process: iteration=289 loss=0.255750 time=0.059360
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.038468/0.232159
+INFO:gunpowder.nodes.generic_train:Train process: iteration=290 loss=0.252803 time=0.057676
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.026135/0.232676
+INFO:gunpowder.nodes.generic_train:Train process: iteration=291 loss=0.256490 time=0.060155
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.038469/0.239821
+INFO:gunpowder.nodes.generic_train:Train process: iteration=292 loss=0.252792 time=0.062997
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.026125/0.232648
+INFO:gunpowder.nodes.generic_train:Train process: iteration=293 loss=0.256479 time=0.058753
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.038469/0.239823
+INFO:gunpowder.nodes.generic_train:Train process: iteration=294 loss=0.252781 time=0.061331
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024539/0.272303
+INFO:gunpowder.nodes.generic_train:Train process: iteration=295 loss=0.239958 time=0.059793
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.026114/0.232586
+INFO:gunpowder.nodes.generic_train:Train process: iteration=296 loss=0.256468 time=0.060458
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.026111/0.232561
+INFO:gunpowder.nodes.generic_train:Train process: iteration=297 loss=0.256463 time=0.061268
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.026109/0.232531
+INFO:gunpowder.nodes.generic_train:Train process: iteration=298 loss=0.256457 time=0.060362
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024539/0.272305
+INFO:gunpowder.nodes.generic_train:Train process: iteration=299 loss=0.239937 time=0.060652
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.026107/0.232462
+INFO:gunpowder.nodes.generic_train:Train process: iteration=300 loss=0.256444 time=0.061787
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024539/0.272305
+INFO:gunpowder.nodes.generic_train:Train process: iteration=301 loss=0.239925 time=0.060933
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.026106/0.232387
+INFO:gunpowder.nodes.generic_train:Train process: iteration=302 loss=0.259504 time=0.060930
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024539/0.272306
+INFO:gunpowder.nodes.generic_train:Train process: iteration=303 loss=0.239914 time=0.059957
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.026107/0.232312
+INFO:gunpowder.nodes.generic_train:Train process: iteration=304 loss=0.259492 time=0.058625
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024625/0.327280
+INFO:gunpowder.nodes.generic_train:Train process: iteration=305 loss=0.269058 time=0.062850
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024539/0.272306
+INFO:gunpowder.nodes.generic_train:Train process: iteration=306 loss=0.239895 time=0.057457
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024539/0.272306
+INFO:gunpowder.nodes.generic_train:Train process: iteration=307 loss=0.239889 time=0.058211
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024539/0.272306
+INFO:gunpowder.nodes.generic_train:Train process: iteration=308 loss=0.239882 time=0.059577
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024631/0.327282
+INFO:gunpowder.nodes.generic_train:Train process: iteration=309 loss=0.269036 time=0.059293
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024539/0.272307
+INFO:gunpowder.nodes.generic_train:Train process: iteration=310 loss=0.239869 time=0.061239
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024635/0.327282
+INFO:gunpowder.nodes.generic_train:Train process: iteration=311 loss=0.269025 time=0.059427
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024539/0.272307
+INFO:gunpowder.nodes.generic_train:Train process: iteration=312 loss=0.239855 time=0.058138
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024639/0.327283
+INFO:gunpowder.nodes.generic_train:Train process: iteration=313 loss=0.269144 time=0.061343
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024540/0.272307
+INFO:gunpowder.nodes.generic_train:Train process: iteration=314 loss=0.239842 time=0.061780
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036870/0.244675
+INFO:gunpowder.nodes.generic_train:Train process: iteration=315 loss=0.246884 time=0.060545
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024644/0.327284
+INFO:gunpowder.nodes.generic_train:Train process: iteration=316 loss=0.268259 time=0.059062
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024646/0.327284
+INFO:gunpowder.nodes.generic_train:Train process: iteration=317 loss=0.268253 time=0.058487
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024648/0.327284
+INFO:gunpowder.nodes.generic_train:Train process: iteration=318 loss=0.268246 time=0.060912
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036874/0.244660
+INFO:gunpowder.nodes.generic_train:Train process: iteration=319 loss=0.246861 time=0.060534
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024652/0.327285
+INFO:gunpowder.nodes.generic_train:Train process: iteration=320 loss=0.268232 time=0.059436
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036876/0.244653
+INFO:gunpowder.nodes.generic_train:Train process: iteration=321 loss=0.246849 time=0.061016
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024655/0.327285
+INFO:gunpowder.nodes.generic_train:Train process: iteration=322 loss=0.268218 time=0.061341
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036879/0.244648
+INFO:gunpowder.nodes.generic_train:Train process: iteration=323 loss=0.246838 time=0.061961
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024659/0.327285
+INFO:gunpowder.nodes.generic_train:Train process: iteration=324 loss=0.268203 time=0.058008
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036085/0.260305
+INFO:gunpowder.nodes.generic_train:Train process: iteration=325 loss=0.247984 time=0.058128
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036882/0.244643
+INFO:gunpowder.nodes.generic_train:Train process: iteration=326 loss=0.246821 time=0.059757
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036884/0.244643
+INFO:gunpowder.nodes.generic_train:Train process: iteration=327 loss=0.246815 time=0.062680
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036885/0.244644
+INFO:gunpowder.nodes.generic_train:Train process: iteration=328 loss=0.246809 time=0.060802
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036077/0.260302
+INFO:gunpowder.nodes.generic_train:Train process: iteration=329 loss=0.247968 time=0.060827
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036887/0.295363
+INFO:gunpowder.nodes.generic_train:Train process: iteration=330 loss=0.246797 time=0.058972
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036074/0.260301
+INFO:gunpowder.nodes.generic_train:Train process: iteration=331 loss=0.247960 time=0.058698
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036889/0.295363
+INFO:gunpowder.nodes.generic_train:Train process: iteration=332 loss=0.246785 time=0.059496
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036070/0.260300
+INFO:gunpowder.nodes.generic_train:Train process: iteration=333 loss=0.247952 time=0.059590
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036891/0.295363
+INFO:gunpowder.nodes.generic_train:Train process: iteration=334 loss=0.246772 time=0.060663
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024086/0.283545
+INFO:gunpowder.nodes.generic_train:Train process: iteration=335 loss=0.259609 time=0.058850
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036065/0.260298
+INFO:gunpowder.nodes.generic_train:Train process: iteration=336 loss=0.247940 time=0.059838
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036064/0.260298
+INFO:gunpowder.nodes.generic_train:Train process: iteration=337 loss=0.247936 time=0.060908
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036062/0.260297
+INFO:gunpowder.nodes.generic_train:Train process: iteration=338 loss=0.247932 time=0.058909
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024089/0.283546
+INFO:gunpowder.nodes.generic_train:Train process: iteration=339 loss=0.259597 time=0.059477
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036059/0.260297
+INFO:gunpowder.nodes.generic_train:Train process: iteration=340 loss=0.247923 time=0.057489
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024090/0.375405
+INFO:gunpowder.nodes.generic_train:Train process: iteration=341 loss=0.263784 time=0.062716
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036056/0.260296
+INFO:gunpowder.nodes.generic_train:Train process: iteration=342 loss=0.247915 time=0.057358
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024091/0.375404
+INFO:gunpowder.nodes.generic_train:Train process: iteration=343 loss=0.263776 time=0.059618
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036053/0.260296
+INFO:gunpowder.nodes.generic_train:Train process: iteration=344 loss=0.247906 time=0.060047
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.041510/0.367625
+INFO:gunpowder.nodes.generic_train:Train process: iteration=345 loss=0.244298 time=0.061382
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024090/0.375402
+INFO:gunpowder.nodes.generic_train:Train process: iteration=346 loss=0.263763 time=0.059935
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024089/0.375401
+INFO:gunpowder.nodes.generic_train:Train process: iteration=347 loss=0.263759 time=0.061442
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024087/0.375399
+INFO:gunpowder.nodes.generic_train:Train process: iteration=348 loss=0.263754 time=0.060612
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.041515/0.367626
+INFO:gunpowder.nodes.generic_train:Train process: iteration=349 loss=0.244280 time=0.059235
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024084/0.375396
+INFO:gunpowder.nodes.generic_train:Train process: iteration=350 loss=0.263743 time=0.060755
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.041520/0.367626
+INFO:gunpowder.nodes.generic_train:Train process: iteration=351 loss=0.244272 time=0.061430
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024082/0.375393
+INFO:gunpowder.nodes.generic_train:Train process: iteration=352 loss=0.263732 time=0.061707
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.041525/0.367626
+INFO:gunpowder.nodes.generic_train:Train process: iteration=353 loss=0.244264 time=0.058819
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024079/0.375389
+INFO:gunpowder.nodes.generic_train:Train process: iteration=354 loss=0.263721 time=0.060543
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024470/0.258398
+INFO:gunpowder.nodes.generic_train:Train process: iteration=355 loss=0.254810 time=0.059693
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.041535/0.367626
+INFO:gunpowder.nodes.generic_train:Train process: iteration=356 loss=0.244251 time=0.061116
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.041537/0.367626
+INFO:gunpowder.nodes.generic_train:Train process: iteration=357 loss=0.244247 time=0.059740
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.041540/0.367626
+INFO:gunpowder.nodes.generic_train:Train process: iteration=358 loss=0.244243 time=0.080625
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024473/0.258397
+INFO:gunpowder.nodes.generic_train:Train process: iteration=359 loss=0.254793 time=0.059869
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.041545/0.367626
+INFO:gunpowder.nodes.generic_train:Train process: iteration=360 loss=0.244234 time=0.056521
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024474/0.258397
+INFO:gunpowder.nodes.generic_train:Train process: iteration=361 loss=0.254785 time=0.059999
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.041549/0.367626
+INFO:gunpowder.nodes.generic_train:Train process: iteration=362 loss=0.244225 time=0.059870
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024476/0.258397
+INFO:gunpowder.nodes.generic_train:Train process: iteration=363 loss=0.254319 time=0.060987
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.041553/0.367626
+INFO:gunpowder.nodes.generic_train:Train process: iteration=364 loss=0.244216 time=0.060779
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.041998/0.283837
+INFO:gunpowder.nodes.generic_train:Train process: iteration=365 loss=0.243791 time=0.060593
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024478/0.258397
+INFO:gunpowder.nodes.generic_train:Train process: iteration=366 loss=0.254306 time=0.065138
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024479/0.258397
+INFO:gunpowder.nodes.generic_train:Train process: iteration=367 loss=0.254302 time=0.059236
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024480/0.258397
+INFO:gunpowder.nodes.generic_train:Train process: iteration=368 loss=0.254297 time=0.060552
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.041997/0.283838
+INFO:gunpowder.nodes.generic_train:Train process: iteration=369 loss=0.243772 time=0.060958
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024482/0.258398
+INFO:gunpowder.nodes.generic_train:Train process: iteration=370 loss=0.254579 time=0.058465
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.041997/0.283837
+INFO:gunpowder.nodes.generic_train:Train process: iteration=371 loss=0.243762 time=0.058633
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024485/0.281189
+INFO:gunpowder.nodes.generic_train:Train process: iteration=372 loss=0.254570 time=0.060249
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.041997/0.283835
+INFO:gunpowder.nodes.generic_train:Train process: iteration=373 loss=0.243752 time=0.062053
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024488/0.281181
+INFO:gunpowder.nodes.generic_train:Train process: iteration=374 loss=0.254560 time=0.057946
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.032332/0.342880
+INFO:gunpowder.nodes.generic_train:Train process: iteration=375 loss=0.258689 time=0.060467
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.041996/0.283832
+INFO:gunpowder.nodes.generic_train:Train process: iteration=376 loss=0.243738 time=0.061302
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.041996/0.283830
+INFO:gunpowder.nodes.generic_train:Train process: iteration=377 loss=0.243733 time=0.060359
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.041996/0.283829
+INFO:gunpowder.nodes.generic_train:Train process: iteration=378 loss=0.243728 time=0.058275
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.032332/0.342881
+INFO:gunpowder.nodes.generic_train:Train process: iteration=379 loss=0.258659 time=0.060770
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.041997/0.283826
+INFO:gunpowder.nodes.generic_train:Train process: iteration=380 loss=0.243718 time=0.060034
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.032332/0.342882
+INFO:gunpowder.nodes.generic_train:Train process: iteration=381 loss=0.258638 time=0.060088
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.041998/0.283821
+INFO:gunpowder.nodes.generic_train:Train process: iteration=382 loss=0.243708 time=0.065222
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.032333/0.342882
+INFO:gunpowder.nodes.generic_train:Train process: iteration=383 loss=0.258612 time=0.061246
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.041999/0.283816
+INFO:gunpowder.nodes.generic_train:Train process: iteration=384 loss=0.243698 time=0.059072
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.049190/0.279910
+INFO:gunpowder.nodes.generic_train:Train process: iteration=385 loss=0.242269 time=0.060237
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.032335/0.252054
+INFO:gunpowder.nodes.generic_train:Train process: iteration=386 loss=0.258568 time=0.060301
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.032336/0.301540
+INFO:gunpowder.nodes.generic_train:Train process: iteration=387 loss=0.258552 time=0.060961
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.032338/0.301538
+INFO:gunpowder.nodes.generic_train:Train process: iteration=388 loss=0.258533 time=0.061124
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.049188/0.279909
+INFO:gunpowder.nodes.generic_train:Train process: iteration=389 loss=0.242249 time=0.060319
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.032342/0.301532
+INFO:gunpowder.nodes.generic_train:Train process: iteration=390 loss=0.258493 time=0.058954
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.049186/0.279907
+INFO:gunpowder.nodes.generic_train:Train process: iteration=391 loss=0.242239 time=0.060711
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.032347/0.301526
+INFO:gunpowder.nodes.generic_train:Train process: iteration=392 loss=0.258451 time=0.059744
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.049183/0.279906
+INFO:gunpowder.nodes.generic_train:Train process: iteration=393 loss=0.242229 time=0.059387
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.032353/0.301520
+INFO:gunpowder.nodes.generic_train:Train process: iteration=394 loss=0.258407 time=0.061009
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024744/0.348313
+INFO:gunpowder.nodes.generic_train:Train process: iteration=395 loss=0.252786 time=0.061691
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.049179/0.279904
+INFO:gunpowder.nodes.generic_train:Train process: iteration=396 loss=0.242214 time=0.060599
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.049178/0.279903
+INFO:gunpowder.nodes.generic_train:Train process: iteration=397 loss=0.242208 time=0.061292
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.049177/0.279903
+INFO:gunpowder.nodes.generic_train:Train process: iteration=398 loss=0.242203 time=0.060374
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024757/0.348314
+INFO:gunpowder.nodes.generic_train:Train process: iteration=399 loss=0.252767 time=0.060166
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.049175/0.279901
+INFO:gunpowder.nodes.generic_train:Train process: iteration=400 loss=0.242192 time=0.059923
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024763/0.348314
+INFO:gunpowder.nodes.generic_train:Train process: iteration=401 loss=0.252758 time=0.060291
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.049173/0.279900
+INFO:gunpowder.nodes.generic_train:Train process: iteration=402 loss=0.242182 time=0.061337
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024767/0.348314
+INFO:gunpowder.nodes.generic_train:Train process: iteration=403 loss=0.252748 time=0.060549
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.049171/0.279899
+INFO:gunpowder.nodes.generic_train:Train process: iteration=404 loss=0.242170 time=0.058233
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.039775/0.417532
+INFO:gunpowder.nodes.generic_train:Train process: iteration=405 loss=0.270134 time=0.057882
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024773/0.348315
+INFO:gunpowder.nodes.generic_train:Train process: iteration=406 loss=0.252733 time=0.056902
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024775/0.348315
+INFO:gunpowder.nodes.generic_train:Train process: iteration=407 loss=0.252728 time=0.061099
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024776/0.348315
+INFO:gunpowder.nodes.generic_train:Train process: iteration=408 loss=0.252722 time=0.064340
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.039783/0.417531
+INFO:gunpowder.nodes.generic_train:Train process: iteration=409 loss=0.270112 time=0.058855
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024779/0.348315
+INFO:gunpowder.nodes.generic_train:Train process: iteration=410 loss=0.253811 time=0.057730
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.039786/0.417530
+INFO:gunpowder.nodes.generic_train:Train process: iteration=411 loss=0.270099 time=0.059502
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024780/0.348315
+INFO:gunpowder.nodes.generic_train:Train process: iteration=412 loss=0.253799 time=0.064145
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.039790/0.417529
+INFO:gunpowder.nodes.generic_train:Train process: iteration=413 loss=0.270084 time=0.060093
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.024781/0.348314
+INFO:gunpowder.nodes.generic_train:Train process: iteration=414 loss=0.253788 time=0.060215
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023745/0.340338
+INFO:gunpowder.nodes.generic_train:Train process: iteration=415 loss=0.245183 time=0.056572
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.039794/0.417528
+INFO:gunpowder.nodes.generic_train:Train process: iteration=416 loss=0.270060 time=0.057695
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.039795/0.417528
+INFO:gunpowder.nodes.generic_train:Train process: iteration=417 loss=0.270052 time=0.058851
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.039796/0.417528
+INFO:gunpowder.nodes.generic_train:Train process: iteration=418 loss=0.270043 time=0.058460
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023747/0.340335
+INFO:gunpowder.nodes.generic_train:Train process: iteration=419 loss=0.245164 time=0.059922
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.039798/0.417528
+INFO:gunpowder.nodes.generic_train:Train process: iteration=420 loss=0.270023 time=0.057851
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023748/0.340334
+INFO:gunpowder.nodes.generic_train:Train process: iteration=421 loss=0.245154 time=0.060170
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.039801/0.417528
+INFO:gunpowder.nodes.generic_train:Train process: iteration=422 loss=0.270002 time=0.062303
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023750/0.351008
+INFO:gunpowder.nodes.generic_train:Train process: iteration=423 loss=0.245145 time=0.057970
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.039804/0.417528
+INFO:gunpowder.nodes.generic_train:Train process: iteration=424 loss=0.269981 time=0.059364
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036732/0.332003
+INFO:gunpowder.nodes.generic_train:Train process: iteration=425 loss=0.258110 time=0.060905
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023752/0.351007
+INFO:gunpowder.nodes.generic_train:Train process: iteration=426 loss=0.245130 time=0.057712
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023753/0.351007
+INFO:gunpowder.nodes.generic_train:Train process: iteration=427 loss=0.245125 time=0.060215
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023754/0.351007
+INFO:gunpowder.nodes.generic_train:Train process: iteration=428 loss=0.245121 time=0.059064
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036734/0.332003
+INFO:gunpowder.nodes.generic_train:Train process: iteration=429 loss=0.258090 time=0.058580
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023755/0.351007
+INFO:gunpowder.nodes.generic_train:Train process: iteration=430 loss=0.245111 time=0.059375
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036735/0.337849
+INFO:gunpowder.nodes.generic_train:Train process: iteration=431 loss=0.262000 time=0.058082
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023757/0.351007
+INFO:gunpowder.nodes.generic_train:Train process: iteration=432 loss=0.245101 time=0.057143
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036736/0.337845
+INFO:gunpowder.nodes.generic_train:Train process: iteration=433 loss=0.261988 time=0.058657
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.023757/0.351006
+INFO:gunpowder.nodes.generic_train:Train process: iteration=434 loss=0.245091 time=0.057362
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.040107/0.338108
+INFO:gunpowder.nodes.generic_train:Train process: iteration=435 loss=0.258433 time=0.057314
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036738/0.337831
+INFO:gunpowder.nodes.generic_train:Train process: iteration=436 loss=0.261969 time=0.060271
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036739/0.337824
+INFO:gunpowder.nodes.generic_train:Train process: iteration=437 loss=0.261962 time=0.058284
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036740/0.347505
+INFO:gunpowder.nodes.generic_train:Train process: iteration=438 loss=0.265118 time=0.058793
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.040131/0.338108
+INFO:gunpowder.nodes.generic_train:Train process: iteration=439 loss=0.258416 time=0.059676
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036742/0.347503
+INFO:gunpowder.nodes.generic_train:Train process: iteration=440 loss=0.265101 time=0.059756
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.040148/0.338108
+INFO:gunpowder.nodes.generic_train:Train process: iteration=441 loss=0.258407 time=0.060190
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036745/0.347500
+INFO:gunpowder.nodes.generic_train:Train process: iteration=442 loss=0.265083 time=0.057855
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.040168/0.338108
+INFO:gunpowder.nodes.generic_train:Train process: iteration=443 loss=0.258398 time=0.057516
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036748/0.347498
+INFO:gunpowder.nodes.generic_train:Train process: iteration=444 loss=0.265063 time=0.059822
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.030367/0.274187
+INFO:gunpowder.nodes.generic_train:Train process: iteration=445 loss=0.259899 time=0.060272
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.040202/0.395961
+INFO:gunpowder.nodes.generic_train:Train process: iteration=446 loss=0.262639 time=0.061271
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.040212/0.395962
+INFO:gunpowder.nodes.generic_train:Train process: iteration=447 loss=0.262634 time=0.059314
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.040222/0.395963
+INFO:gunpowder.nodes.generic_train:Train process: iteration=448 loss=0.262630 time=0.058262
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.044691/0.274183
+INFO:gunpowder.nodes.generic_train:Train process: iteration=449 loss=0.257028 time=0.058532
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.040240/0.395964
+INFO:gunpowder.nodes.generic_train:Train process: iteration=450 loss=0.262620 time=0.059158
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.044699/0.274181
+INFO:gunpowder.nodes.generic_train:Train process: iteration=451 loss=0.257020 time=0.057782
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.040256/0.395964
+INFO:gunpowder.nodes.generic_train:Train process: iteration=452 loss=0.262610 time=0.059434
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.044703/0.274180
+INFO:gunpowder.nodes.generic_train:Train process: iteration=453 loss=0.257011 time=0.061237
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.040268/0.395964
+INFO:gunpowder.nodes.generic_train:Train process: iteration=454 loss=0.262600 time=0.059756
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.041320/0.322419
+INFO:gunpowder.nodes.generic_train:Train process: iteration=455 loss=0.244419 time=0.059363
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.044701/0.274178
+INFO:gunpowder.nodes.generic_train:Train process: iteration=456 loss=0.256996 time=0.058362
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.044699/0.274178
+INFO:gunpowder.nodes.generic_train:Train process: iteration=457 loss=0.256991 time=0.060599
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.044695/0.274177
+INFO:gunpowder.nodes.generic_train:Train process: iteration=458 loss=0.256985 time=0.057917
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.041320/0.322419
+INFO:gunpowder.nodes.generic_train:Train process: iteration=459 loss=0.244401 time=0.058378
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.044684/0.274177
+INFO:gunpowder.nodes.generic_train:Train process: iteration=460 loss=0.256973 time=0.059239
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.041319/0.322418
+INFO:gunpowder.nodes.generic_train:Train process: iteration=461 loss=0.244392 time=0.057372
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.044671/0.274176
+INFO:gunpowder.nodes.generic_train:Train process: iteration=462 loss=0.256960 time=0.059686
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.041319/0.322418
+INFO:gunpowder.nodes.generic_train:Train process: iteration=463 loss=0.244383 time=0.060464
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.044657/0.274176
+INFO:gunpowder.nodes.generic_train:Train process: iteration=464 loss=0.255657 time=0.058275
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.079453/0.422285
+INFO:gunpowder.nodes.generic_train:Train process: iteration=465 loss=0.325817 time=0.060457
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.041318/0.322420
+INFO:gunpowder.nodes.generic_train:Train process: iteration=466 loss=0.244369 time=0.061468
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.041318/0.322421
+INFO:gunpowder.nodes.generic_train:Train process: iteration=467 loss=0.244364 time=0.058898
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.041318/0.322422
+INFO:gunpowder.nodes.generic_train:Train process: iteration=468 loss=0.244359 time=0.089716
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.079420/0.422276
+INFO:gunpowder.nodes.generic_train:Train process: iteration=469 loss=0.325636 time=0.059980
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.041319/0.322426
+INFO:gunpowder.nodes.generic_train:Train process: iteration=470 loss=0.244350 time=0.063499
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.079396/0.422268
+INFO:gunpowder.nodes.generic_train:Train process: iteration=471 loss=0.325504 time=0.059155
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.041321/0.322431
+INFO:gunpowder.nodes.generic_train:Train process: iteration=472 loss=0.244340 time=0.059904
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.079367/0.422258
+INFO:gunpowder.nodes.generic_train:Train process: iteration=473 loss=0.325338 time=0.063391
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.041321/0.322438
+INFO:gunpowder.nodes.generic_train:Train process: iteration=474 loss=0.244330 time=0.059187
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.041852/0.341137
+INFO:gunpowder.nodes.generic_train:Train process: iteration=475 loss=0.242560 time=0.058286
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.079318/0.422240
+INFO:gunpowder.nodes.generic_train:Train process: iteration=476 loss=0.325059 time=0.057467
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.079300/0.422234
+INFO:gunpowder.nodes.generic_train:Train process: iteration=477 loss=0.324954 time=0.059002
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.079280/0.422227
+INFO:gunpowder.nodes.generic_train:Train process: iteration=478 loss=0.324834 time=0.058551
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.041930/0.341139
+INFO:gunpowder.nodes.generic_train:Train process: iteration=479 loss=0.242541 time=0.059168
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.079237/0.422211
+INFO:gunpowder.nodes.generic_train:Train process: iteration=480 loss=0.324571 time=0.059200
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.041967/0.341139
+INFO:gunpowder.nodes.generic_train:Train process: iteration=481 loss=0.242531 time=0.060225
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.079192/0.422196
+INFO:gunpowder.nodes.generic_train:Train process: iteration=482 loss=0.324297 time=0.056650
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.042007/0.341139
+INFO:gunpowder.nodes.generic_train:Train process: iteration=483 loss=0.242521 time=0.056751
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.079143/0.422176
+INFO:gunpowder.nodes.generic_train:Train process: iteration=484 loss=0.324017 time=0.058457
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.066569/0.349068
+INFO:gunpowder.nodes.generic_train:Train process: iteration=485 loss=0.267235 time=0.057172
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.042071/0.341138
+INFO:gunpowder.nodes.generic_train:Train process: iteration=486 loss=0.242505 time=0.061282
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.042097/0.341138
+INFO:gunpowder.nodes.generic_train:Train process: iteration=487 loss=0.242500 time=0.058980
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.042125/0.341138
+INFO:gunpowder.nodes.generic_train:Train process: iteration=488 loss=0.242495 time=0.057853
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.066550/0.349052
+INFO:gunpowder.nodes.generic_train:Train process: iteration=489 loss=0.267211 time=0.057447
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.042176/0.341138
+INFO:gunpowder.nodes.generic_train:Train process: iteration=490 loss=0.242484 time=0.057483
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.066543/0.349604
+INFO:gunpowder.nodes.generic_train:Train process: iteration=491 loss=0.254215 time=0.059378
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.042221/0.341138
+INFO:gunpowder.nodes.generic_train:Train process: iteration=492 loss=0.242473 time=0.060383
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.071159/0.349612
+INFO:gunpowder.nodes.generic_train:Train process: iteration=493 loss=0.254207 time=0.059087
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.042264/0.341137
+INFO:gunpowder.nodes.generic_train:Train process: iteration=494 loss=0.242462 time=0.058558
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.042034/0.396453
+INFO:gunpowder.nodes.generic_train:Train process: iteration=495 loss=0.248647 time=0.057594
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.071159/0.349621
+INFO:gunpowder.nodes.generic_train:Train process: iteration=496 loss=0.254193 time=0.058449
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.071159/0.349624
+INFO:gunpowder.nodes.generic_train:Train process: iteration=497 loss=0.254188 time=0.057289
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.071158/0.349625
+INFO:gunpowder.nodes.generic_train:Train process: iteration=498 loss=0.254184 time=0.057193
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.041922/0.396455
+INFO:gunpowder.nodes.generic_train:Train process: iteration=499 loss=0.248631 time=0.057568
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.071158/0.349628
+INFO:gunpowder.nodes.generic_train:Train process: iteration=500 loss=0.254174 time=0.057978
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.041876/0.396456
+INFO:gunpowder.nodes.generic_train:Train process: iteration=501 loss=0.248623 time=0.057753
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.071157/0.349630
+INFO:gunpowder.nodes.generic_train:Train process: iteration=502 loss=0.254164 time=0.059096
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.041837/0.396457
+INFO:gunpowder.nodes.generic_train:Train process: iteration=503 loss=0.248615 time=0.059424
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.071157/0.410381
+INFO:gunpowder.nodes.generic_train:Train process: iteration=504 loss=0.262112 time=0.059381
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.053343/0.388509
+INFO:gunpowder.nodes.generic_train:Train process: iteration=505 loss=0.258593 time=0.061320
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.041785/0.396458
+INFO:gunpowder.nodes.generic_train:Train process: iteration=506 loss=0.248603 time=0.057064
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.041770/0.396458
+INFO:gunpowder.nodes.generic_train:Train process: iteration=507 loss=0.248599 time=0.059911
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.041758/0.449012
+INFO:gunpowder.nodes.generic_train:Train process: iteration=508 loss=0.248594 time=0.057490
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.053363/0.388507
+INFO:gunpowder.nodes.generic_train:Train process: iteration=509 loss=0.260374 time=0.057881
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.041734/0.449007
+INFO:gunpowder.nodes.generic_train:Train process: iteration=510 loss=0.248586 time=0.062910
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.053371/0.388506
+INFO:gunpowder.nodes.generic_train:Train process: iteration=511 loss=0.260186 time=0.060329
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.041713/0.449002
+INFO:gunpowder.nodes.generic_train:Train process: iteration=512 loss=0.248577 time=0.058400
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.053379/0.388505
+INFO:gunpowder.nodes.generic_train:Train process: iteration=513 loss=0.260177 time=0.058465
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.041695/0.448997
+INFO:gunpowder.nodes.generic_train:Train process: iteration=514 loss=0.248568 time=0.062065
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.058465/0.382337
+INFO:gunpowder.nodes.generic_train:Train process: iteration=515 loss=0.242576 time=0.057763
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.053390/0.388504
+INFO:gunpowder.nodes.generic_train:Train process: iteration=516 loss=0.260163 time=0.062835
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.053393/0.388503
+INFO:gunpowder.nodes.generic_train:Train process: iteration=517 loss=0.260158 time=0.060580
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.053396/0.388503
+INFO:gunpowder.nodes.generic_train:Train process: iteration=518 loss=0.260153 time=0.058821
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.058457/0.382337
+INFO:gunpowder.nodes.generic_train:Train process: iteration=519 loss=0.249166 time=0.058418
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.053402/0.388502
+INFO:gunpowder.nodes.generic_train:Train process: iteration=520 loss=0.260143 time=0.057764
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.058454/0.428452
+INFO:gunpowder.nodes.generic_train:Train process: iteration=521 loss=0.249155 time=0.060794
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.053407/0.388502
+INFO:gunpowder.nodes.generic_train:Train process: iteration=522 loss=0.260133 time=0.061825
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.058451/0.428451
+INFO:gunpowder.nodes.generic_train:Train process: iteration=523 loss=0.249143 time=0.058666
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.053410/0.388501
+INFO:gunpowder.nodes.generic_train:Train process: iteration=524 loss=0.260123 time=0.059908
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.061611/0.423099
+INFO:gunpowder.nodes.generic_train:Train process: iteration=525 loss=0.255091 time=0.062374
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.058447/0.428450
+INFO:gunpowder.nodes.generic_train:Train process: iteration=526 loss=0.249126 time=0.059686
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.058446/0.428450
+INFO:gunpowder.nodes.generic_train:Train process: iteration=527 loss=0.249119 time=0.059327
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.058444/0.428450
+INFO:gunpowder.nodes.generic_train:Train process: iteration=528 loss=0.249113 time=0.057166
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.061608/0.423101
+INFO:gunpowder.nodes.generic_train:Train process: iteration=529 loss=0.255071 time=0.059670
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.058441/0.428449
+INFO:gunpowder.nodes.generic_train:Train process: iteration=530 loss=0.249100 time=0.059478
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.061606/0.423101
+INFO:gunpowder.nodes.generic_train:Train process: iteration=531 loss=0.255061 time=0.059746
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.058438/0.428449
+INFO:gunpowder.nodes.generic_train:Train process: iteration=532 loss=0.249087 time=0.059281
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.061603/0.423099
+INFO:gunpowder.nodes.generic_train:Train process: iteration=533 loss=0.255050 time=0.058862
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.058436/0.428450
+INFO:gunpowder.nodes.generic_train:Train process: iteration=534 loss=0.249073 time=0.063459
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.073812/0.665387
+INFO:gunpowder.nodes.generic_train:Train process: iteration=535 loss=0.243901 time=0.057939
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.061599/0.423096
+INFO:gunpowder.nodes.generic_train:Train process: iteration=536 loss=0.255034 time=0.058542
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.061598/0.423094
+INFO:gunpowder.nodes.generic_train:Train process: iteration=537 loss=0.255029 time=0.061251
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.061597/0.423092
+INFO:gunpowder.nodes.generic_train:Train process: iteration=538 loss=0.255023 time=0.058975
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.073810/0.665387
+INFO:gunpowder.nodes.generic_train:Train process: iteration=539 loss=0.243880 time=0.060462
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.061594/0.423087
+INFO:gunpowder.nodes.generic_train:Train process: iteration=540 loss=0.255012 time=0.059210
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.073810/0.665387
+INFO:gunpowder.nodes.generic_train:Train process: iteration=541 loss=0.243869 time=0.061840
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.061593/0.423082
+INFO:gunpowder.nodes.generic_train:Train process: iteration=542 loss=0.255000 time=0.057645
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.073811/0.665387
+INFO:gunpowder.nodes.generic_train:Train process: iteration=543 loss=0.243858 time=0.058486
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.061591/0.423077
+INFO:gunpowder.nodes.generic_train:Train process: iteration=544 loss=0.254988 time=0.058826
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.061946/0.295245
+INFO:gunpowder.nodes.generic_train:Train process: iteration=545 loss=0.265206 time=0.063146
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.073815/0.665388
+INFO:gunpowder.nodes.generic_train:Train process: iteration=546 loss=0.243841 time=0.059384
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.073816/0.665389
+INFO:gunpowder.nodes.generic_train:Train process: iteration=547 loss=0.243836 time=0.058212
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.073817/0.665390
+INFO:gunpowder.nodes.generic_train:Train process: iteration=548 loss=0.243830 time=0.062210
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.061958/0.295231
+INFO:gunpowder.nodes.generic_train:Train process: iteration=549 loss=0.265172 time=0.057685
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.073820/0.665393
+INFO:gunpowder.nodes.generic_train:Train process: iteration=550 loss=0.243819 time=0.059562
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.061970/0.305026
+INFO:gunpowder.nodes.generic_train:Train process: iteration=551 loss=0.267377 time=0.059723
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.073824/0.665397
+INFO:gunpowder.nodes.generic_train:Train process: iteration=552 loss=0.243807 time=0.058272
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.061987/0.305026
+INFO:gunpowder.nodes.generic_train:Train process: iteration=553 loss=0.267352 time=0.058656
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.073828/0.665403
+INFO:gunpowder.nodes.generic_train:Train process: iteration=554 loss=0.243796 time=0.058313
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.035623/0.378186
+INFO:gunpowder.nodes.generic_train:Train process: iteration=555 loss=0.260638 time=0.060635
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.062019/0.305025
+INFO:gunpowder.nodes.generic_train:Train process: iteration=556 loss=0.267309 time=0.058771
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.062032/0.305025
+INFO:gunpowder.nodes.generic_train:Train process: iteration=557 loss=0.267293 time=0.060615
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.062047/0.305024
+INFO:gunpowder.nodes.generic_train:Train process: iteration=558 loss=0.267275 time=0.058672
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.035641/0.378198
+INFO:gunpowder.nodes.generic_train:Train process: iteration=559 loss=0.260617 time=0.059299
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.062081/0.305023
+INFO:gunpowder.nodes.generic_train:Train process: iteration=560 loss=0.267236 time=0.059598
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.035655/0.378206
+INFO:gunpowder.nodes.generic_train:Train process: iteration=561 loss=0.260603 time=0.057434
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.062116/0.305022
+INFO:gunpowder.nodes.generic_train:Train process: iteration=562 loss=0.267196 time=0.060356
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.035677/0.378215
+INFO:gunpowder.nodes.generic_train:Train process: iteration=563 loss=0.260588 time=0.059360
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.062150/0.305021
+INFO:gunpowder.nodes.generic_train:Train process: iteration=564 loss=0.267154 time=0.058441
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.044165/0.364919
+INFO:gunpowder.nodes.generic_train:Train process: iteration=565 loss=0.264187 time=0.058014
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.035714/0.378233
+INFO:gunpowder.nodes.generic_train:Train process: iteration=566 loss=0.260561 time=0.057658
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.035727/0.378239
+INFO:gunpowder.nodes.generic_train:Train process: iteration=567 loss=0.260551 time=0.061249
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.035743/0.378245
+INFO:gunpowder.nodes.generic_train:Train process: iteration=568 loss=0.260540 time=0.058909
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.044185/0.364903
+INFO:gunpowder.nodes.generic_train:Train process: iteration=569 loss=0.264153 time=0.058026
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.035780/0.378257
+INFO:gunpowder.nodes.generic_train:Train process: iteration=570 loss=0.260515 time=0.058041
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.044199/0.364896
+INFO:gunpowder.nodes.generic_train:Train process: iteration=571 loss=0.264131 time=0.057407
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.035818/0.378269
+INFO:gunpowder.nodes.generic_train:Train process: iteration=572 loss=0.260489 time=0.057631
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.044215/0.439019
+INFO:gunpowder.nodes.generic_train:Train process: iteration=573 loss=0.264744 time=0.056885
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.035859/0.378281
+INFO:gunpowder.nodes.generic_train:Train process: iteration=574 loss=0.260461 time=0.061855
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.052467/0.546444
+INFO:gunpowder.nodes.generic_train:Train process: iteration=575 loss=0.280445 time=0.059753
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.044241/0.439028
+INFO:gunpowder.nodes.generic_train:Train process: iteration=576 loss=0.264700 time=0.059549
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.044250/0.439030
+INFO:gunpowder.nodes.generic_train:Train process: iteration=577 loss=0.264684 time=0.058470
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.044259/0.439033
+INFO:gunpowder.nodes.generic_train:Train process: iteration=578 loss=0.264667 time=0.059355
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.052461/0.546421
+INFO:gunpowder.nodes.generic_train:Train process: iteration=579 loss=0.284029 time=0.059375
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.044279/0.439038
+INFO:gunpowder.nodes.generic_train:Train process: iteration=580 loss=0.264629 time=0.058009
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.052463/0.546407
+INFO:gunpowder.nodes.generic_train:Train process: iteration=581 loss=0.284010 time=0.058700
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.044299/0.439042
+INFO:gunpowder.nodes.generic_train:Train process: iteration=582 loss=0.264591 time=0.058834
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.052468/0.546389
+INFO:gunpowder.nodes.generic_train:Train process: iteration=583 loss=0.283991 time=0.058259
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.044319/0.439046
+INFO:gunpowder.nodes.generic_train:Train process: iteration=584 loss=0.264551 time=0.058433
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.074276/0.344186
+INFO:gunpowder.nodes.generic_train:Train process: iteration=585 loss=0.289547 time=0.058486
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.052479/0.546358
+INFO:gunpowder.nodes.generic_train:Train process: iteration=586 loss=0.283960 time=0.058352
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.052484/0.546346
+INFO:gunpowder.nodes.generic_train:Train process: iteration=587 loss=0.283949 time=0.061019
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.052489/0.546332
+INFO:gunpowder.nodes.generic_train:Train process: iteration=588 loss=0.280941 time=0.058124
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.074425/0.344224
+INFO:gunpowder.nodes.generic_train:Train process: iteration=589 loss=0.289516 time=0.057639
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.052496/0.546302
+INFO:gunpowder.nodes.generic_train:Train process: iteration=590 loss=0.279952 time=0.058828
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.074506/0.344243
+INFO:gunpowder.nodes.generic_train:Train process: iteration=591 loss=0.289492 time=0.058702
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.052501/0.546271
+INFO:gunpowder.nodes.generic_train:Train process: iteration=592 loss=0.279935 time=0.059514
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.074588/0.344262
+INFO:gunpowder.nodes.generic_train:Train process: iteration=593 loss=0.289460 time=0.060035
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.052505/0.546239
+INFO:gunpowder.nodes.generic_train:Train process: iteration=594 loss=0.279918 time=0.058262
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.130025/0.470012
+INFO:gunpowder.nodes.generic_train:Train process: iteration=595 loss=0.244100 time=0.058964
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.074709/0.344288
+INFO:gunpowder.nodes.generic_train:Train process: iteration=596 loss=0.289404 time=0.057192
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.074748/0.344296
+INFO:gunpowder.nodes.generic_train:Train process: iteration=597 loss=0.289383 time=0.061339
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.074790/0.344303
+INFO:gunpowder.nodes.generic_train:Train process: iteration=598 loss=0.289358 time=0.058864
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.130110/0.470039
+INFO:gunpowder.nodes.generic_train:Train process: iteration=599 loss=0.244082 time=0.062981
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.074875/0.344316
+INFO:gunpowder.nodes.generic_train:Train process: iteration=600 loss=0.289304 time=0.060063
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.130156/0.470054
+INFO:gunpowder.nodes.generic_train:Train process: iteration=601 loss=0.244072 time=0.058567
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.074959/0.344328
+INFO:gunpowder.nodes.generic_train:Train process: iteration=602 loss=0.289248 time=0.057684
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.130203/0.470069
+INFO:gunpowder.nodes.generic_train:Train process: iteration=603 loss=0.244063 time=0.059864
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.075044/0.344338
+INFO:gunpowder.nodes.generic_train:Train process: iteration=604 loss=0.289188 time=0.058439
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.053847/0.512456
+INFO:gunpowder.nodes.generic_train:Train process: iteration=605 loss=0.249238 time=0.058930
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.130276/0.470092
+INFO:gunpowder.nodes.generic_train:Train process: iteration=606 loss=0.244048 time=0.058601
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.130299/0.470099
+INFO:gunpowder.nodes.generic_train:Train process: iteration=607 loss=0.244043 time=0.060960
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.130321/0.470106
+INFO:gunpowder.nodes.generic_train:Train process: iteration=608 loss=0.244038 time=0.060838
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.053876/0.512465
+INFO:gunpowder.nodes.generic_train:Train process: iteration=609 loss=0.249219 time=0.060655
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.130361/0.470119
+INFO:gunpowder.nodes.generic_train:Train process: iteration=610 loss=0.244027 time=0.058266
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.053886/0.512468
+INFO:gunpowder.nodes.generic_train:Train process: iteration=611 loss=0.249210 time=0.058971
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.130399/0.470131
+INFO:gunpowder.nodes.generic_train:Train process: iteration=612 loss=0.244017 time=0.059250
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.053895/0.512471
+INFO:gunpowder.nodes.generic_train:Train process: iteration=613 loss=0.249200 time=0.059011
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.130433/0.470142
+INFO:gunpowder.nodes.generic_train:Train process: iteration=614 loss=0.244006 time=0.060816
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036371/0.386098
+INFO:gunpowder.nodes.generic_train:Train process: iteration=615 loss=0.253560 time=0.061232
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.053906/0.512475
+INFO:gunpowder.nodes.generic_train:Train process: iteration=616 loss=0.249184 time=0.059630
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.053909/0.512476
+INFO:gunpowder.nodes.generic_train:Train process: iteration=617 loss=0.249179 time=0.057563
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.053912/0.512477
+INFO:gunpowder.nodes.generic_train:Train process: iteration=618 loss=0.249174 time=0.058681
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036368/0.386098
+INFO:gunpowder.nodes.generic_train:Train process: iteration=619 loss=0.253537 time=0.060256
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.053917/0.512477
+INFO:gunpowder.nodes.generic_train:Train process: iteration=620 loss=0.249162 time=0.059684
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036366/0.386098
+INFO:gunpowder.nodes.generic_train:Train process: iteration=621 loss=0.253526 time=0.058689
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.053921/0.512478
+INFO:gunpowder.nodes.generic_train:Train process: iteration=622 loss=0.249151 time=0.063956
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036364/0.386098
+INFO:gunpowder.nodes.generic_train:Train process: iteration=623 loss=0.253514 time=0.063616
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.053924/0.512479
+INFO:gunpowder.nodes.generic_train:Train process: iteration=624 loss=0.249139 time=0.059964
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.055269/0.384280
+INFO:gunpowder.nodes.generic_train:Train process: iteration=625 loss=0.242273 time=0.059494
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036359/0.386098
+INFO:gunpowder.nodes.generic_train:Train process: iteration=626 loss=0.253496 time=0.058561
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036357/0.386098
+INFO:gunpowder.nodes.generic_train:Train process: iteration=627 loss=0.253490 time=0.061276
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036356/0.386098
+INFO:gunpowder.nodes.generic_train:Train process: iteration=628 loss=0.253484 time=0.064190
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.055253/0.384281
+INFO:gunpowder.nodes.generic_train:Train process: iteration=629 loss=0.242249 time=0.063458
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036352/0.386098
+INFO:gunpowder.nodes.generic_train:Train process: iteration=630 loss=0.253471 time=0.062597
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.055246/0.384282
+INFO:gunpowder.nodes.generic_train:Train process: iteration=631 loss=0.242237 time=0.062472
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036349/0.386098
+INFO:gunpowder.nodes.generic_train:Train process: iteration=632 loss=0.253458 time=0.065906
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.055240/0.384282
+INFO:gunpowder.nodes.generic_train:Train process: iteration=633 loss=0.242224 time=0.062738
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.036346/0.386098
+INFO:gunpowder.nodes.generic_train:Train process: iteration=634 loss=0.253024 time=0.063059
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.062517/0.430564
+INFO:gunpowder.nodes.generic_train:Train process: iteration=635 loss=0.273395 time=0.062675
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.055232/0.384282
+INFO:gunpowder.nodes.generic_train:Train process: iteration=636 loss=0.242205 time=0.059721
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.055230/0.384282
+INFO:gunpowder.nodes.generic_train:Train process: iteration=637 loss=0.242198 time=0.059438
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.055228/0.384282
+INFO:gunpowder.nodes.generic_train:Train process: iteration=638 loss=0.242192 time=0.059552
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.062523/0.430562
+INFO:gunpowder.nodes.generic_train:Train process: iteration=639 loss=0.273369 time=0.066163
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.055225/0.384282
+INFO:gunpowder.nodes.generic_train:Train process: iteration=640 loss=0.242178 time=0.060440
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.062525/0.430560
+INFO:gunpowder.nodes.generic_train:Train process: iteration=641 loss=0.273355 time=0.062922
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.055223/0.384282
+INFO:gunpowder.nodes.generic_train:Train process: iteration=642 loss=0.242164 time=0.059727
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.062528/0.430557
+INFO:gunpowder.nodes.generic_train:Train process: iteration=643 loss=0.273341 time=0.060662
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.055221/0.384282
+INFO:gunpowder.nodes.generic_train:Train process: iteration=644 loss=0.242150 time=0.060315
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.067359/0.500191
+INFO:gunpowder.nodes.generic_train:Train process: iteration=645 loss=0.279825 time=0.060134
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.062530/0.430552
+INFO:gunpowder.nodes.generic_train:Train process: iteration=646 loss=0.273319 time=0.060936
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.062531/0.430550
+INFO:gunpowder.nodes.generic_train:Train process: iteration=647 loss=0.273312 time=0.059932
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.062531/0.430548
+INFO:gunpowder.nodes.generic_train:Train process: iteration=648 loss=0.273304 time=0.062206
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.067356/0.500191
+INFO:gunpowder.nodes.generic_train:Train process: iteration=649 loss=0.279800 time=0.059734
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.062532/0.430542
+INFO:gunpowder.nodes.generic_train:Train process: iteration=650 loss=0.273288 time=0.059832
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.067358/0.500191
+INFO:gunpowder.nodes.generic_train:Train process: iteration=651 loss=0.279787 time=0.060886
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.062532/0.430537
+INFO:gunpowder.nodes.generic_train:Train process: iteration=652 loss=0.273272 time=0.060019
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.067363/0.500191
+INFO:gunpowder.nodes.generic_train:Train process: iteration=653 loss=0.279773 time=0.060733
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.062531/0.430532
+INFO:gunpowder.nodes.generic_train:Train process: iteration=654 loss=0.273255 time=0.060218
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.051436/0.470627
+INFO:gunpowder.nodes.generic_train:Train process: iteration=655 loss=0.242668 time=0.060489
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.067374/0.500191
+INFO:gunpowder.nodes.generic_train:Train process: iteration=656 loss=0.279751 time=0.058593
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.067379/0.500191
+INFO:gunpowder.nodes.generic_train:Train process: iteration=657 loss=0.279744 time=0.061773
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.067386/0.500191
+INFO:gunpowder.nodes.generic_train:Train process: iteration=658 loss=0.279736 time=0.059628
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.051456/0.470624
+INFO:gunpowder.nodes.generic_train:Train process: iteration=659 loss=0.242640 time=0.057860
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.067401/0.500191
+INFO:gunpowder.nodes.generic_train:Train process: iteration=660 loss=0.279720 time=0.059625
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.051468/0.470623
+INFO:gunpowder.nodes.generic_train:Train process: iteration=661 loss=0.242626 time=0.060477
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.067418/0.500191
+INFO:gunpowder.nodes.generic_train:Train process: iteration=662 loss=0.279703 time=0.058718
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.051480/0.470621
+INFO:gunpowder.nodes.generic_train:Train process: iteration=663 loss=0.242612 time=0.058864
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.067436/0.500191
+INFO:gunpowder.nodes.generic_train:Train process: iteration=664 loss=0.279687 time=0.059319
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.049128/0.354273
+INFO:gunpowder.nodes.generic_train:Train process: iteration=665 loss=0.247755 time=0.060142
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.051500/0.507779
+INFO:gunpowder.nodes.generic_train:Train process: iteration=666 loss=0.242590 time=0.061951
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.063178/0.507779
+INFO:gunpowder.nodes.generic_train:Train process: iteration=667 loss=0.242583 time=0.060233
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.063184/0.507779
+INFO:gunpowder.nodes.generic_train:Train process: iteration=668 loss=0.242576 time=0.058361
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.049127/0.354277
+INFO:gunpowder.nodes.generic_train:Train process: iteration=669 loss=0.247731 time=0.056645
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.063196/0.507779
+INFO:gunpowder.nodes.generic_train:Train process: iteration=670 loss=0.242561 time=0.060338
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.049126/0.354278
+INFO:gunpowder.nodes.generic_train:Train process: iteration=671 loss=0.247719 time=0.058729
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.063207/0.507779
+INFO:gunpowder.nodes.generic_train:Train process: iteration=672 loss=0.242546 time=0.062952
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.049126/0.354280
+INFO:gunpowder.nodes.generic_train:Train process: iteration=673 loss=0.247706 time=0.063242
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.063217/0.507779
+INFO:gunpowder.nodes.generic_train:Train process: iteration=674 loss=0.242532 time=0.059785
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.037122/0.426662
+INFO:gunpowder.nodes.generic_train:Train process: iteration=675 loss=0.259001 time=0.059601
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.049127/0.354282
+INFO:gunpowder.nodes.generic_train:Train process: iteration=676 loss=0.247688 time=0.062100
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.049127/0.354283
+INFO:gunpowder.nodes.generic_train:Train process: iteration=677 loss=0.247681 time=0.058439
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.049128/0.383367
+INFO:gunpowder.nodes.generic_train:Train process: iteration=678 loss=0.247675 time=0.059782
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.067724/0.426674
+INFO:gunpowder.nodes.generic_train:Train process: iteration=679 loss=0.258977 time=0.059686
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.049131/0.383369
+INFO:gunpowder.nodes.generic_train:Train process: iteration=680 loss=0.247661 time=0.060975
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.067724/0.426678
+INFO:gunpowder.nodes.generic_train:Train process: iteration=681 loss=0.258963 time=0.060376
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.049135/0.383371
+INFO:gunpowder.nodes.generic_train:Train process: iteration=682 loss=0.247648 time=0.061247
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.067725/0.426680
+INFO:gunpowder.nodes.generic_train:Train process: iteration=683 loss=0.258947 time=0.062305
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.049141/0.383372
+INFO:gunpowder.nodes.generic_train:Train process: iteration=684 loss=0.247634 time=0.060060
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.058589/0.372514
+INFO:gunpowder.nodes.generic_train:Train process: iteration=685 loss=0.246258 time=0.058927
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.067725/0.426682
+INFO:gunpowder.nodes.generic_train:Train process: iteration=686 loss=0.258922 time=0.060297
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.067725/0.426682
+INFO:gunpowder.nodes.generic_train:Train process: iteration=687 loss=0.258913 time=0.060122
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.067725/0.426681
+INFO:gunpowder.nodes.generic_train:Train process: iteration=688 loss=0.258904 time=0.058881
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.058589/0.372516
+INFO:gunpowder.nodes.generic_train:Train process: iteration=689 loss=0.246231 time=0.059465
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.067725/0.426679
+INFO:gunpowder.nodes.generic_train:Train process: iteration=690 loss=0.258884 time=0.060715
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.058589/0.372516
+INFO:gunpowder.nodes.generic_train:Train process: iteration=691 loss=0.246217 time=0.058379
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.067725/0.426675
+INFO:gunpowder.nodes.generic_train:Train process: iteration=692 loss=0.259716 time=0.061531
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.058589/0.372516
+INFO:gunpowder.nodes.generic_train:Train process: iteration=693 loss=0.246204 time=0.058778
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.067725/0.426671
+INFO:gunpowder.nodes.generic_train:Train process: iteration=694 loss=0.259696 time=0.059564
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.063544/0.379108
+INFO:gunpowder.nodes.generic_train:Train process: iteration=695 loss=0.243898 time=0.059039
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.058589/0.372514
+INFO:gunpowder.nodes.generic_train:Train process: iteration=696 loss=0.246183 time=0.059704
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.058589/0.372514
+INFO:gunpowder.nodes.generic_train:Train process: iteration=697 loss=0.246177 time=0.059727
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.058589/0.372513
+INFO:gunpowder.nodes.generic_train:Train process: iteration=698 loss=0.246170 time=0.060454
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.063542/0.379102
+INFO:gunpowder.nodes.generic_train:Train process: iteration=699 loss=0.243876 time=0.060461
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.058589/0.372512
+INFO:gunpowder.nodes.generic_train:Train process: iteration=700 loss=0.246156 time=0.059915
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.063541/0.379100
+INFO:gunpowder.nodes.generic_train:Train process: iteration=701 loss=0.243864 time=0.059139
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.058589/0.372511
+INFO:gunpowder.nodes.generic_train:Train process: iteration=702 loss=0.246142 time=0.059011
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.063540/0.379098
+INFO:gunpowder.nodes.generic_train:Train process: iteration=703 loss=0.243852 time=0.060101
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.058590/0.372510
+INFO:gunpowder.nodes.generic_train:Train process: iteration=704 loss=0.246128 time=0.060303
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.059202/0.479203
+INFO:gunpowder.nodes.generic_train:Train process: iteration=705 loss=0.244892 time=0.059171
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.059596/0.379095
+INFO:gunpowder.nodes.generic_train:Train process: iteration=706 loss=0.243832 time=0.061098
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.059596/0.379094
+INFO:gunpowder.nodes.generic_train:Train process: iteration=707 loss=0.243826 time=0.060228
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.059596/0.379093
+INFO:gunpowder.nodes.generic_train:Train process: iteration=708 loss=0.243819 time=0.060360
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.059202/0.479203
+INFO:gunpowder.nodes.generic_train:Train process: iteration=709 loss=0.244865 time=0.058542
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.059595/0.379092
+INFO:gunpowder.nodes.generic_train:Train process: iteration=710 loss=0.243805 time=0.060778
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.059203/0.479203
+INFO:gunpowder.nodes.generic_train:Train process: iteration=711 loss=0.244851 time=0.058759
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.059594/0.379090
+INFO:gunpowder.nodes.generic_train:Train process: iteration=712 loss=0.243790 time=0.062435
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.059203/0.479203
+INFO:gunpowder.nodes.generic_train:Train process: iteration=713 loss=0.244836 time=0.059797
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.059594/0.379089
+INFO:gunpowder.nodes.generic_train:Train process: iteration=714 loss=0.243776 time=0.060424
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.071055/0.431427
+INFO:gunpowder.nodes.generic_train:Train process: iteration=715 loss=0.282149 time=0.058820
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.059203/0.479203
+INFO:gunpowder.nodes.generic_train:Train process: iteration=716 loss=0.244814 time=0.060393
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.059203/0.479203
+INFO:gunpowder.nodes.generic_train:Train process: iteration=717 loss=0.244807 time=0.060790
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.059204/0.479203
+INFO:gunpowder.nodes.generic_train:Train process: iteration=718 loss=0.244800 time=0.061221
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.071057/0.431427
+INFO:gunpowder.nodes.generic_train:Train process: iteration=719 loss=0.282118 time=0.059619
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.059204/0.479203
+INFO:gunpowder.nodes.generic_train:Train process: iteration=720 loss=0.244785 time=0.060089
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.071059/0.431426
+INFO:gunpowder.nodes.generic_train:Train process: iteration=721 loss=0.282102 time=0.060434
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.059204/0.479203
+INFO:gunpowder.nodes.generic_train:Train process: iteration=722 loss=0.244770 time=0.059535
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.071063/0.431426
+INFO:gunpowder.nodes.generic_train:Train process: iteration=723 loss=0.282086 time=0.061649
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.059205/0.479203
+INFO:gunpowder.nodes.generic_train:Train process: iteration=724 loss=0.244755 time=0.061617
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.053225/0.547107
+INFO:gunpowder.nodes.generic_train:Train process: iteration=725 loss=0.240778 time=0.061014
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.071069/0.431424
+INFO:gunpowder.nodes.generic_train:Train process: iteration=726 loss=0.270260 time=0.060629
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.071071/0.431424
+INFO:gunpowder.nodes.generic_train:Train process: iteration=727 loss=0.270252 time=0.060165
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.071073/0.431423
+INFO:gunpowder.nodes.generic_train:Train process: iteration=728 loss=0.270244 time=0.059386
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.053216/0.547108
+INFO:gunpowder.nodes.generic_train:Train process: iteration=729 loss=0.240745 time=0.059846
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.071077/0.431422
+INFO:gunpowder.nodes.generic_train:Train process: iteration=730 loss=0.270229 time=0.059312
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.053210/0.547108
+INFO:gunpowder.nodes.generic_train:Train process: iteration=731 loss=0.240729 time=0.060677
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.071081/0.431421
+INFO:gunpowder.nodes.generic_train:Train process: iteration=732 loss=0.270213 time=0.060964
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.053204/0.547109
+INFO:gunpowder.nodes.generic_train:Train process: iteration=733 loss=0.240712 time=0.059838
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.071084/0.431419
+INFO:gunpowder.nodes.generic_train:Train process: iteration=734 loss=0.270197 time=0.060222
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.076980/0.550408
+INFO:gunpowder.nodes.generic_train:Train process: iteration=735 loss=0.241363 time=0.059571
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.053195/0.547109
+INFO:gunpowder.nodes.generic_train:Train process: iteration=736 loss=0.240686 time=0.059336
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.053193/0.547109
+INFO:gunpowder.nodes.generic_train:Train process: iteration=737 loss=0.240677 time=0.059083
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.053190/0.547110
+INFO:gunpowder.nodes.generic_train:Train process: iteration=738 loss=0.240668 time=0.060305
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.111127/0.550409
+INFO:gunpowder.nodes.generic_train:Train process: iteration=739 loss=0.241328 time=0.059159
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.085796/0.547110
+INFO:gunpowder.nodes.generic_train:Train process: iteration=740 loss=0.240649 time=0.065847
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.111130/0.550409
+INFO:gunpowder.nodes.generic_train:Train process: iteration=741 loss=0.241309 time=0.060676
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.085804/0.547110
+INFO:gunpowder.nodes.generic_train:Train process: iteration=742 loss=0.240630 time=0.060261
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.111132/0.550410
+INFO:gunpowder.nodes.generic_train:Train process: iteration=743 loss=0.241289 time=0.059324
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.085812/0.547110
+INFO:gunpowder.nodes.generic_train:Train process: iteration=744 loss=0.240610 time=0.073999
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.069091/0.468218
+INFO:gunpowder.nodes.generic_train:Train process: iteration=745 loss=0.239630 time=0.059909
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.111135/0.550410
+INFO:gunpowder.nodes.generic_train:Train process: iteration=746 loss=0.241259 time=0.060403
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.111136/0.550410
+INFO:gunpowder.nodes.generic_train:Train process: iteration=747 loss=0.241248 time=0.062084
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.111137/0.561069
+INFO:gunpowder.nodes.generic_train:Train process: iteration=748 loss=0.241238 time=0.058730
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.069080/0.468222
+INFO:gunpowder.nodes.generic_train:Train process: iteration=749 loss=0.239586 time=0.060418
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.111139/0.561069
+INFO:gunpowder.nodes.generic_train:Train process: iteration=750 loss=0.241217 time=0.058647
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.069076/0.468224
+INFO:gunpowder.nodes.generic_train:Train process: iteration=751 loss=0.239562 time=0.059774
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.111140/0.561069
+INFO:gunpowder.nodes.generic_train:Train process: iteration=752 loss=0.241195 time=0.060719
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.069072/0.468226
+INFO:gunpowder.nodes.generic_train:Train process: iteration=753 loss=0.239538 time=0.061359
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.111142/0.561069
+INFO:gunpowder.nodes.generic_train:Train process: iteration=754 loss=0.241172 time=0.059881
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.051838/0.475083
+INFO:gunpowder.nodes.generic_train:Train process: iteration=755 loss=0.246422 time=0.058429
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.069067/0.468229
+INFO:gunpowder.nodes.generic_train:Train process: iteration=756 loss=0.239502 time=0.059134
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.110466/0.468229
+INFO:gunpowder.nodes.generic_train:Train process: iteration=757 loss=0.239489 time=0.059441
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.110464/0.468230
+INFO:gunpowder.nodes.generic_train:Train process: iteration=758 loss=0.239477 time=0.058949
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.051840/0.475084
+INFO:gunpowder.nodes.generic_train:Train process: iteration=759 loss=0.246391 time=0.061705
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.110460/0.468231
+INFO:gunpowder.nodes.generic_train:Train process: iteration=760 loss=0.239452 time=0.059625
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.051840/0.475084
+INFO:gunpowder.nodes.generic_train:Train process: iteration=761 loss=0.246375 time=0.058085
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.110457/0.468233
+INFO:gunpowder.nodes.generic_train:Train process: iteration=762 loss=0.239426 time=0.057691
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.051841/0.475084
+INFO:gunpowder.nodes.generic_train:Train process: iteration=763 loss=0.246359 time=0.058023
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.110454/0.468234
+INFO:gunpowder.nodes.generic_train:Train process: iteration=764 loss=0.239401 time=0.060567
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.109380/0.479570
+INFO:gunpowder.nodes.generic_train:Train process: iteration=765 loss=0.256948 time=0.058577
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.051842/0.475085
+INFO:gunpowder.nodes.generic_train:Train process: iteration=766 loss=0.246334 time=0.060494
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.051842/0.475085
+INFO:gunpowder.nodes.generic_train:Train process: iteration=767 loss=0.246326 time=0.060772
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.051842/0.475085
+INFO:gunpowder.nodes.generic_train:Train process: iteration=768 loss=0.246317 time=0.058943
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.109381/0.479570
+INFO:gunpowder.nodes.generic_train:Train process: iteration=769 loss=0.256909 time=0.059922
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.051842/0.475085
+INFO:gunpowder.nodes.generic_train:Train process: iteration=770 loss=0.246299 time=0.060001
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.109382/0.479570
+INFO:gunpowder.nodes.generic_train:Train process: iteration=771 loss=0.256890 time=0.058678
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.051843/0.475086
+INFO:gunpowder.nodes.generic_train:Train process: iteration=772 loss=0.246281 time=0.059674
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.109383/0.479571
+INFO:gunpowder.nodes.generic_train:Train process: iteration=773 loss=0.256869 time=0.059439
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.051843/0.475086
+INFO:gunpowder.nodes.generic_train:Train process: iteration=774 loss=0.246262 time=0.059893
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.116694/0.444313
+INFO:gunpowder.nodes.generic_train:Train process: iteration=775 loss=0.240958 time=0.059938
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.109384/0.479571
+INFO:gunpowder.nodes.generic_train:Train process: iteration=776 loss=0.256839 time=0.060765
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.109384/0.479571
+INFO:gunpowder.nodes.generic_train:Train process: iteration=777 loss=0.256828 time=0.063131
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.109385/0.479571
+INFO:gunpowder.nodes.generic_train:Train process: iteration=778 loss=0.256818 time=0.060095
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.116694/0.444312
+INFO:gunpowder.nodes.generic_train:Train process: iteration=779 loss=0.240913 time=0.059612
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.109386/0.479571
+INFO:gunpowder.nodes.generic_train:Train process: iteration=780 loss=0.256797 time=0.060350
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.116694/0.444311
+INFO:gunpowder.nodes.generic_train:Train process: iteration=781 loss=0.240889 time=0.059934
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.109388/0.479571
+INFO:gunpowder.nodes.generic_train:Train process: iteration=782 loss=0.256775 time=0.059739
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.116694/0.444311
+INFO:gunpowder.nodes.generic_train:Train process: iteration=783 loss=0.240865 time=0.057806
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.109389/0.479571
+INFO:gunpowder.nodes.generic_train:Train process: iteration=784 loss=0.256753 time=0.058100
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.180878/0.539345
+INFO:gunpowder.nodes.generic_train:Train process: iteration=785 loss=0.242965 time=0.059637
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.116694/0.444309
+INFO:gunpowder.nodes.generic_train:Train process: iteration=786 loss=0.240829 time=0.057769
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.116695/0.444309
+INFO:gunpowder.nodes.generic_train:Train process: iteration=787 loss=0.240816 time=0.062617
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.116695/0.444309
+INFO:gunpowder.nodes.generic_train:Train process: iteration=788 loss=0.240804 time=0.058923
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.180875/0.539344
+INFO:gunpowder.nodes.generic_train:Train process: iteration=789 loss=0.242918 time=0.061395
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.116695/0.444308
+INFO:gunpowder.nodes.generic_train:Train process: iteration=790 loss=0.240778 time=0.059424
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.180874/0.539344
+INFO:gunpowder.nodes.generic_train:Train process: iteration=791 loss=0.242894 time=0.065117
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.116695/0.444307
+INFO:gunpowder.nodes.generic_train:Train process: iteration=792 loss=0.240751 time=0.060287
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.180874/0.539344
+INFO:gunpowder.nodes.generic_train:Train process: iteration=793 loss=0.242869 time=0.057857
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.116695/0.444307
+INFO:gunpowder.nodes.generic_train:Train process: iteration=794 loss=0.240724 time=0.060054
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.177102/0.725879
+INFO:gunpowder.nodes.generic_train:Train process: iteration=795 loss=0.242598 time=0.059967
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.180872/0.539344
+INFO:gunpowder.nodes.generic_train:Train process: iteration=796 loss=0.242831 time=0.058048
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.180872/0.539343
+INFO:gunpowder.nodes.generic_train:Train process: iteration=797 loss=0.242818 time=0.058069
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.180872/0.539343
+INFO:gunpowder.nodes.generic_train:Train process: iteration=798 loss=0.242804 time=0.061429
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.177103/0.725879
+INFO:gunpowder.nodes.generic_train:Train process: iteration=799 loss=0.242545 time=0.061193
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.180871/0.539343
+INFO:gunpowder.nodes.generic_train:Train process: iteration=800 loss=0.242778 time=0.059382
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.177103/0.725879
+INFO:gunpowder.nodes.generic_train:Train process: iteration=801 loss=0.242517 time=0.060584
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.180871/0.539343
+INFO:gunpowder.nodes.generic_train:Train process: iteration=802 loss=0.242750 time=0.061669
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.177104/0.725879
+INFO:gunpowder.nodes.generic_train:Train process: iteration=803 loss=0.242488 time=0.058431
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.180870/0.539343
+INFO:gunpowder.nodes.generic_train:Train process: iteration=804 loss=0.242722 time=0.064385
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.192967/0.501463
+INFO:gunpowder.nodes.generic_train:Train process: iteration=805 loss=0.242955 time=0.061109
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.177104/0.725879
+INFO:gunpowder.nodes.generic_train:Train process: iteration=806 loss=0.242445 time=0.060021
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.177104/0.725880
+INFO:gunpowder.nodes.generic_train:Train process: iteration=807 loss=0.242430 time=0.058348
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.177104/0.725880
+INFO:gunpowder.nodes.generic_train:Train process: iteration=808 loss=0.242414 time=0.056997
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.192967/0.501463
+INFO:gunpowder.nodes.generic_train:Train process: iteration=809 loss=0.242901 time=0.061764
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.177105/0.725880
+INFO:gunpowder.nodes.generic_train:Train process: iteration=810 loss=0.242383 time=0.058206
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.192967/0.501463
+INFO:gunpowder.nodes.generic_train:Train process: iteration=811 loss=0.242872 time=0.060638
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.177105/0.725880
+INFO:gunpowder.nodes.generic_train:Train process: iteration=812 loss=0.242352 time=0.057944
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.192967/0.501463
+INFO:gunpowder.nodes.generic_train:Train process: iteration=813 loss=0.242843 time=0.059090
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.177105/0.725880
+INFO:gunpowder.nodes.generic_train:Train process: iteration=814 loss=0.242320 time=0.060592
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.085281/0.483448
+INFO:gunpowder.nodes.generic_train:Train process: iteration=815 loss=0.247716 time=0.058438
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.192967/0.501463
+INFO:gunpowder.nodes.generic_train:Train process: iteration=816 loss=0.242798 time=0.060483
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.192967/0.501463
+INFO:gunpowder.nodes.generic_train:Train process: iteration=817 loss=0.242783 time=0.060539
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.227291/0.501463
+INFO:gunpowder.nodes.generic_train:Train process: iteration=818 loss=0.242767 time=0.058607
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.085282/0.483448
+INFO:gunpowder.nodes.generic_train:Train process: iteration=819 loss=0.247666 time=0.058626
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.227291/0.501463
+INFO:gunpowder.nodes.generic_train:Train process: iteration=820 loss=0.242735 time=0.060109
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.085282/0.579736
+INFO:gunpowder.nodes.generic_train:Train process: iteration=821 loss=0.247639 time=0.059355
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.227291/0.501463
+INFO:gunpowder.nodes.generic_train:Train process: iteration=822 loss=0.242702 time=0.056902
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.085282/0.579736
+INFO:gunpowder.nodes.generic_train:Train process: iteration=823 loss=0.247611 time=0.057236
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.227291/0.501463
+INFO:gunpowder.nodes.generic_train:Train process: iteration=824 loss=0.242669 time=0.057900
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 1.001901/1.001901
+INFO:gunpowder.nodes.generic_train:Train process: iteration=825 loss=0.238948 time=0.060974
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.085282/0.579736
+INFO:gunpowder.nodes.generic_train:Train process: iteration=826 loss=0.247568 time=0.061714
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.085282/0.579736
+INFO:gunpowder.nodes.generic_train:Train process: iteration=827 loss=0.247553 time=0.060279
+INFO:funlib.learn.tensorflow.losses.um_loss:min/max ultrametric: 0.085282/0.579736
+INFO:gunpowder.nodes.generic_train:Train process: iteration=828 loss=0.247538 time=0.059503
+INFO:gunpowder.producer_pool:terminating workers...
+INFO:gunpowder.producer_pool:joining workers...
+INFO:gunpowder.producer_pool:done

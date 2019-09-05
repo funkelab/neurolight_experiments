@@ -7,6 +7,8 @@
         120,
         120
     ],
+    "NUM_FMAPS": 12,
+    "FMAP_INC_FACTORS": 5,
     "MAX_FILTER_SIZE": [
         3,
         3
@@ -20,8 +22,8 @@
         0.3
     ],
     "SPLIT_PS": [
-        0.98,
-        0.02
+        1,
+        0
     ],
     "NOISE_VAR": 0.05,
     "N_OBJS": 2,
@@ -40,5 +42,6 @@
     "CACHE_SIZE": 100,
     "NUM_WORKERS": 10,
     "SNAPSHOT_EVERY": 1000,
-    "CHECKPOINT_EVERY": 1000
+    "CHECKPOINT_EVERY": 10000,
+    "NUM_ITERATIONS": 100000
 }

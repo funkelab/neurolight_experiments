@@ -1,0 +1,316 @@
+/usr/bin/run_singularity -s pattonw/neurolight:v0.1 -w /groups/mousebrainmicro/home/pattonw/Code/Scripts/neurolight_experiments/synthetic/light_like/2d/setup09 python train.py
+Scheduling job on 10 CPUs, 1 GPUs, 25600 MB in /groups/mousebrainmicro/home/pattonw/Code/Scripts/neurolight_experiments/synthetic/light_like/2d/setup09, using singularity image pattonw/neurolight:v0.1
+bsub -I -J (pattonw/neurolight:v0.1|9323) -n 10 -gpu num=1:mps=no -Rrusage[mem=25600] -q slowpoke  /usr/bin/run_singularity -s pattonw/neurolight:v0.1 -w /groups/mousebrainmicro/home/pattonw/Code/Scripts/neurolight_experiments/synthetic/light_like/2d/setup09 python train.py
+Job <64023141> is submitted to queue <slowpoke>.
+<<Waiting for dispatch ...>>
+<<Starting on c04u12>>
+run_singularity: Running singularity as user:group 61575:1097
+Traceback (most recent call last):
+  File "train.py", line 82, in <module>
+    with open("tensor_names.json", "r") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'tensor_names.json'
+/usr/bin/run_singularity -s pattonw/neurolight:v0.1 -w /groups/mousebrainmicro/home/pattonw/Code/Scripts/neurolight_experiments/synthetic/light_like/2d/setup09 python train.py
+Scheduling job on 10 CPUs, 1 GPUs, 25600 MB in /groups/mousebrainmicro/home/pattonw/Code/Scripts/neurolight_experiments/synthetic/light_like/2d/setup09, using singularity image pattonw/neurolight:v0.1
+bsub -I -J (pattonw/neurolight:v0.1|9575) -n 10 -gpu num=1:mps=no -Rrusage[mem=25600] -q slowpoke  /usr/bin/run_singularity -s pattonw/neurolight:v0.1 -w /groups/mousebrainmicro/home/pattonw/Code/Scripts/neurolight_experiments/synthetic/light_like/2d/setup09 python train.py
+Job <64023178> is submitted to queue <slowpoke>.
+<<Waiting for dispatch ...>>
+<<Starting on c04u12>>
+run_singularity: Running singularity as user:group 61575:1097
+2019-09-05 15:51:06.714154: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2019-09-05 15:51:06.802082: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2199905000 Hz
+2019-09-05 15:51:06.805332: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x56059cdbc990 executing computations on platform Host. Devices:
+2019-09-05 15:51:06.805394: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): <undefined>, <undefined>
+2019-09-05 15:51:06.823004: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcuda.so.1
+2019-09-05 15:51:06.896477: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1640] Found device 0 with properties: 
+name: GeForce GTX TITAN X major: 5 minor: 2 memoryClockRate(GHz): 1.076
+pciBusID: 0000:09:00.0
+2019-09-05 15:51:06.904042: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcudart.so.10.1
+2019-09-05 15:51:06.981738: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcublas.so.10
+2019-09-05 15:51:07.021233: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcufft.so.10
+2019-09-05 15:51:07.041352: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcurand.so.10
+2019-09-05 15:51:07.141096: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcusolver.so.10
+2019-09-05 15:51:07.163064: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcusparse.so.10
+2019-09-05 15:51:07.312131: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcudnn.so.7
+2019-09-05 15:51:07.317103: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1763] Adding visible gpu devices: 0
+2019-09-05 15:51:07.318665: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcudart.so.10.1
+2019-09-05 15:51:07.428070: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1181] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-09-05 15:51:07.428142: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1187]      0 
+2019-09-05 15:51:07.428158: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1200] 0:   N 
+2019-09-05 15:51:07.435730: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1326] Created TensorFlow device (/job:local/replica:0/task:0/device:GPU:0 with 11498 MB memory) -> physical GPU (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:09:00.0, compute capability: 5.2)
+2019-09-05 15:51:07.441366: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x5605a0ebb000 executing computations on platform CUDA. Devices:
+2019-09-05 15:51:07.441460: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): GeForce GTX TITAN X, Compute Capability 5.2
+E0905 15:51:07.463823973   17756 socket_utils_common_posix.cc:198] check for SO_REUSEPORT: {"created":"@1567713067.463782859","description":"SO_REUSEPORT unavailable on compiling system","file":"external/grpc/src/core/lib/iomgr/socket_utils_common_posix.cc","file_line":166}
+2019-09-05 15:51:07.467858: I tensorflow/core/distributed_runtime/rpc/grpc_channel.cc:250] Initialize GrpcChannelCache for job local -> {0 -> localhost:46210}
+2019-09-05 15:51:07.474153: I tensorflow/core/distributed_runtime/rpc/grpc_server_lib.cc:365] Started server with target: grpc://localhost:46210
+2019-09-05 15:51:07.482520: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1640] Found device 0 with properties: 
+name: GeForce GTX TITAN X major: 5 minor: 2 memoryClockRate(GHz): 1.076
+pciBusID: 0000:09:00.0
+2019-09-05 15:51:07.482623: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcudart.so.10.1
+2019-09-05 15:51:07.482661: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcublas.so.10
+2019-09-05 15:51:07.482693: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcufft.so.10
+2019-09-05 15:51:07.482723: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcurand.so.10
+2019-09-05 15:51:07.482754: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcusolver.so.10
+2019-09-05 15:51:07.482784: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcusparse.so.10
+2019-09-05 15:51:07.482814: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcudnn.so.7
+2019-09-05 15:51:07.489240: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1763] Adding visible gpu devices: 0
+2019-09-05 15:51:18.815499: W tensorflow/compiler/jit/mark_for_compilation_pass.cc:1412] (One-time warning): Not using XLA:CPU for cluster because envvar TF_XLA_FLAGS=--tf_xla_cpu_global_jit was not set.  If you want XLA:CPU, either set that envvar, or use experimental_jit_scope to enable XLA:CPU.  To confirm that XLA is active, pass --vmodule=xla_compilation_cache=1 (as a proper command-line flag, not via TF_XLA_FLAGS) or set the envvar XLA_FLAGS=--xla_hlo_profile.
+2019-09-05 15:51:19.017567: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcudnn.so.7
+2019-09-05 15:53:15.437886: W tensorflow/core/framework/op_kernel.cc:1490] Invalid argument: ValueError: negative dimensions are not allowed
+Traceback (most recent call last):
+
+  File "/miniconda/lib/python3.6/site-packages/tensorflow/python/ops/script_ops.py", line 209, in __call__
+    ret = func(*args)
+
+  File "/src/funlib/funlib/learn/tensorflow/losses/um_loss.py", line 13, in get_emst
+    emst = euclidean_mst(embedding.astype(np.float64))
+
+  File "funlib/learn/tensorflow/losses/impl/wrappers.pyx", line 37, in funlib.learn.tensorflow.losses.impl.wrappers.emst
+
+ValueError: negative dimensions are not allowed
+
+
+Traceback (most recent call last):
+  File "/miniconda/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1356, in _do_call
+    return fn(*args)
+  File "/miniconda/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1341, in _run_fn
+    options, feed_dict, fetch_list, target_list, run_metadata)
+  File "/miniconda/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1429, in _call_tf_sessionrun
+    run_metadata)
+tensorflow.python.framework.errors_impl.InvalidArgumentError: From /job:local/replica:0/task:0:
+ValueError: negative dimensions are not allowed
+Traceback (most recent call last):
+
+  File "/miniconda/lib/python3.6/site-packages/tensorflow/python/ops/script_ops.py", line 209, in __call__
+    ret = func(*args)
+
+  File "/src/funlib/funlib/learn/tensorflow/losses/um_loss.py", line 13, in get_emst
+    emst = euclidean_mst(embedding.astype(np.float64))
+
+  File "funlib/learn/tensorflow/losses/impl/wrappers.pyx", line 37, in funlib.learn.tensorflow.losses.impl.wrappers.emst
+
+ValueError: negative dimensions are not allowed
+
+
+	 [[{{node PyFuncStateless}}]]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "train.py", line 278, in <module>
+    train(setup_config["NUM_ITERATIONS"])
+  File "train.py", line 274, in train
+    pipeline.request_batch(request)
+  File "/groups/mousebrainmicro/home/pattonw/Code/Packages/gunpowder/gunpowder/nodes/batch_provider.py", line 151, in request_batch
+    batch = self.provide(request.copy())
+  File "/groups/mousebrainmicro/home/pattonw/Code/Packages/gunpowder/gunpowder/batch_provider_tree.py", line 45, in provide
+    return self.output.request_batch(request)
+  File "/groups/mousebrainmicro/home/pattonw/Code/Packages/gunpowder/gunpowder/nodes/batch_provider.py", line 151, in request_batch
+    batch = self.provide(request.copy())
+  File "/groups/mousebrainmicro/home/pattonw/Code/Packages/gunpowder/gunpowder/nodes/batch_filter.py", line 133, in provide
+    batch = self.get_upstream_provider().request_batch(upstream_request)
+  File "/groups/mousebrainmicro/home/pattonw/Code/Packages/gunpowder/gunpowder/nodes/batch_provider.py", line 151, in request_batch
+    batch = self.provide(request.copy())
+  File "/groups/mousebrainmicro/home/pattonw/Code/Packages/gunpowder/gunpowder/nodes/batch_filter.py", line 143, in provide
+    self.process(node_batch, downstream_request)
+  File "/groups/mousebrainmicro/home/pattonw/Code/Packages/gunpowder/gunpowder/nodes/generic_train.py", line 153, in process
+    self.train_step(batch, request)
+  File "/groups/mousebrainmicro/home/pattonw/Code/Packages/gunpowder/gunpowder/tensorflow/nodes/train.py", line 194, in train_step
+    outputs, summaries = self.session.run([to_compute, self.summary], feed_dict=inputs)
+  File "/miniconda/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 950, in run
+    run_metadata_ptr)
+  File "/miniconda/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1173, in _run
+    feed_dict_tensor, options, run_metadata)
+  File "/miniconda/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1350, in _do_run
+    run_metadata)
+  File "/miniconda/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1370, in _do_call
+    raise type(e)(node_def, op, message)
+tensorflow.python.framework.errors_impl.InvalidArgumentError: From /job:local/replica:0/task:0:
+ValueError: negative dimensions are not allowed
+Traceback (most recent call last):
+
+  File "/miniconda/lib/python3.6/site-packages/tensorflow/python/ops/script_ops.py", line 209, in __call__
+    ret = func(*args)
+
+  File "/src/funlib/funlib/learn/tensorflow/losses/um_loss.py", line 13, in get_emst
+    emst = euclidean_mst(embedding.astype(np.float64))
+
+  File "funlib/learn/tensorflow/losses/impl/wrappers.pyx", line 37, in funlib.learn.tensorflow.losses.impl.wrappers.emst
+
+ValueError: negative dimensions are not allowed
+
+
+	 [[node PyFuncStateless (defined at /src/funlib/funlib/learn/tensorflow/losses/um_loss.py:29) ]]
+
+Errors may have originated from an input operation.
+Input Source operations connected to node PyFuncStateless:
+ boolean_mask/GatherV2 (defined at /src/funlib/funlib/learn/tensorflow/losses/um_loss.py:249)
+
+Original stack trace for 'PyFuncStateless':
+  File "train.py", line 278, in <module>
+    train(setup_config["NUM_ITERATIONS"])
+  File "train.py", line 272, in train
+    with gp.build(pipeline):
+  File "/groups/mousebrainmicro/home/pattonw/Code/Packages/gunpowder/gunpowder/build.py", line 12, in __enter__
+    self.batch_provider.setup()
+  File "/groups/mousebrainmicro/home/pattonw/Code/Packages/gunpowder/gunpowder/batch_provider_tree.py", line 17, in setup
+    self.__rec_setup(self.output)
+  File "/groups/mousebrainmicro/home/pattonw/Code/Packages/gunpowder/gunpowder/batch_provider_tree.py", line 70, in __rec_setup
+    self.__rec_setup(upstream_provider)
+  File "/groups/mousebrainmicro/home/pattonw/Code/Packages/gunpowder/gunpowder/batch_provider_tree.py", line 71, in __rec_setup
+    provider.setup()
+  File "/groups/mousebrainmicro/home/pattonw/Code/Packages/gunpowder/gunpowder/nodes/generic_train.py", line 116, in setup
+    self.start()
+  File "/groups/mousebrainmicro/home/pattonw/Code/Packages/gunpowder/gunpowder/tensorflow/nodes/train.py", line 163, in start
+    self.__read_meta_graph()
+  File "/groups/mousebrainmicro/home/pattonw/Code/Packages/gunpowder/gunpowder/tensorflow/nodes/train.py", line 264, in __read_meta_graph
+    loss, optimizer = self.optimizer_func(self.graph)
+  File "train.py", line 139, in add_loss
+    alpha=ALPHA,
+  File "/src/funlib/funlib/learn/tensorflow/losses/um_loss.py", line 254, in ultrametric_loss_op
+    emst = get_emst_op(embedding)
+  File "/src/funlib/funlib/learn/tensorflow/losses/um_loss.py", line 29, in get_emst_op
+    stateful=False)[0]
+  File "/miniconda/lib/python3.6/site-packages/tensorflow/python/util/deprecation.py", line 324, in new_func
+    return func(*args, **kwargs)
+  File "/miniconda/lib/python3.6/site-packages/tensorflow/python/ops/script_ops.py", line 480, in py_func
+    return py_func_common(func, inp, Tout, stateful, name=name)
+  File "/miniconda/lib/python3.6/site-packages/tensorflow/python/ops/script_ops.py", line 462, in py_func_common
+    func=func, inp=inp, Tout=Tout, stateful=stateful, eager=False, name=name)
+  File "/miniconda/lib/python3.6/site-packages/tensorflow/python/ops/script_ops.py", line 288, in _internal_py_func
+    input=inp, token=token, Tout=Tout, name=name)
+  File "/miniconda/lib/python3.6/site-packages/tensorflow/python/ops/gen_script_ops.py", line 238, in py_func_stateless
+    "PyFuncStateless", input=input, token=token, Tout=Tout, name=name)
+  File "/miniconda/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py", line 788, in _apply_op_helper
+    op_def=op_def)
+  File "/miniconda/lib/python3.6/site-packages/tensorflow/python/util/deprecation.py", line 507, in new_func
+    return func(*args, **kwargs)
+  File "/miniconda/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 3616, in create_op
+    op_def=op_def)
+  File "/miniconda/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 2005, in __init__
+    self._traceback = tf_stack.extract_stack()
+
+/usr/bin/run_singularity -s pattonw/neurolight:v0.1 -w /groups/mousebrainmicro/home/pattonw/Code/Scripts/neurolight_experiments/synthetic/light_like/2d/setup09 python train.py
+Scheduling job on 10 CPUs, 1 GPUs, 25600 MB in /groups/mousebrainmicro/home/pattonw/Code/Scripts/neurolight_experiments/synthetic/light_like/2d/setup09, using singularity image pattonw/neurolight:v0.1
+bsub -I -J (pattonw/neurolight:v0.1|22126) -n 10 -gpu num=1:mps=no -Rrusage[mem=25600] -q slowpoke  /usr/bin/run_singularity -s pattonw/neurolight:v0.1 -w /groups/mousebrainmicro/home/pattonw/Code/Scripts/neurolight_experiments/synthetic/light_like/2d/setup09 python train.py
+Job <64024080> is submitted to queue <slowpoke>.
+<<Waiting for dispatch ...>>
+<<Starting on c04u12>>
+run_singularity: Running singularity as user:group 61575:1097
+2019-09-05 16:21:40.482701: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2019-09-05 16:21:40.570627: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2199905000 Hz
+2019-09-05 16:21:40.574396: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x55cba6c183c0 executing computations on platform Host. Devices:
+2019-09-05 16:21:40.574458: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): <undefined>, <undefined>
+2019-09-05 16:21:40.591917: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcuda.so.1
+2019-09-05 16:21:40.650571: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1640] Found device 0 with properties: 
+name: GeForce GTX TITAN X major: 5 minor: 2 memoryClockRate(GHz): 1.076
+pciBusID: 0000:08:00.0
+2019-09-05 16:21:40.655463: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcudart.so.10.1
+2019-09-05 16:21:40.713679: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcublas.so.10
+2019-09-05 16:21:40.742732: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcufft.so.10
+2019-09-05 16:21:40.762826: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcurand.so.10
+2019-09-05 16:21:40.831976: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcusolver.so.10
+2019-09-05 16:21:40.850241: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcusparse.so.10
+2019-09-05 16:21:40.962646: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcudnn.so.7
+2019-09-05 16:21:40.967384: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1763] Adding visible gpu devices: 0
+2019-09-05 16:21:40.968945: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcudart.so.10.1
+2019-09-05 16:21:41.083672: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1181] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-09-05 16:21:41.083756: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1187]      0 
+2019-09-05 16:21:41.083782: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1200] 0:   N 
+2019-09-05 16:21:41.094106: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1326] Created TensorFlow device (/job:local/replica:0/task:0/device:GPU:0 with 11498 MB memory) -> physical GPU (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:08:00.0, compute capability: 5.2)
+2019-09-05 16:21:41.099981: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x55cbaad1b0b0 executing computations on platform CUDA. Devices:
+2019-09-05 16:21:41.100053: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): GeForce GTX TITAN X, Compute Capability 5.2
+E0905 16:21:41.124270287   78475 socket_utils_common_posix.cc:198] check for SO_REUSEPORT: {"created":"@1567714901.124242900","description":"SO_REUSEPORT unavailable on compiling system","file":"external/grpc/src/core/lib/iomgr/socket_utils_common_posix.cc","file_line":166}
+2019-09-05 16:21:41.129084: I tensorflow/core/distributed_runtime/rpc/grpc_channel.cc:250] Initialize GrpcChannelCache for job local -> {0 -> localhost:37769}
+2019-09-05 16:21:41.135265: I tensorflow/core/distributed_runtime/rpc/grpc_server_lib.cc:365] Started server with target: grpc://localhost:37769
+2019-09-05 16:21:41.145595: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1640] Found device 0 with properties: 
+name: GeForce GTX TITAN X major: 5 minor: 2 memoryClockRate(GHz): 1.076
+pciBusID: 0000:08:00.0
+2019-09-05 16:21:41.145722: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcudart.so.10.1
+2019-09-05 16:21:41.145766: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcublas.so.10
+2019-09-05 16:21:41.145804: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcufft.so.10
+2019-09-05 16:21:41.145838: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcurand.so.10
+2019-09-05 16:21:41.145872: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcusolver.so.10
+2019-09-05 16:21:41.145906: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcusparse.so.10
+2019-09-05 16:21:41.145941: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcudnn.so.7
+2019-09-05 16:21:41.151397: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1763] Adding visible gpu devices: 0
+Traceback (most recent call last):
+  File "/groups/mousebrainmicro/home/pattonw/Code/Packages/gunpowder/gunpowder/build.py", line 12, in __enter__
+    self.batch_provider.setup()
+  File "/groups/mousebrainmicro/home/pattonw/Code/Packages/gunpowder/gunpowder/batch_provider_tree.py", line 17, in setup
+    self.__rec_setup(self.output)
+  File "/groups/mousebrainmicro/home/pattonw/Code/Packages/gunpowder/gunpowder/batch_provider_tree.py", line 70, in __rec_setup
+    self.__rec_setup(upstream_provider)
+  File "/groups/mousebrainmicro/home/pattonw/Code/Packages/gunpowder/gunpowder/batch_provider_tree.py", line 71, in __rec_setup
+    provider.setup()
+  File "/groups/mousebrainmicro/home/pattonw/Code/Packages/gunpowder/gunpowder/nodes/generic_train.py", line 116, in setup
+    self.start()
+  File "/groups/mousebrainmicro/home/pattonw/Code/Packages/gunpowder/gunpowder/tensorflow/nodes/train.py", line 163, in start
+    self.__read_meta_graph()
+  File "/groups/mousebrainmicro/home/pattonw/Code/Packages/gunpowder/gunpowder/tensorflow/nodes/train.py", line 264, in __read_meta_graph
+    loss, optimizer = self.optimizer_func(self.graph)
+  File "train.py", line 129, in add_loss
+    num_points = tf.reduce_sum(maxima)
+  File "/miniconda/lib/python3.6/site-packages/tensorflow/python/util/deprecation.py", line 507, in new_func
+    return func(*args, **kwargs)
+  File "/miniconda/lib/python3.6/site-packages/tensorflow/python/ops/math_ops.py", line 1410, in reduce_sum_v1
+    return reduce_sum(input_tensor, axis, keepdims, name)
+  File "/miniconda/lib/python3.6/site-packages/tensorflow/python/util/dispatch.py", line 180, in wrapper
+    return target(*args, **kwargs)
+  File "/miniconda/lib/python3.6/site-packages/tensorflow/python/ops/math_ops.py", line 1458, in reduce_sum
+    name=name))
+  File "/miniconda/lib/python3.6/site-packages/tensorflow/python/ops/gen_math_ops.py", line 10935, in _sum
+    name=name)
+  File "/miniconda/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py", line 626, in _apply_op_helper
+    param_name=input_name)
+  File "/miniconda/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py", line 60, in _SatisfiesTypeConstraint
+    ", ".join(dtypes.as_dtype(x).name for x in allowed_list)))
+TypeError: Value passed to parameter 'input' has DataType bool not in list of allowed values: float32, float64, int32, uint8, int16, int8, complex64, int64, qint8, quint8, qint32, bfloat16, uint16, complex128, float16, uint32, uint64
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/groups/mousebrainmicro/home/pattonw/Code/Packages/gunpowder/gunpowder/batch_provider_tree.py", line 79, in __rec_teardown
+    provider.internal_teardown()
+  File "/groups/mousebrainmicro/home/pattonw/Code/Packages/gunpowder/gunpowder/nodes/batch_filter.py", line 87, in internal_teardown
+    self.teardown()
+  File "/groups/mousebrainmicro/home/pattonw/Code/Packages/gunpowder/gunpowder/nodes/generic_train.py", line 129, in teardown
+    self.stop()
+  File "/groups/mousebrainmicro/home/pattonw/Code/Packages/gunpowder/gunpowder/tensorflow/nodes/train.py", line 231, in stop
+    self.summary_saver.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+Traceback (most recent call last):
+  File "train.py", line 284, in <module>
+    train(setup_config["NUM_ITERATIONS"])
+  File "train.py", line 278, in train
+    with gp.build(pipeline):
+  File "/groups/mousebrainmicro/home/pattonw/Code/Packages/gunpowder/gunpowder/build.py", line 12, in __enter__
+    self.batch_provider.setup()
+  File "/groups/mousebrainmicro/home/pattonw/Code/Packages/gunpowder/gunpowder/batch_provider_tree.py", line 17, in setup
+    self.__rec_setup(self.output)
+  File "/groups/mousebrainmicro/home/pattonw/Code/Packages/gunpowder/gunpowder/batch_provider_tree.py", line 70, in __rec_setup
+    self.__rec_setup(upstream_provider)
+  File "/groups/mousebrainmicro/home/pattonw/Code/Packages/gunpowder/gunpowder/batch_provider_tree.py", line 71, in __rec_setup
+    provider.setup()
+  File "/groups/mousebrainmicro/home/pattonw/Code/Packages/gunpowder/gunpowder/nodes/generic_train.py", line 116, in setup
+    self.start()
+  File "/groups/mousebrainmicro/home/pattonw/Code/Packages/gunpowder/gunpowder/tensorflow/nodes/train.py", line 163, in start
+    self.__read_meta_graph()
+  File "/groups/mousebrainmicro/home/pattonw/Code/Packages/gunpowder/gunpowder/tensorflow/nodes/train.py", line 264, in __read_meta_graph
+    loss, optimizer = self.optimizer_func(self.graph)
+  File "train.py", line 129, in add_loss
+    num_points = tf.reduce_sum(maxima)
+  File "/miniconda/lib/python3.6/site-packages/tensorflow/python/util/deprecation.py", line 507, in new_func
+    return func(*args, **kwargs)
+  File "/miniconda/lib/python3.6/site-packages/tensorflow/python/ops/math_ops.py", line 1410, in reduce_sum_v1
+    return reduce_sum(input_tensor, axis, keepdims, name)
+  File "/miniconda/lib/python3.6/site-packages/tensorflow/python/util/dispatch.py", line 180, in wrapper
+    return target(*args, **kwargs)
+  File "/miniconda/lib/python3.6/site-packages/tensorflow/python/ops/math_ops.py", line 1458, in reduce_sum
+    name=name))
+  File "/miniconda/lib/python3.6/site-packages/tensorflow/python/ops/gen_math_ops.py", line 10935, in _sum
+    name=name)
+  File "/miniconda/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py", line 626, in _apply_op_helper
+    param_name=input_name)
+  File "/miniconda/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py", line 60, in _SatisfiesTypeConstraint
+    ", ".join(dtypes.as_dtype(x).name for x in allowed_list)))
+TypeError: Value passed to parameter 'input' has DataType bool not in list of allowed values: float32, float64, int32, uint8, int16, int8, complex64, int64, qint8, quint8, qint32, bfloat16, uint16, complex128, float16, uint32, uint64
