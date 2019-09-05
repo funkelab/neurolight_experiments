@@ -5,8 +5,11 @@ import sys
 import itertools
 import h5py
 import networkx as nx
+import json
 
-ALPHA = 0.5
+setup_config = json.load(open("../default_config.json", "r"))
+setup_config.update(json.load(open("config.json", "r")))
+ALPHA = setup_config["ALPHA"]
 
 neuroglancer.set_server_bind_address("0.0.0.0")
 
