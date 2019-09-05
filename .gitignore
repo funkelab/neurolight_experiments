@@ -3,7 +3,7 @@ snapshots
 .idea
 *.hdf
 *.meta
-*.json
+tensor_names.json
 *checkpoint*
 *snapshot_images*
 *.sw[pmn]

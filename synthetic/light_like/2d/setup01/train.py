@@ -15,33 +15,36 @@ for handler in logging.root.handlers[:]:
 # logging.basicConfig(level=logging.DEBUG, filename="log.txt")
 logging.basicConfig(level=logging.INFO)
 
+setup_config = json.load(open("../default_config.json", "r"))
+setup_config.update(json.load(open("config.json", "r")))
+
 # Network hyperparams
-INPUT_SHAPE = [204, 204]
-OUTPUT_SHAPE = [120, 120]
+INPUT_SHAPE = setup_config["INPUT_SHAPE"]
+OUTPUT_SHAPE = setup_config["OUTPUT_SHAPE"]
 
 # Loss hyperparams
-MAX_FILTER_SIZE = [3, 3]
-MAXIMA_THRESHOLD = None
-COORDINATE_SCALE = 0.01
-ALPHA = 0.1
+MAX_FILTER_SIZE = setup_config["MAX_FILTER_SIZE"]
+MAXIMA_THRESHOLD = setup_config["MAXIMA_THRESHOLD"]
+COORDINATE_SCALE = setup_config["COORDINATE_SCALE"]
+ALPHA = setup_config["ALPHA"]
 
 # Skeleton generation hyperparams
-SKEL_GEN_RADIUS = 10
-THETAS = np.array([0.1, 0.3]) * math.pi
-SPLIT_PS = [0.98, 0.02]
-NOISE_VAR = 0.05
-N_OBJS = 2
+SKEL_GEN_RADIUS = setup_config["SKEL_GEN_RADIUS"]
+THETAS = np.array(setup_config["THETAS"]) * math.pi
+SPLIT_PS = setup_config["SPLIT_PS"]
+NOISE_VAR = setup_config["NOISE_VAR"]
+N_OBJS = setup_config["N_OBJS"]
 
 # Skeleton variation hyperparams
-LABEL_RADII = [2, 3]
-RAW_RADII = [1, 2]
-RAW_INTENSITIES = [0.7, 0.9]
+LABEL_RADII = setup_config["LABEL_RADII"]
+RAW_RADII = setup_config["RAW_RADII"]
+RAW_INTENSITIES = setup_config["RAW_INTENSITIES"]
 
 # Training hyperparams
-CACHE_SIZE = 100
-NUM_WORKERS = 10
-SNAPSHOT_EVERY = 1_000
-CHECKPOINT_EVERY = 1_000
+CACHE_SIZE = setup_config["CACHE_SIZE"]
+NUM_WORKERS = setup_config["NUM_WORKERS"]
+SNAPSHOT_EVERY = setup_config["SNAPSHOT_EVERY"]
+CHECKPOINT_EVERY = setup_config["CHECKPOINT_EVERY"]
 
 
 class PrintDataTypes(gp.BatchFilter):

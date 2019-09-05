@@ -1,0 +1,44 @@
+{
+    "INPUT_SHAPE": [
+        204,
+        204
+    ],
+    "OUTPUT_SHAPE": [
+        120,
+        120
+    ],
+    "MAX_FILTER_SIZE": [
+        3,
+        3
+    ],
+    "MAXIMA_THRESHOLD": null,
+    "COORDINATE_SCALE": 0.01,
+    "ALPHA": 0.1,
+    "SKEL_GEN_RADIUS": 10,
+    "THETAS": [
+        0.1,
+        0.3
+    ],
+    "SPLIT_PS": [
+        0.98,
+        0.02
+    ],
+    "NOISE_VAR": 0.05,
+    "N_OBJS": 2,
+    "LABEL_RADII": [
+        2,
+        3
+    ],
+    "RAW_RADII": [
+        1,
+        2
+    ],
+    "RAW_INTENSITIES": [
+        0.7,
+        0.9
+    ],
+    "CACHE_SIZE": 100,
+    "NUM_WORKERS": 10,
+    "SNAPSHOT_EVERY": 1000,
+    "CHECKPOINT_EVERY": 1000
+}
