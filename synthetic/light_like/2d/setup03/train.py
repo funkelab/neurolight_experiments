@@ -21,9 +21,9 @@ OUTPUT_SHAPE = [120, 120]
 
 # Loss hyperparams
 MAX_FILTER_SIZE = [3, 3]
-MAXIMA_THRESHOLD = None
+MAXIMA_THRESHOLD = 0.5
 COORDINATE_SCALE = 0.01
-ALPHA=0.1
+ALPHA = 0.1
 
 # Skeleton generation hyperparams
 SKEL_GEN_RADIUS = 10

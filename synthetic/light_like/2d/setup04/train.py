@@ -23,19 +23,19 @@ OUTPUT_SHAPE = [120, 120]
 MAX_FILTER_SIZE = [3, 3]
 MAXIMA_THRESHOLD = None
 COORDINATE_SCALE = 0.01
-ALPHA=0.1
+ALPHA = 0.1
 
 # Skeleton generation hyperparams
 SKEL_GEN_RADIUS = 10
 THETAS = np.array([0.1, 0.3]) * math.pi
 SPLIT_PS = [0.98, 0.02]
 NOISE_VAR = 0.05
-N_OBJS = 2
+N_OBJS = 3
 
 # Skeleton variation hyperparams
-LABEL_RADII = [2, 3]
-RAW_RADII = [1, 2]
-RAW_INTENSITIES = [0.7, 0.9]
+LABEL_RADII = [2, 3, 2.7, 2.3]
+RAW_RADII = [1, 2, 1.7, 1.3]
+RAW_INTENSITIES = [0.7, 0.9, 0.7, 0.9]
 
 # Training hyperparams
 CACHE_SIZE = 100

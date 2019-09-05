@@ -12,8 +12,8 @@ if __name__ == "__main__":
     with tf.variable_scope("embedding"):
         embedding_unet = unet(
             raw_batched,
-            num_fmaps=12,
-            fmap_inc_factors=5,
+            num_fmaps=8,
+            fmap_inc_factors=4,
             downsample_factors=[[2, 2], [2, 2], [2, 2]],
             kernel_size_up=[[3], [3], [3]],
             constant_upsample=True,

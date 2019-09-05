@@ -1,4 +1,4 @@
-from funlib.learn.tensorflow.losses.um_loss import ultrametric_loss_op
+from mala.losses import ultrametric_loss_op
 import neurolight as nl
 import gunpowder as gp
 import json
@@ -11,37 +11,22 @@ import math
 
 for handler in logging.root.handlers[:]:
     logging.root.removeHandler(handler)
-    
+
 # logging.basicConfig(level=logging.DEBUG, filename="log.txt")
 logging.basicConfig(level=logging.INFO)
 
-# Network hyperparams
 INPUT_SHAPE = [204, 204]
 OUTPUT_SHAPE = [120, 120]
 
-# Loss hyperparams
-MAX_FILTER_SIZE = [3, 3]
-MAXIMA_THRESHOLD = None
-COORDINATE_SCALE = 0.01
-ALPHA=0.1
-
-# Skeleton generation hyperparams
-SKEL_GEN_RADIUS = 10
-THETAS = np.array([0.1, 0.3]) * math.pi
-SPLIT_PS = [0.98, 0.02]
-NOISE_VAR = 0.05
-N_OBJS = 2
-
-# Skeleton variation hyperparams
 LABEL_RADII = [2, 3]
 RAW_RADII = [1, 2]
 RAW_INTENSITIES = [0.7, 0.9]
+NOISE_VAR = 0.05
 
-# Training hyperparams
-CACHE_SIZE = 100
-NUM_WORKERS = 10
-SNAPSHOT_EVERY = 1_000
-CHECKPOINT_EVERY = 1_000
+SKEL_GEN_RADIUS = 10
+THETAS = np.array([0.15, 0.3]) * math.pi
+SPLIT_PS = [0.98, 0.02]
+N_OBJS = 2
 
 
 class PrintDataTypes(gp.BatchFilter):
@@ -97,7 +82,7 @@ def add_loss(graph):
     gt_labels = graph.get_tensor_by_name(tensor_names["gt_labels"])
 
     # h, w
-    gt_fg = tf.not_equal(gt_labels, 0, name="gt_fg")
+    gt_fg = tf.greater(gt_labels, 0, name="gt_fg")
 
     # h, w
     shape = tuple(fg.get_shape().as_list())
@@ -105,17 +90,14 @@ def add_loss(graph):
     # 1, 1, h, w
     maxima = tf.nn.pool(
         tf.reshape(fg, (1, 1) + shape),
-        MAX_FILTER_SIZE,
+        [10, 10],
         "MAX",
         "SAME",
         strides=[1, 1],
         data_format="NCHW",
     )
     # h, w
-    if MAXIMA_THRESHOLD is not None:
-        maxima = tf.reshape(tf.math.logical_and(tf.greater_equal(fg, MAXIMA_THRESHOLD), tf.equal(fg, maxima)), shape, name="maxima")
-    else:
-        maxima = tf.reshape(tf.equal(fg, maxima), shape, name="maxima")
+    maxima = tf.reshape(tf.equal(fg, maxima), shape, name="maxima")
 
     # 1, k, h, w
     embedding = tf.reshape(embedding, (1,) + tuple(embedding.get_shape().as_list()))
@@ -123,10 +105,10 @@ def add_loss(graph):
     embedding = tf.transpose(embedding, perm=[1, 0, 2, 3])
 
     um_loss, emst, edges_u, edges_v, _ = ultrametric_loss_op(
-        embedding, gt_labels, mask=maxima, coordinate_scale=COORDINATE_SCALE, alpha=ALPHA
+        embedding, gt_labels, mask=maxima, coordinate_scale=0.01
     )
 
-    # print("um_loss: {}".format(um_loss))
+    print("um_loss: {}".format(um_loss))
 
     assert emst.name == emst_name, "{} != {}".format(emst.name, emst_name)
     assert edges_u.name == edges_u_name, "{} != {}".format(edges_u.name, edges_u_name)
@@ -135,12 +117,6 @@ def add_loss(graph):
     fg_loss = tf.losses.mean_squared_error(gt_fg, fg)
 
     loss = um_loss + fg_loss
-
-    tf.summary.scalar('um_loss', um_loss)
-    tf.summary.scalar('fg_loss', fg_loss)
-    tf.summary.scalar('loss', loss)
-
-    summaries = tf.summary.merge_all()
 
     opt = tf.train.AdamOptimizer(
         learning_rate=0.5e-5, beta1=0.95, beta2=0.999, epsilon=1e-8
@@ -156,15 +132,15 @@ def train(n_iterations):
     point_trees = gp.PointsKey("POINT_TREES")
     labels = gp.ArrayKey("LABELS")
     raw = gp.ArrayKey("RAW")
-    gt_fg = gp.ArrayKey("GT_FG")
-    embedding = gp.ArrayKey("EMBEDDING")
-    fg = gp.ArrayKey("FG")
-    maxima = gp.ArrayKey("MAXIMA")
-    gradient_embedding = gp.ArrayKey("GRADIENT_EMBEDDING")
-    gradient_fg = gp.ArrayKey("GRADIENT_FG")
-    emst = gp.ArrayKey("EMST")
-    edges_u = gp.ArrayKey("EDGES_U")
-    edges_v = gp.ArrayKey("EDGES_V")
+    # gt_fg = gp.ArrayKey("GT_FG")
+    # embedding = gp.ArrayKey("EMBEDDING")
+    # fg = gp.ArrayKey("FG")
+    # maxima = gp.ArrayKey("MAXIMA")
+    # gradient_embedding = gp.ArrayKey("GRADIENT_EMBEDDING")
+    # gradient_fg = gp.ArrayKey("GRADIENT_FG")
+    # emst = gp.ArrayKey("EMST")
+    # edges_u = gp.ArrayKey("EDGES_U")
+    # edges_v = gp.ArrayKey("EDGES_V")
 
     request = gp.BatchRequest()
     request.add(raw, INPUT_SHAPE, voxel_size=gp.Coordinate((1, 1)))
@@ -173,17 +149,17 @@ def train(n_iterations):
 
     snapshot_request = gp.BatchRequest()
     snapshot_request.add(raw, INPUT_SHAPE)
-    snapshot_request.add(embedding, OUTPUT_SHAPE, voxel_size=gp.Coordinate((1, 1)))
-    snapshot_request.add(fg, OUTPUT_SHAPE, voxel_size=gp.Coordinate((1, 1)))
-    snapshot_request.add(gt_fg, OUTPUT_SHAPE, voxel_size=gp.Coordinate((1, 1)))
-    snapshot_request.add(maxima, OUTPUT_SHAPE, voxel_size=gp.Coordinate((1, 1)))
-    snapshot_request.add(
-        gradient_embedding, OUTPUT_SHAPE, voxel_size=gp.Coordinate((1, 1))
-    )
-    snapshot_request.add(gradient_fg, OUTPUT_SHAPE, voxel_size=gp.Coordinate((1, 1)))
-    snapshot_request[emst] = gp.ArraySpec()
-    snapshot_request[edges_u] = gp.ArraySpec()
-    snapshot_request[edges_v] = gp.ArraySpec()
+    # snapshot_request.add(embedding, OUTPUT_SHAPE, voxel_size=gp.Coordinate((1, 1)))
+    # snapshot_request.add(fg, OUTPUT_SHAPE, voxel_size=gp.Coordinate((1, 1)))
+    # snapshot_request.add(gt_fg, OUTPUT_SHAPE, voxel_size=gp.Coordinate((1, 1)))
+    # snapshot_request.add(maxima, OUTPUT_SHAPE, voxel_size=gp.Coordinate((1, 1)))
+    # snapshot_request.add(
+    #     gradient_embedding, OUTPUT_SHAPE, voxel_size=gp.Coordinate((1, 1))
+    # )
+    # snapshot_request.add(gradient_fg, OUTPUT_SHAPE, voxel_size=gp.Coordinate((1, 1)))
+    # snapshot_request[emst] = gp.ArraySpec()
+    # snapshot_request[edges_u] = gp.ArraySpec()
+    # snapshot_request[edges_v] = gp.ArraySpec()
 
     pipeline = (
         nl.SyntheticLightLike(
@@ -210,49 +186,47 @@ def train(n_iterations):
         + nl.GrowLabels(raw, radii=RAW_RADII)
         + LabelToFloat32(raw, intensities=RAW_INTENSITIES)
         + gp.NoiseAugment(raw, var=NOISE_VAR)
-        + gp.PreCache(cache_size=CACHE_SIZE, num_workers=NUM_WORKERS)
-        + gp.tensorflow.Train(
-            "train_net",
-            optimizer=add_loss,
-            loss=None,
-            inputs={tensor_names["raw"]: raw, tensor_names["gt_labels"]: labels},
-            outputs={
-                tensor_names["embedding"]: embedding,
-                tensor_names["fg"]: fg,
-                "maxima:0": maxima,
-                "gt_fg:0": gt_fg,
-                emst_name: emst,
-                edges_u_name: edges_u,
-                edges_v_name: edges_v,
-            },
-            gradients={
-                tensor_names["embedding"]: gradient_embedding,
-                tensor_names["fg"]: gradient_fg,
-            },
-            save_every=CHECKPOINT_EVERY,
-            summary="Merge/MergeSummary:0",
-        )
+        # + gp.PreCache(cache_size=40, num_workers=10)
+        # + gp.tensorflow.Train(
+        #     "train_net",
+        #     optimizer=add_loss,
+        #     loss=None,
+        #     inputs={tensor_names["raw"]: raw, tensor_names["gt_labels"]: labels},
+        #     outputs={
+        #         tensor_names["embedding"]: embedding,
+        #         tensor_names["fg"]: fg,
+        #         "maxima:0": maxima,
+        #         "gt_fg:0": gt_fg,
+        #         emst_name: emst,
+        #         edges_u_name: edges_u,
+        #         edges_v_name: edges_v,
+        #     },
+        #     gradients={
+        #         tensor_names["embedding"]: gradient_embedding,
+        #         tensor_names["fg"]: gradient_fg,
+        #     },
+        # )
         + gp.Snapshot(
             output_filename="{iteration}.hdf",
             dataset_names={
                 raw: "volumes/raw",
                 labels: "volumes/labels",
                 point_trees: "point_trees",
-                embedding: "volumes/embedding",
-                fg: "volumes/fg",
-                maxima: "volumes/maxima",
-                gt_fg: "volumes/gt_fg",
-                gradient_embedding: "volumes/gradient_embedding",
-                gradient_fg: "volumes/gradient_fg",
-                emst: "emst",
-                edges_u: "edges_u",
-                edges_v: "edges_v",
+                # embedding: "volumes/embedding",
+                # fg: "volumes/fg",
+                # maxima: "volumes/maxima",
+                # gt_fg: "volumes/gt_fg",
+                # gradient_embedding: "volumes/gradient_embedding",
+                # gradient_fg: "volumes/gradient_fg",
+                # emst: "emst",
+                # edges_u: "edges_u",
+                # edges_v: "edges_v",
             },
-            dataset_dtypes={maxima: np.float32, gt_fg: np.float32},
-            every=SNAPSHOT_EVERY,
+            # dataset_dtypes={maxima: np.float32, gt_fg: np.float32},
+            every=100,
             additional_request=snapshot_request,
         )
-        # + gp.PrintProfilingStats(every=100)
+        + gp.PrintProfilingStats(every=10)
     )
 
     with gp.build(pipeline):
@@ -261,4 +235,4 @@ def train(n_iterations):
 
 
 if __name__ == "__main__":
-    train(30_000)
+    train(10)
