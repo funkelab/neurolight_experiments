@@ -6,6 +6,7 @@ import itertools
 import h5py
 import networkx as nx
 import json
+import random
 
 setup_config = json.load(open("../default_config.json", "r"))
 setup_config.update(json.load(open("config.json", "r")))
@@ -60,7 +61,7 @@ def add(s, a, name, shader=None, visible=True):
     )
 
 
-def build_trees(emst, edges_u, edges_v):
+def build_trees_from_mst(emst, edges_u, edges_v):
     trees = nx.DiGraph()
     for edge, u, v in zip(
         emst.to_ndarray(), edges_u.to_ndarray(), edges_v.to_ndarray()
@@ -81,7 +82,40 @@ def build_trees(emst, edges_u, edges_v):
     return trees
 
 
-def add_trees(trees, node_id):
+def build_trees_from_swc(swc_rows):
+    trees = nx.DiGraph()
+    pb = []
+    pbs = {
+        int(node_id): node_location
+        for node_id, node_location in zip(
+            tuple(swc_rows[:, 0]), tuple(swc_rows[:, 1:-1])
+        )
+    }
+    for row in swc_rows:
+        u = int(row[0])
+        v = int(row[-1])
+
+        if u == -1 or v == -1:
+            continue
+
+        pos_u = daisy.Coordinate(np.array((0,) + tuple(pbs[u])) + 0.5)
+        pos_v = daisy.Coordinate(np.array((0,) + tuple(pbs[v])) + 0.5)
+
+        if u not in trees.nodes:
+            trees.add_node(u, pos=pos_u)
+        else:
+            assert trees.nodes[u]["pos"] == pos_u
+        if v not in trees.nodes:
+            trees.add_node(v, pos=pos_v)
+        else:
+            assert trees.nodes[v]["pos"] == pos_v
+
+        trees.add_edge(u, v, d=np.linalg.norm(pos_u - pos_v))
+    return trees
+    s.layers.append(name="trees", layer=neuroglancer.AnnotationLayer(annotations=pb))
+
+
+def add_trees(trees, node_id, name, visible=False):
     for i, cc_nodes in enumerate(nx.weakly_connected_components(trees)):
         cc = trees.subgraph(cc_nodes)
         mst = []
@@ -95,7 +129,12 @@ def add_trees(trees, node_id):
             )
 
         s.layers.append(
-            name="mst_{}".format(i), layer=neuroglancer.AnnotationLayer(annotations=mst)
+            name="{}_{}".format(name, i),
+            layer=neuroglancer.AnnotationLayer(annotations=mst),
+            annotationColor="#{:02X}{:02X}{:02X}".format(
+                random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)
+            ),
+            visible=visible
         )
 
 
@@ -117,29 +156,10 @@ with viewer.txn() as s:
 
     node_id = itertools.count(start=1)
 
-    mst_trees = build_trees(emst, edges_u, edges_v)
-    add_trees(mst_trees, node_id)
-
-    pb = []
-    pbs = {
-        int(node_id): node_location
-        for node_id, node_location in zip(tuple(trees[:, 0]), tuple(trees[:, 1:-1]))
-    }
-    for row in trees:
-        u = int(row[0])
-        v = int(row[-1])
-
-        if u == -1 or v == -1:
-            continue
-
-        pos_u = np.array((0,) + tuple(pbs[u])) + 0.5
-        pos_v = np.array((0,) + tuple(pbs[v])) + 0.5
-        pb.append(
-            neuroglancer.LineAnnotation(
-                point_a=pos_u[::-1], point_b=pos_v[::-1], id=next(node_id)
-            )
-        )
-    s.layers.append(name="trees", layer=neuroglancer.AnnotationLayer(annotations=pb))
+    mst_trees = build_trees_from_mst(emst, edges_u, edges_v)
+    swc_trees = build_trees_from_swc(trees)
+    add_trees(mst_trees, node_id, name="MST")
+    add_trees(swc_trees, node_id, name="Tree")
 
 print(viewer)
 input("Hit ENTER to quit!")

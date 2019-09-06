@@ -7,3 +7,7 @@ tensor_names.json
 *checkpoint*
 *snapshot_images*
 *.sw[pmn]
+
+tensorflow_logs
+training.log
+nohup.out
