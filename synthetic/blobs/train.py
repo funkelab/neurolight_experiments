@@ -141,7 +141,7 @@ def add_loss(graph):
         maxima = tf.reshape(tf.equal(fg, local_maxima), shape, name="maxima")
 
     num_points = tf.count_nonzero(maxima)
-    maxima = tf.cond(num_points < 1, lambda: tf.reshape(tf.equal(fg, local_maxima), shape, name="maxima"), lambda: maxima)
+    maxima = tf.cond(num_points < 30, lambda: tf.reshape(tf.equal(fg, local_maxima), shape, name="maxima"), lambda: maxima)
 
     # 1, k, h, w
     embedding = tf.reshape(
