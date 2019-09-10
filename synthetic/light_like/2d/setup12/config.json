@@ -1,5 +1,5 @@
 {
-    "ALPHA": 1,
+    "ALPHA": 0.3,
     "MAXIMA_THRESHOLD": 0.5,
     "SPLIT_PS": [
         0.98,
@@ -20,6 +20,5 @@
         0.7,
         0.5,
         0.9
-    ],
-    "NUM_ITERATIONS": 70000
+    ]
 }
