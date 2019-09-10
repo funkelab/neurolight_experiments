@@ -53,7 +53,8 @@ if __name__ == "__main__":
         np.isclose(np.array(output_shape), np.array(setup_config["OUTPUT_SHAPE"]))
     )
 
-    embedding = tf.reshape(embedding_batched[0], (3,) + output_shape)
+    embedding_reshaped = tf.reshape(embedding_batched[0], (3,) + output_shape)
+    embedding = tf.nn.softmax(embedding_reshaped, axis=0)
     fg = tf.reshape(fg_batched[0], output_shape)
     gt_labels = tf.placeholder(tf.int64, shape=output_shape)
 
