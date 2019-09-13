@@ -46,7 +46,7 @@ if __name__ == "__main__":
         name="embedding",
     )
 
-    embedding_norms = tf.norm(embedding_batched[0], axis=1, keepdims=True)
+    embedding_norms = tf.norm(embedding_batched[0], axis=1, keep_dims=True)
     embedding_scaled = embedding_batched[0] / embedding_norms
 
     fg_batched = conv_pass(
