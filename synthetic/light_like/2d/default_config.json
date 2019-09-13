@@ -9,39 +9,47 @@
     ],
     "NUM_FMAPS": 12,
     "FMAP_INC_FACTORS": 5,
+    "EMBEDDING_DIMS": 3,
+    "VOXEL_SIZE": [
+        1,
+        1
+    ],
     "MAX_FILTER_SIZE": [
         3,
         3
     ],
-    "MAXIMA_THRESHOLD": null,
-    "COORDINATE_SCALE": 0.01,
-    "ALPHA": 0.1,
+    "MAXIMA_THRESHOLD": 0.1,
+    "COORDINATE_SCALE": 0.1,
+    "ALPHA": 1.4142,
     "SKEL_GEN_RADIUS": 10,
     "THETAS": [
         0.1,
         0.3
     ],
     "SPLIT_PS": [
-        1,
-        0
+        0.98,
+        0.02
     ],
     "NOISE_VAR": 0.05,
-    "N_OBJS": 2,
+    "N_OBJS": 3,
     "LABEL_RADII": [
         2,
-        3
+        3,
+        2.5
     ],
     "RAW_RADII": [
         1,
-        2
+        2,
+        1.5
     ],
     "RAW_INTENSITIES": [
         0.7,
+        0.9,
         0.9
     ],
     "CACHE_SIZE": 100,
     "NUM_WORKERS": 10,
-    "SNAPSHOT_EVERY": 1000,
+    "SNAPSHOT_EVERY": 5000,
     "CHECKPOINT_EVERY": 10000,
     "NUM_ITERATIONS": 100000
 }

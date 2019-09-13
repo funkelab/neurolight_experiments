@@ -7,16 +7,19 @@ import h5py
 import networkx as nx
 import json
 import random
+import sys
 
-setup_config = json.load(open("../default_config.json", "r"))
-setup_config.update(json.load(open("config.json", "r")))
+setup = sys.argv[1]
+
+setup_config = json.load(open("default_config.json", "r"))
+setup_config.update(json.load(open("{}/config.json".format(setup), "r")))
 ALPHA = setup_config["ALPHA"]
 ALPHA = 0.45
 COORDINATE_SCALE = setup_config["COORDINATE_SCALE"]
 
 neuroglancer.set_server_bind_address("0.0.0.0")
 
-f = sys.argv[1]
+f = sys.argv[2]
 raw = daisy.open_ds(f, "volumes/raw")
 labels = daisy.open_ds(f, "volumes/labels")
 
@@ -35,7 +38,6 @@ edges_v = daisy.open_ds(f, "edges_v")
 
 
 trees = h5py.File(f)["point_trees"]
-
 
 
 def add(s, a, name, shader=None, visible=True):
@@ -71,8 +73,12 @@ def build_trees_from_mst(emst, edges_u, edges_v):
     ):
         if edge[2] > ALPHA:
             continue
-        pos_u = daisy.Coordinate(u[-3:] / COORDINATE_SCALE) + ((0,) + labels.roi.get_offset())
-        pos_v = daisy.Coordinate(v[-3:] / COORDINATE_SCALE) + ((0,) + labels.roi.get_offset())
+        pos_u = daisy.Coordinate(u[-3:] / COORDINATE_SCALE) + (
+            (0,) + labels.roi.get_offset()
+        )
+        pos_v = daisy.Coordinate(v[-3:] / COORDINATE_SCALE) + (
+            (0,) + labels.roi.get_offset()
+        )
         if edge[0] not in trees.nodes:
             trees.add_node(edge[0], pos=pos_u)
         else:
@@ -137,10 +143,10 @@ def add_trees(trees, node_id, name, visible=False):
             annotationColor="#{:02X}{:02X}{:02X}".format(
                 random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)
             ),
-            visible=visible
+            visible=visible,
         )
 
-        
+
 embedding.materialize()
 embedding.data = (embedding.data + 1) / 2
 
