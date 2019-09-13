@@ -39,12 +39,15 @@ if __name__ == "__main__":
         activation=None,
         name="embedding",
     )
+    
+    embedding_norms = tf.norm(embedding_batched[0], axis=1, keepdims=True)
+    embedding_scaled = embedding_batched[0] / embedding_norms
 
     fg_batched = conv_pass(
         fg_unet[0], kernel_sizes=[1], num_fmaps=1, activation="sigmoid", name="fg"
     )
 
-    output_shape_batched = embedding_batched[0].get_shape().as_list()
+    output_shape_batched = embedding_scaled.get_shape().as_list()
     output_shape = tuple(
         output_shape_batched[2:]
     )  # strip the batch and channel dimension
@@ -53,7 +56,7 @@ if __name__ == "__main__":
         np.isclose(np.array(output_shape), np.array(setup_config["OUTPUT_SHAPE"]))
     )
 
-    embedding = tf.reshape(embedding_batched[0], (3,) + output_shape)
+    embedding = tf.reshape(embedding_scaled, (3,) + output_shape)
     fg = tf.reshape(fg_batched[0], output_shape)
     gt_labels = tf.placeholder(tf.int64, shape=output_shape)
 

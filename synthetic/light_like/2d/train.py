@@ -9,6 +9,8 @@ import logging
 from typing import List
 import math
 
+from nms import max_detection
+
 for handler in logging.root.handlers[:]:
     logging.root.removeHandler(handler)
 
@@ -86,6 +88,11 @@ with open("tensor_names.json", "r") as f:
 emst_name = "PyFuncStateless:0"
 edges_u_name = "GatherV2:0"
 edges_v_name = "GatherV2_1:0"
+ratio_pos_name = "PyFuncStateless_1:1"
+ratio_neg_name = "PyFuncStateless_1:2"
+dist_name = "Sqrt:0"
+num_pos_pairs_name = "PyFuncStateless_1:3"
+num_neg_pairs_name = "PyFuncStateless_1:4"
 
 
 def add_loss(graph):
@@ -103,31 +110,14 @@ def add_loss(graph):
     gt_fg = tf.not_equal(gt_labels, 0, name="gt_fg")
 
     # h, w
-    shape = tuple(fg.get_shape().as_list())
-    
-    # 1, 1, h, w
-    local_maxima = tf.nn.pool(
-        tf.reshape(fg, (1, 1) + shape),
-        MAX_FILTER_SIZE,
-        "MAX",
-        "SAME",
-        strides=[1, 1],
-        data_format="NCHW",
-    )
-    # h, w
-    if MAXIMA_THRESHOLD is not None:
-        maxima = tf.reshape(
-            tf.math.logical_and(
-                tf.greater_equal(fg, MAXIMA_THRESHOLD), tf.equal(fg, local_maxima)
-            ),
-            shape,
-            name="maxima",
-        )
-    else:
-        maxima = tf.reshape(tf.equal(fg, local_maxima), shape, name="maxima")
 
-    num_points = tf.count_nonzero(maxima)
-    maxima = tf.cond(num_points < 30, lambda: tf.reshape(tf.equal(fg, local_maxima), shape, name="maxima"), lambda: maxima)
+    _, maxima = max_detection(
+        tf.reshape(fg, (1, *OUTPUT_SHAPE, 1)),
+        window_size=(1, *MAX_FILTER_SIZE),
+        threshold=MAXIMA_THRESHOLD,
+    )
+
+    print(maxima.name)
 
     # 1, k, h, w
     embedding = tf.reshape(embedding, (1,) + tuple(embedding.get_shape().as_list()))
@@ -140,9 +130,27 @@ def add_loss(graph):
         mask=maxima,
         coordinate_scale=COORDINATE_SCALE,
         alpha=ALPHA,
+        pretrain=True,
     )
 
-    # print("um_loss: {}".format(um_loss))
+    ratio_pos = graph.get_tensor_by_name("PyFuncStateless_1:1")
+    ratio_neg = graph.get_tensor_by_name("PyFuncStateless_1:2")
+    dist = graph.get_tensor_by_name("Sqrt:0")
+    dist = tf.Print(dist, [dist.name], "dist: ")
+
+    # Calculate a score:
+
+    # false positives are just ratio_neg
+    # false negatives are 1 - ratio_pos
+
+    false_pos = tf.math.cumsum(ratio_neg)
+    false_neg = 1 - tf.math.cumsum(ratio_pos)
+    scores = false_pos + false_neg
+    best_score = tf.math.reduce_min(scores)
+    best_score_index = tf.math.argmin(scores)
+    best_alpha = tf.gather(dist, best_score_index)
+    best_score = tf.Print(best_score, [best_score], "best_score: ")
+    best_alpha = tf.Print(best_alpha, [best_alpha], "best_alpha: ")
 
     assert emst.name == emst_name, "{} != {}".format(emst.name, emst_name)
     assert edges_u.name == edges_u_name, "{} != {}".format(edges_u.name, edges_u_name)
@@ -155,6 +163,8 @@ def add_loss(graph):
     tf.summary.scalar("um_loss", um_loss)
     tf.summary.scalar("fg_loss", fg_loss)
     tf.summary.scalar("loss", loss)
+    tf.summary.scalar("best_alpha", best_alpha)
+    tf.summary.scalar("best_score", best_score)
 
     summaries = tf.summary.merge_all()
 
@@ -178,9 +188,16 @@ def train(n_iterations):
     maxima = gp.ArrayKey("MAXIMA")
     gradient_embedding = gp.ArrayKey("GRADIENT_EMBEDDING")
     gradient_fg = gp.ArrayKey("GRADIENT_FG")
+
+    # tensorflow tensors
     emst = gp.ArrayKey("EMST")
     edges_u = gp.ArrayKey("EDGES_U")
     edges_v = gp.ArrayKey("EDGES_V")
+    ratio_pos = gp.ArrayKey("RATIO_POS")
+    ratio_neg = gp.ArrayKey("RATIO_NEG")
+    dist = gp.ArrayKey("DIST")
+    num_pos_pairs = gp.ArrayKey("NUM_POS")
+    num_neg_pairs = gp.ArrayKey("NUM_NEG")
 
     request = gp.BatchRequest()
     request.add(raw, INPUT_SHAPE, voxel_size=gp.Coordinate((1, 1)))
@@ -200,6 +217,11 @@ def train(n_iterations):
     snapshot_request[emst] = gp.ArraySpec()
     snapshot_request[edges_u] = gp.ArraySpec()
     snapshot_request[edges_v] = gp.ArraySpec()
+    snapshot_request[ratio_pos] = gp.ArraySpec()
+    snapshot_request[ratio_neg] = gp.ArraySpec()
+    snapshot_request[dist] = gp.ArraySpec()
+    snapshot_request[num_pos_pairs] = gp.ArraySpec()
+    snapshot_request[num_neg_pairs] = gp.ArraySpec()
 
     pipeline = (
         nl.SyntheticLightLike(
@@ -235,11 +257,16 @@ def train(n_iterations):
             outputs={
                 tensor_names["embedding"]: embedding,
                 tensor_names["fg"]: fg,
-                "maxima:0": maxima,
+                "strided_slice_1:0": maxima,
                 "gt_fg:0": gt_fg,
                 emst_name: emst,
                 edges_u_name: edges_u,
                 edges_v_name: edges_v,
+                ratio_pos_name: ratio_pos,
+                ratio_neg_name: ratio_neg,
+                dist_name: dist,
+                num_pos_pairs_name: num_pos_pairs,
+                num_neg_pairs_name: num_neg_pairs,
             },
             gradients={
                 tensor_names["embedding"]: gradient_embedding,
@@ -264,6 +291,11 @@ def train(n_iterations):
                 emst: "emst",
                 edges_u: "edges_u",
                 edges_v: "edges_v",
+                ratio_pos: "ratio_pos",
+                ratio_neg: "ratio_neg",
+                dist: "dist",
+                num_pos_pairs: "num_pos_pairs",
+                num_neg_pairs: "num_neg_pairs",
             },
             dataset_dtypes={maxima: np.float32, gt_fg: np.float32},
             every=SNAPSHOT_EVERY,

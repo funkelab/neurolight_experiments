@@ -1,8 +1,0 @@
-{
-    "ALPHA": 0.3,
-    "SPLIT_PS": [
-        0.98,
-        0.02
-    ],
-    "MAXIMA_THRESHOLD": 0.5
-}
