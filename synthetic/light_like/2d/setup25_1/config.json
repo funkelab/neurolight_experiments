@@ -1,0 +1,7 @@
+{
+    "NUM_FMAPS": 32,
+    "COORDINATE_SCALE": 0.01,
+    "ALPHA": 1,
+    "EMBEDDING_DIMS": 3,
+    "MAX_FILTER_SIZE": [5,5]
+}
