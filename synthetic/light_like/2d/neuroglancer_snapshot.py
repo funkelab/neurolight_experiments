@@ -10,16 +10,17 @@ import random
 import sys
 
 setup = sys.argv[1]
+f = sys.argv[2]
+s = float(sys.argv[3]) if len(sys.argv) > 3 else 1
 
 setup_config = json.load(open("default_config.json", "r"))
 setup_config.update(json.load(open("{}/config.json".format(setup), "r")))
-ALPHA = setup_config["ALPHA"]
-ALPHA = 0.45
+ALPHA = setup_config["ALPHA"] * s
+
 COORDINATE_SCALE = setup_config["COORDINATE_SCALE"]
 
 neuroglancer.set_server_bind_address("0.0.0.0")
 
-f = sys.argv[2]
 raw = daisy.open_ds(f, "volumes/raw")
 labels = daisy.open_ds(f, "volumes/labels")
 
@@ -73,11 +74,11 @@ def build_trees_from_mst(emst, edges_u, edges_v):
     ):
         if edge[2] > ALPHA:
             continue
-        pos_u = daisy.Coordinate(u[-3:] / COORDINATE_SCALE) + (
-            (0,) + labels.roi.get_offset()
+        pos_u = daisy.Coordinate(
+            (u[-3:] / COORDINATE_SCALE) + ((0,) + labels.roi.get_offset())
         )
-        pos_v = daisy.Coordinate(v[-3:] / COORDINATE_SCALE) + (
-            (0,) + labels.roi.get_offset()
+        pos_v = daisy.Coordinate(
+            (v[-3:] / COORDINATE_SCALE) + ((0,) + labels.roi.get_offset())
         )
         if edge[0] not in trees.nodes:
             trees.add_node(edge[0], pos=pos_u)
@@ -107,8 +108,8 @@ def build_trees_from_swc(swc_rows):
         if u == -1 or v == -1:
             continue
 
-        pos_u = daisy.Coordinate(np.array((0,) + tuple(pbs[u])) + 0.5)
-        pos_v = daisy.Coordinate(np.array((0,) + tuple(pbs[v])) + 0.5)
+        pos_u = daisy.Coordinate((0,) + tuple(pbs[u]))
+        pos_v = daisy.Coordinate((0,) + tuple(pbs[v]))
 
         if u not in trees.nodes:
             trees.add_node(u, pos=pos_u)
@@ -129,8 +130,8 @@ def add_trees(trees, node_id, name, visible=False):
         cc = trees.subgraph(cc_nodes)
         mst = []
         for u, v in cc.edges():
-            pos_u = cc.nodes[u]["pos"]
-            pos_v = cc.nodes[v]["pos"]
+            pos_u = np.array(cc.nodes[u]["pos"]) + 0.5
+            pos_v = np.array(cc.nodes[v]["pos"]) + 0.5
             mst.append(
                 neuroglancer.LineAnnotation(
                     point_a=pos_u[::-1], point_b=pos_v[::-1], id=next(node_id)
