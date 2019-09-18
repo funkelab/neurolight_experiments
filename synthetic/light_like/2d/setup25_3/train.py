@@ -105,7 +105,11 @@ def add_loss(graph):
     gt_labels = graph.get_tensor_by_name(tensor_names["gt_labels"])
 
     # h, w
-    gt_fg = tf.greater(gt_labels, 0, name="gt_fg")
+    gt_fg = tf.not_equal(gt_labels, 0, name="gt_fg")
+
+    # set intersections to 0 so that they are handled the same as background
+    non_intersections = tf.not_equal(gt_labels, -1)
+    gt_labels = tf.multiply(gt_labels, tf.cast(non_intersections, gt_labels.dtype))
 
     # h, w
 
