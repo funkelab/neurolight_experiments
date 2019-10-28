@@ -15,11 +15,11 @@
         1
     ],
     "MAX_FILTER_SIZE": [
-        3,
-        3
+        11,
+        11
     ],
     "MAXIMA_THRESHOLD": 0.1,
-    "COORDINATE_SCALE": 0.1,
+    "COORDINATE_SCALE": 0.01,
     "ALPHA": 1.4142,
     "SKEL_GEN_RADIUS": 10,
     "THETAS": [
@@ -51,5 +51,7 @@
     "NUM_WORKERS": 10,
     "SNAPSHOT_EVERY": 5000,
     "CHECKPOINT_EVERY": 10000,
-    "NUM_ITERATIONS": 100001
+    "NUM_ITERATIONS": 100001,
+    "CONSTRAINED": true,
+    "HIDE_SIGNAL": false
 }

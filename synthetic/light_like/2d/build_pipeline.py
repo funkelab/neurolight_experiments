@@ -1,56 +1,10 @@
-from funlib.learn.tensorflow.losses.um_loss import ultrametric_loss_op
 import neurolight as nl
+from neurolight.tensorflow.add_loss import create_custom_loss
 import gunpowder as gp
-import json
 import numpy as np
-import tensorflow as tf
-import logging
 
 from typing import List
 import math
-
-for handler in logging.root.handlers[:]:
-    logging.root.removeHandler(handler)
-
-# logging.basicConfig(level=logging.DEBUG, filename="log.txt")
-logging.basicConfig(level=logging.WARNING, filename="training.log")
-
-setup_config = json.load(open("../default_config.json", "r"))
-setup_config.update(json.load(open("config.json", "r")))
-
-# Network hyperparams
-INPUT_SHAPE = setup_config["INPUT_SHAPE"]
-OUTPUT_SHAPE = setup_config["OUTPUT_SHAPE"]
-
-# Loss hyperparams
-MAX_FILTER_SIZE = setup_config["MAX_FILTER_SIZE"]
-MAXIMA_THRESHOLD = setup_config["MAXIMA_THRESHOLD"]
-COORDINATE_SCALE = setup_config["COORDINATE_SCALE"]
-ALPHA = setup_config["ALPHA"]
-
-# Skeleton generation hyperparams
-SKEL_GEN_RADIUS = setup_config["SKEL_GEN_RADIUS"]
-THETAS = np.array(setup_config["THETAS"]) * math.pi
-SPLIT_PS = setup_config["SPLIT_PS"]
-NOISE_VAR = setup_config["NOISE_VAR"]
-N_OBJS = setup_config["N_OBJS"]
-
-# Skeleton variation hyperparams
-LABEL_RADII = setup_config["LABEL_RADII"]
-RAW_RADII = setup_config["RAW_RADII"]
-RAW_INTENSITIES = setup_config["RAW_INTENSITIES"]
-
-# Training hyperparams
-CACHE_SIZE = setup_config["CACHE_SIZE"]
-NUM_WORKERS = setup_config["NUM_WORKERS"]
-SNAPSHOT_EVERY = setup_config["SNAPSHOT_EVERY"]
-CHECKPOINT_EVERY = setup_config["CHECKPOINT_EVERY"]
-
-
-class PrintDataTypes(gp.BatchFilter):
-    def process(self, batch, request):
-        for key, array in batch.arrays.items():
-            print("array %s has dtype %s" % (key, array.data.dtype))
 
 
 class LabelToFloat32(gp.BatchFilter):
@@ -79,102 +33,29 @@ class LabelToFloat32(gp.BatchFilter):
         batch[self.array] = gp.Array(intensity_data, spec)
 
 
-with open("tensor_names.json", "r") as f:
-    tensor_names = json.load(f)
+def train(n_iterations, setup_config, tensor_names, TENSOR_NAMES):
 
+    # Network hyperparams
+    INPUT_SHAPE = setup_config["INPUT_SHAPE"]
+    OUTPUT_SHAPE = setup_config["OUTPUT_SHAPE"]
 
-emst_name = "PyFuncStateless:0"
-edges_u_name = "GatherV2:0"
-edges_v_name = "GatherV2_1:0"
-ratio_pos_name = "PyFuncStateless_1:1"
-ratio_neg_name = "PyFuncStateless_1:2"
-dist_name = "Sqrt:0"
-num_pos_pairs_name = "PyFuncStateless_1:3"
-num_neg_pairs_name = "PyFuncStateless_1:4"
+    # Skeleton generation hyperparams
+    SKEL_GEN_RADIUS = setup_config["SKEL_GEN_RADIUS"]
+    THETAS = np.array(setup_config["THETAS"]) * math.pi
+    SPLIT_PS = setup_config["SPLIT_PS"]
+    NOISE_VAR = setup_config["NOISE_VAR"]
+    N_OBJS = setup_config["N_OBJS"]
 
+    # Skeleton variation hyperparams
+    LABEL_RADII = setup_config["LABEL_RADII"]
+    RAW_RADII = setup_config["RAW_RADII"]
+    RAW_INTENSITIES = setup_config["RAW_INTENSITIES"]
 
-def add_loss(graph):
-
-    # k, h, w
-    embedding = graph.get_tensor_by_name(tensor_names["embedding"])
-
-    # h, w
-    fg = graph.get_tensor_by_name(tensor_names["fg"])
-
-    # h, w
-    gt_labels = graph.get_tensor_by_name(tensor_names["gt_labels"])
-
-    # h, w
-    gt_fg = tf.not_equal(gt_labels, 0, name="gt_fg")
-
-    # set intersections to 0 so that they are handled the same as background
-    non_intersections = tf.not_equal(gt_labels, -1)
-    gt_labels = tf.multiply(gt_labels, tf.cast(non_intersections, gt_labels.dtype))
-
-    # h, w
-
-    _, maxima = max_detection(
-        tf.reshape(fg, (1, *OUTPUT_SHAPE, 1)),
-        window_size=(1, *MAX_FILTER_SIZE),
-        threshold=MAXIMA_THRESHOLD,
-    )
-
-    # 1, k, h, w
-    embedding = tf.reshape(embedding, (1,) + tuple(embedding.get_shape().as_list()))
-    # k, 1, h, w
-    embedding = tf.transpose(embedding, perm=[1, 0, 2, 3])
-
-    um_loss, emst, edges_u, edges_v, _ = ultrametric_loss_op(
-        embedding,
-        gt_labels,
-        mask=maxima,
-        coordinate_scale=COORDINATE_SCALE,
-        alpha=ALPHA,
-        pretrain=True,
-    )
-
-    ratio_pos = graph.get_tensor_by_name("PyFuncStateless_1:1")
-    ratio_neg = graph.get_tensor_by_name("PyFuncStateless_1:2")
-    dist = graph.get_tensor_by_name("Sqrt:0")
-
-    # Calculate a score:
-
-    # false positives are just ratio_neg
-    # false negatives are 1 - ratio_pos
-
-    false_pos = tf.math.cumsum(ratio_neg)
-    false_neg = 1 - tf.math.cumsum(ratio_pos)
-    scores = false_pos + false_neg
-    best_score = tf.math.reduce_min(scores)
-    best_score_index = tf.math.argmin(scores)
-    best_alpha = tf.gather(dist, best_score_index)
-
-    assert emst.name == emst_name, "{} != {}".format(emst.name, emst_name)
-    assert edges_u.name == edges_u_name, "{} != {}".format(edges_u.name, edges_u_name)
-    assert edges_v.name == edges_v_name, "{} != {}".format(edges_v.name, edges_v_name)
-
-    fg_loss = tf.losses.mean_squared_error(gt_fg, fg)
-
-    loss = um_loss + fg_loss
-
-    tf.summary.scalar("um_loss", um_loss)
-    tf.summary.scalar("fg_loss", fg_loss)
-    tf.summary.scalar("loss", loss)
-    tf.summary.scalar("best_alpha", best_alpha)
-    tf.summary.scalar("best_score", best_score)
-
-    summaries = tf.summary.merge_all()
-
-    opt = tf.train.AdamOptimizer(
-        learning_rate=0.5e-5, beta1=0.95, beta2=0.999, epsilon=1e-8
-    )
-
-    optimizer = opt.minimize(loss)
-
-    return (loss, optimizer)
-
-
-def train(n_iterations):
+    # Training hyperparams
+    CACHE_SIZE = setup_config["CACHE_SIZE"]
+    NUM_WORKERS = setup_config["NUM_WORKERS"]
+    SNAPSHOT_EVERY = setup_config["SNAPSHOT_EVERY"]
+    CHECKPOINT_EVERY = setup_config["CHECKPOINT_EVERY"]
 
     point_trees = gp.PointsKey("POINT_TREES")
     labels = gp.ArrayKey("LABELS")
@@ -233,14 +114,23 @@ def train(n_iterations):
         # + gp.ElasticAugment([10, 10], [0.1, 0.1], [0, 2.0 * math.pi], spatial_dims=2)
         + nl.RasterizeSkeleton(
             point_trees,
-            labels,
+            raw,
             gp.ArraySpec(
                 roi=gp.Roi((None,) * 2, (None,) * 2),
                 voxel_size=gp.Coordinate((1, 1)),
                 dtype=np.uint64,
             ),
         )
-        + gp.Copy(labels, raw)
+        + nl.RasterizeSkeleton(
+            point_trees,
+            labels,
+            gp.ArraySpec(
+                roi=gp.Roi((None,) * 2, (None,) * 2),
+                voxel_size=gp.Coordinate((1, 1)),
+                dtype=np.uint64,
+            ),
+            use_component=True,
+        )
         + nl.GrowLabels(labels, radii=LABEL_RADII)
         + nl.GrowLabels(raw, radii=RAW_RADII)
         + LabelToFloat32(raw, intensities=RAW_INTENSITIES)
@@ -248,7 +138,7 @@ def train(n_iterations):
         + gp.PreCache(cache_size=CACHE_SIZE, num_workers=NUM_WORKERS)
         + gp.tensorflow.Train(
             "train_net",
-            optimizer=add_loss,
+            optimizer=create_custom_loss(tensor_names, setup_config),
             loss=None,
             inputs={tensor_names["raw"]: raw, tensor_names["gt_labels"]: labels},
             outputs={
@@ -256,14 +146,14 @@ def train(n_iterations):
                 tensor_names["fg"]: fg,
                 "strided_slice_1:0": maxima,
                 "gt_fg:0": gt_fg,
-                emst_name: emst,
-                edges_u_name: edges_u,
-                edges_v_name: edges_v,
-                ratio_pos_name: ratio_pos,
-                ratio_neg_name: ratio_neg,
-                dist_name: dist,
-                num_pos_pairs_name: num_pos_pairs,
-                num_neg_pairs_name: num_neg_pairs,
+                TENSOR_NAMES["emst"]: emst,
+                TENSOR_NAMES["edges_u"]: edges_u,
+                TENSOR_NAMES["edges_v"]: edges_v,
+                TENSOR_NAMES["ratio_pos"]: ratio_pos,
+                TENSOR_NAMES["ratio_neg"]: ratio_neg,
+                TENSOR_NAMES["dist"]: dist,
+                TENSOR_NAMES["num_pos_pairs"]: num_pos_pairs,
+                TENSOR_NAMES["num_neg_pairs"]: num_neg_pairs,
             },
             gradients={
                 tensor_names["embedding"]: gradient_embedding,
@@ -304,7 +194,5 @@ def train(n_iterations):
     with gp.build(pipeline):
         for i in range(n_iterations + 1):
             pipeline.request_batch(request)
+            request._update_random_seed()
 
-
-if __name__ == "__main__":
-    train(setup_config["NUM_ITERATIONS"])

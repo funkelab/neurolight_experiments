@@ -1,12 +1,13 @@
-from funlib.learn.tensorflow.losses.um_loss import ultrametric_loss_op
 import neurolight as nl
+from neurolight.tensorflow.add_loss import TENSOR_NAMES, create_custom_loss
+from neurolight.tensorflow.mknet import mknet
 import gunpowder as gp
 import json
 import numpy as np
-import tensorflow as tf
 import logging
 
 from typing import List
+from pathlib import Path
 import math
 
 for handler in logging.root.handlers[:]:
@@ -47,12 +48,6 @@ SNAPSHOT_EVERY = setup_config["SNAPSHOT_EVERY"]
 CHECKPOINT_EVERY = setup_config["CHECKPOINT_EVERY"]
 
 
-class PrintDataTypes(gp.BatchFilter):
-    def process(self, batch, request):
-        for key, array in batch.arrays.items():
-            print("array %s has dtype %s" % (key, array.data.dtype))
-
-
 class LabelToFloat32(gp.BatchFilter):
     def __init__(self, array: gp.ArrayKey, intensities: List[float] = [1.0]):
         self.array = array
@@ -79,172 +74,11 @@ class LabelToFloat32(gp.BatchFilter):
         batch[self.array] = gp.Array(intensity_data, spec)
 
 
+if not Path("tensor_names.json").is_file():
+    mknet(setup_config)
 with open("tensor_names.json", "r") as f:
     tensor_names = json.load(f)
-
-
-emst_name = "PyFuncStateless:0"
-edges_u_name = "GatherV2:0"
-edges_v_name = "GatherV2_1:0"
-ratio_pos_name = "PyFuncStateless_1:1"
-ratio_neg_name = "PyFuncStateless_1:2"
-dist_name = "Sqrt:0"
-num_pos_pairs_name = "PyFuncStateless_1:3"
-num_neg_pairs_name = "PyFuncStateless_1:4"
-
-
-def add_loss(graph):
-
-    # k, h, w
-    embedding = graph.get_tensor_by_name(tensor_names["embedding"])
-
-    # h, w
-    fg = graph.get_tensor_by_name(tensor_names["fg"])
-
-    # h, w
-    gt_labels = graph.get_tensor_by_name(tensor_names["gt_labels"])
-
-    # h, w
-    gt_fg = tf.not_equal(gt_labels, 0, name="gt_fg")
-
-    # h, w
-
-    _, maxima = max_detection(
-        tf.reshape(fg, (1, *OUTPUT_SHAPE, 1)),
-        window_size=(1, *MAX_FILTER_SIZE),
-        threshold=MAXIMA_THRESHOLD,
-    )
-
-    # 1, k, h, w
-    embedding = tf.reshape(embedding, (1,) + tuple(embedding.get_shape().as_list()))
-    # k, 1, h, w
-    embedding = tf.transpose(embedding, perm=[1, 0, 2, 3])
-
-    um_loss, emst, edges_u, edges_v, _ = ultrametric_loss_op(
-        embedding,
-        gt_labels,
-        mask=maxima,
-        coordinate_scale=COORDINATE_SCALE,
-        alpha=ALPHA,
-        pretrain=True,
-    )
-
-    ratio_pos = graph.get_tensor_by_name("PyFuncStateless_1:1")
-    ratio_neg = graph.get_tensor_by_name("PyFuncStateless_1:2")
-    dist = graph.get_tensor_by_name("Sqrt:0")
-
-    # Calculate a score:
-
-    # false positives are just ratio_neg
-    # false negatives are 1 - ratio_pos
-
-    false_pos = tf.math.cumsum(ratio_neg)
-    false_neg = 1 - tf.math.cumsum(ratio_pos)
-    scores = false_pos + false_neg
-    best_score = tf.math.reduce_min(scores)
-    best_score_index = tf.math.argmin(scores)
-    best_alpha = tf.gather(dist, best_score_index)
-
-    assert emst.name == emst_name, "{} != {}".format(emst.name, emst_name)
-    assert edges_u.name == edges_u_name, "{} != {}".format(edges_u.name, edges_u_name)
-    assert edges_v.name == edges_v_name, "{} != {}".format(edges_v.name, edges_v_name)
-
-    fg_loss = tf.losses.mean_squared_error(gt_fg, fg)
-
-    loss = um_loss + fg_loss
-
-    tf.summary.scalar("um_loss", um_loss)
-    tf.summary.scalar("fg_loss", fg_loss)
-    tf.summary.scalar("loss", loss)
-    tf.summary.scalar("best_alpha", best_alpha)
-    tf.summary.scalar("best_score", best_score)
-
-    summaries = tf.summary.merge_all()
-
-    opt = tf.train.AdamOptimizer(
-        learning_rate=0.5e-5, beta1=0.95, beta2=0.999, epsilon=1e-8
-    )
-
-    optimizer = opt.minimize(loss)
-
-    return (loss, optimizer)
-
-
-def max_detection(
-    soft_mask, window_size: List, threshold: float, reject_empty_threshold: bool = False
-):
-
-    sm_shape = soft_mask.get_shape().as_list()
-    n_dim = len(sm_shape) - 2
-    sm_dims = [sm_shape[i + 1] for i in range(n_dim)]
-    w_dims = [window_size[i + 1] for i in range(n_dim)]
-
-    if n_dim == 2:
-        data_format = "NHWC"
-        pool_func = tf.nn.max_pool2d
-        conv_transpose = tf.nn.conv2d_transpose
-    elif n_dim == 3:
-        data_format = "NDHWC"
-        pool_func = tf.nn.max_pool3d
-        conv_transpose = tf.nn.conv3d_transpose
-
-    max_pool = pool_func(
-        soft_mask, w_dims, w_dims, padding="SAME", data_format=data_format
-    )
-
-    conv_filter = np.ones([*w_dims, 1, 1])
-
-    upsampled = conv_transpose(
-        max_pool,
-        conv_filter.astype(np.float32),
-        [1, *sm_dims, 1],
-        w_dims,
-        padding="SAME",
-        data_format=data_format,
-        name="nms_conv_0",
-    )
-
-    maxima = tf.equal(upsampled, soft_mask)
-    threshold_maxima = tf.logical_and(maxima, soft_mask >= threshold)
-    if reject_empty_threshold:
-        num_points = tf.count_nonzero(threshold_maxima)
-        maxima = tf.cond(num_points > 0, threshold_maxima, maxima)
-    else:
-        maxima = threshold_maxima
-
-    # Fix doubles
-    # Check the necessary window size and adapt for isotropic vs unisotropic nms:
-    double_suppresion_window = [1 if dim == 1 else 3 for dim in w_dims]
-    sm_maxima = tf.add(tf.cast(maxima, tf.float32), soft_mask)
-
-    # sm_maxima smoothed over large window
-    max_pool = pool_func(
-        sm_maxima,
-        double_suppresion_window,
-        [1 for _ in range(n_dim)],
-        padding="SAME",
-        data_format=data_format,
-    )
-
-    # not sure if this does anything
-    conv_filter = np.ones([1 for _ in range(n_dim + 2)])
-    upsampled = conv_transpose(
-        max_pool,
-        conv_filter.astype(np.float32),
-        [1, *sm_dims, 1],
-        [1 for _ in range(n_dim)],
-        padding="SAME",
-        data_format=data_format,
-        name="nms_conv_1",
-    )
-
-    reduced_maxima = tf.equal(upsampled, sm_maxima)
-    reduced_maxima = tf.logical_and(reduced_maxima, sm_maxima > 1)
-
-    if n_dim == 2:
-        return maxima[0, :, :, 0], reduced_maxima[0, :, :, 0]
-    elif n_dim == 3:
-        return maxima[0, :, :, :, 0], reduced_maxima[0, :, :, :, 0]
+    logging.warning(f"{tensor_names}")
 
 
 def train(n_iterations):
@@ -313,7 +147,15 @@ def train(n_iterations):
                 dtype=np.uint64,
             ),
         )
-        + gp.Copy(labels, raw)
+        + nl.RasterizeSkeleton(
+            point_trees,
+            raw,
+            gp.ArraySpec(
+                roi=gp.Roi((None,) * 2, (None,) * 2),
+                voxel_size=gp.Coordinate((1, 1)),
+                dtype=np.uint64,
+            ),
+        )
         + nl.GrowLabels(labels, radii=LABEL_RADII)
         + nl.GrowLabels(raw, radii=RAW_RADII)
         + LabelToFloat32(raw, intensities=RAW_INTENSITIES)
@@ -321,7 +163,7 @@ def train(n_iterations):
         + gp.PreCache(cache_size=CACHE_SIZE, num_workers=NUM_WORKERS)
         + gp.tensorflow.Train(
             "train_net",
-            optimizer=add_loss,
+            optimizer=create_custom_loss(tensor_names, setup_config),
             loss=None,
             inputs={tensor_names["raw"]: raw, tensor_names["gt_labels"]: labels},
             outputs={
@@ -329,14 +171,14 @@ def train(n_iterations):
                 tensor_names["fg"]: fg,
                 "strided_slice_1:0": maxima,
                 "gt_fg:0": gt_fg,
-                emst_name: emst,
-                edges_u_name: edges_u,
-                edges_v_name: edges_v,
-                ratio_pos_name: ratio_pos,
-                ratio_neg_name: ratio_neg,
-                dist_name: dist,
-                num_pos_pairs_name: num_pos_pairs,
-                num_neg_pairs_name: num_neg_pairs,
+                TENSOR_NAMES["emst"]: emst,
+                TENSOR_NAMES["edges_u"]: edges_u,
+                TENSOR_NAMES["edges_v"]: edges_v,
+                TENSOR_NAMES["ratio_pos"]: ratio_pos,
+                TENSOR_NAMES["ratio_neg"]: ratio_neg,
+                TENSOR_NAMES["dist"]: dist,
+                TENSOR_NAMES["num_pos_pairs"]: num_pos_pairs,
+                TENSOR_NAMES["num_neg_pairs"]: num_neg_pairs,
             },
             gradients={
                 tensor_names["embedding"]: gradient_embedding,

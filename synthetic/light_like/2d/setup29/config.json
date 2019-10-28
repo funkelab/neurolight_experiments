@@ -1,6 +1,6 @@
 {
     "NUM_FMAPS": 32,
-    "COORDINATE_SCALE": 0.1,
+    "COORDINATE_SCALE": 0.01,
     "ALPHA": 1,
     "EMBEDDING_DIMS": 6
 }

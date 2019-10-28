@@ -2,5 +2,7 @@
     "NUM_FMAPS": 8,
     "COORDINATE_SCALE": 0.1,
     "ALPHA": 1,
-    "EMBEDDING_DIMS": 3
+    "EMBEDDING_DIMS": 3,
+    "NUM_ITERATIONS": 5,
+    "SNAPSHOT_EVERY": 1
 }

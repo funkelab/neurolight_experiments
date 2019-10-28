@@ -21,21 +21,29 @@ COORDINATE_SCALE = setup_config["COORDINATE_SCALE"]
 
 neuroglancer.set_server_bind_address("0.0.0.0")
 
-raw = daisy.open_ds(f, "volumes/raw")
-labels = daisy.open_ds(f, "volumes/labels")
 
-gt_fg = daisy.open_ds(f, "volumes/gt_fg")
-embedding = daisy.open_ds(f, "volumes/embedding")
-fg = daisy.open_ds(f, "volumes/fg")
-maxima = daisy.open_ds(f, "volumes/maxima")
-gradient_embedding = daisy.open_ds(f, "volumes/gradient_embedding")
+def o(f, *args):
+    try:
+        return f(*args)
+    except:
+        return None
 
 
-gradient_fg = daisy.open_ds(f, "volumes/gradient_fg")
+raw = o(daisy.open_ds, f, "volumes/raw")
+labels = o(daisy.open_ds, f, "volumes/labels")
 
-emst = daisy.open_ds(f, "emst")
-edges_u = daisy.open_ds(f, "edges_u")
-edges_v = daisy.open_ds(f, "edges_v")
+gt_fg = o(daisy.open_ds, f, "volumes/gt_fg")
+embedding = o(daisy.open_ds, f, "volumes/embedding")
+fg = o(daisy.open_ds, f, "volumes/fg")
+maxima = o(daisy.open_ds, f, "volumes/maxima")
+gradient_embedding = o(daisy.open_ds, f, "volumes/gradient_embedding")
+
+
+gradient_fg = o(daisy.open_ds, f, "volumes/gradient_fg")
+
+emst = o(daisy.open_ds, f, "emst")
+edges_u = o(daisy.open_ds, f, "edges_u")
+edges_v = o(daisy.open_ds, f, "edges_v")
 
 
 trees = h5py.File(f)["point_trees"]
@@ -148,25 +156,35 @@ def add_trees(trees, node_id, name, visible=False):
         )
 
 
-embedding.materialize()
-embedding.data = (embedding.data + 1) / 2
+if embedding is not None:
+    embedding.materialize()
+    embedding.data = (embedding.data + 1) / 2
 
 viewer = neuroglancer.Viewer()
 with viewer.txn() as s:
-    add(s, raw, "raw", visible=False)
-    add(s, labels, "labels", visible=False)
-    add(s, gt_fg, "gt_fg", visible=False)
-    add(s, embedding, "embedding", shader="rgb")
-    add(s, fg, "fg", visible=False)
-    add(s, maxima, "maxima")
-    add(s, gradient_embedding, "grad_embedding", shader="rgb", visible=False)
-    add(s, gradient_fg, "grad_fg", shader="rgb", visible=False)
+    if raw is not None:
+        add(s, raw, "raw", visible=False)
+    if labels is not None:
+        add(s, labels, "labels", visible=False)
+    if gt_fg is not None:
+        add(s, gt_fg, "gt_fg", visible=False)
+    if embedding is not None:
+        add(s, embedding, "embedding", shader="rgb")
+    if fg is not None:
+        add(s, fg, "fg", visible=False)
+    if maxima is not None:
+        add(s, maxima, "maxima")
+    if gradient_embedding is not None:
+        add(s, gradient_embedding, "grad_embedding", shader="rgb", visible=False)
+    if gradient_fg is not None:
+        add(s, gradient_fg, "grad_fg", shader="rgb", visible=False)
 
     node_id = itertools.count(start=1)
 
-    mst_trees = build_trees_from_mst(emst, edges_u, edges_v)
+    if emst is not None:
+        mst_trees = build_trees_from_mst(emst, edges_u, edges_v)
+        add_trees(mst_trees, node_id, name="MST")
     swc_trees = build_trees_from_swc(trees)
-    add_trees(mst_trees, node_id, name="MST")
     add_trees(swc_trees, node_id, name="Tree")
 
 print(viewer)
