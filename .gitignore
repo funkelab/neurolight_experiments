@@ -7,7 +7,10 @@ tensor_names.json
 *checkpoint*
 *snapshot_images*
 *.sw[pmn]
+*.obj
 
 tensorflow_logs
 training.log
 nohup.out
+.vscode
+core
